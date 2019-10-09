@@ -1,0 +1,263 @@
+@import 'partials/variables.scss';
+
+body {
+    font-family: brandon-grotesque, sans-serif;
+    color: $dark;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 45px;
+}
+
+h4 {
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.bg-image {
+    background-size:cover; 
+    background-position:center;
+    background-repeat: no-repeat;
+}
+
+.layer {
+    position:absolute; 
+    top:0;
+    color: white;
+}
+
+.big-banner {
+    height: 450px;
+    @media (min-width:992px) {
+        height: 550px;
+    } 
+}
+
+#carouselBanner{
+    .layer {
+
+        h3 {
+            font-weight: 600;
+            font-size: 37px;
+        }
+        
+        p {
+            font-size: 19px;
+        }
+    }
+}
+
+.bg-gray {
+    background: $ligh_gray;
+}
+
+.bg-dark {
+    background: $dark;
+}
+
+.slider {
+    position:absolute; 
+    bottom:0; 
+    right: 0; 
+    width:600px;
+    height: 70px; 
+    background: $ligh_gray;
+
+    p {
+        font-size: 23px;
+        font-weight: 300;
+        color: $dark;
+        margin-bottom: 0;
+    }
+
+    img {
+        height:30px; 
+        width: auto;
+    }
+
+    .text-slide {
+        display: none;
+    }
+
+}
+
+.link {
+    border: 1px solid $dark;
+    padding: 6px 18px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: $dark;
+    background: transparent;
+    transition: background-color 0.5s;
+    -webkit-transition: background-color 0.5s;
+
+    &:hover {
+        background: $dark;
+        transition: background-color 0.5s;
+        -webkit-transition: background-color 0.5s;
+        color: white !important;
+        text-decoration: none !important;
+    }
+}
+
+.white {
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+    transition: background-color 0.5s;
+    -webkit-transition: background-color 0.5s;
+    font-weight: 500;
+
+    &:hover {
+        background: white;
+        transition: background-color 0.5s;
+        -webkit-transition: background-color 0.5s;
+        color: $dark !important;
+        text-decoration: none !important;
+        cursor: pointer;
+    }
+}
+
+
+@import 'partials/map.scss';
+@import 'partials/grid.scss';
+@import 'partials/featured_posts.scss';
+@import 'partials/banner.scss';
+@import 'partials/boxes.scss';
+@import 'partials/header.scss';
+@import 'partials/latest_reports.scss';
+@import 'partials/all_posts.scss';
+
+
+
+.programmes-list {
+
+    .box {
+        height: 350px;
+        background: white;
+        position: relative;
+    }
+
+    .thumbnail-image {
+        height: 160px;
+    }
+
+    .pos-bottom{
+        position: absolute;
+        bottom: 5px;
+    }
+
+    .form-programmes {
+        color: white;
+
+        .title {
+            font-size: 38px;
+            line-height: 37px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .description {
+            font-size: 20px;
+            line-height: 25px;
+            margin-bottom: 25px;
+        }
+
+        select {
+            width: 80%;
+            margin: 4px 0;
+            height: 35px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: none;
+            border-radius: 0;
+            padding-left: 12px;
+        }
+
+        input[type="submit"]{
+            background: $dark_blue;
+            color: white;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 400;
+            border: none;
+            padding: 6px 18px;
+            margin-top: 15px;
+
+            &:hover {
+                background: $blue;
+            }
+        }
+    }
+
+    .filters {
+        z-index: 2;
+        position: relative;
+
+        .item {
+            background: white;
+            width: 170px;
+            margin-left: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+
+            .checkbox {
+                border: 2px solid $dark-blue;
+                border-radius: 4px;
+                height: 22px;
+                width: 22px;
+                display: inline-block;
+                float: right;
+    
+                .fas {
+                    font-size: 12px;
+                    display: block;
+                    line-height: 20px;
+                    text-align: center;
+                    color: $dark-blue;
+                }
+            }
+        }
+        
+        .item-black {
+            background: $dark;
+            width: 170px;
+            margin-left: 10px;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+
+            .open-filters {
+                height: 22px;
+                width: 22px;
+                display: inline-block;
+                float: right;
+
+                .fas {
+                    font-size: 30px;
+                    display: block;
+                    line-height: 20px;
+                    margin-right: 10px;
+                    text-align: center;
+                    color: white;
+                }
+
+            }
+        }
+    }
+
+
+    .filters-window {
+        background: $ligh_gray;
+        position: absolute; 
+        top: 0; 
+        width:100%; 
+        height:100%; 
+        display: none;
+        opacity: 0.9;
+    }
+}
+
+

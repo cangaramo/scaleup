@@ -1,0 +1,20 @@
+{
+  "name": "scaleuptheme",
+  "version": "1.0.0",
+  "description": "Theme for Scale Up",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Clarisa Angaramo (Bladonmore)",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-sass": "^4.0.2"
+  }
+}

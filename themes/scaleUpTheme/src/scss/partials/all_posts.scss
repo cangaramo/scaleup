@@ -1,0 +1,63 @@
+@import 'partials/variables.scss';
+
+.all-posts {
+
+    .arrow-down {
+        width: 0px;
+        height: 0px;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-top: 25px solid lightcyan;
+    }
+    
+    .line-top {
+        height: 25px; 
+        background: lightcyan; 
+        width: 100%;
+        text-align: center;
+    
+        a {
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 600;
+            color: $dark;
+            text-decoration: none;
+        }
+    }
+    
+    .line-bottom {
+        height:25px; 
+        background: lavender; 
+        position:relative;
+    }
+    
+    .arrow-icon {
+        height: 11px;
+        margin-bottom: 6px;
+    }
+
+}
+
+.all-posts.gray-white {
+    .arrow-down {
+        border-top: 25px solid $ligh_gray;
+    }
+    .line-top {
+        background: $ligh_gray; 
+    }
+    .line-bottom {
+        background: white; 
+    }
+}
+
+.all-posts.white-gray {
+    .arrow-down {
+        border-top: 25px solid white;
+    }
+    .line-top {
+        background: white; 
+    }
+    .line-bottom {
+        background: $ligh_gray; 
+    }
+}

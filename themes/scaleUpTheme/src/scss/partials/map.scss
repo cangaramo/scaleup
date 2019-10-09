@@ -1,0 +1,58 @@
+/* Map */
+
+#map {
+    height:700px;
+}
+
+#cards-list {
+
+    .card {
+        cursor: pointer;
+
+        p {
+            font-size: 14px;
+            font-weight: 500;
+        }
+    
+        .subtitle {
+            font-weight: 400;
+        }
+    
+        .title {
+            font-size: 16px;
+        }
+    }
+}
+
+#form-search {
+
+    select {
+        background: white;
+        margin: 5px;
+        padding: 8px;
+        
+        border-radius: 0;
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+
+    }
+
+    input, select {
+        margin: 5px;
+        padding: 8px;
+        font-size: 14px;
+        height: 38px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    input[type="submit"]{
+        background: #E18E04;
+        color: white;
+        cursor: pointer;
+    }
+   
+}
