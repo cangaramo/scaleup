@@ -125,14 +125,13 @@ add_action( 'wp_ajax_load_posts', 'load_posts' );
 
 function load_programmes(){
 
-	/* Get array */
+	/* Get arrays */
 	$array_regions = $_POST['region'];
 	$array_types_business = $_POST['type_business'];
 	$array_types_support = $_POST['type_support'];
 
-	print_r($array_regions);
-	print_r($array_types_business);
-	print_r($array_types_support);
+	$one_to_watch = $_POST['one_to_watch'];
+	$endorsed = $_POST['endorsed'];
 
 
 	/* If empty: Get all of them (NOT IN empty array) */
@@ -191,38 +190,67 @@ function load_programmes(){
             'operator' => $support_operator,
         ),
 	);
-	
+
+
+	/* Meta 
+
+	$args['meta_query'] = 
+	array(
+		'relation'		=> 'AND',
+		array(
+			'key'	 	=> 'one_to_watch',
+			'value'	  	=> array('1'),
+			'compare' 	=> 'IN',
+		),
+		array(
+			'key'	  	=> 'endorsed',
+			'value'	  	=> array('1'),
+			'compare' 	=> 'IN',
+		),
+	); */
 	
 	$programmes = get_posts($args);
-	?>
 
-	<div class="row">
+	if ($programmes): ?>
 
-		<?php foreach ($programmes as $programme):
-			$id = $programme->ID;
-			$title = get_the_title($id);
-			$all_fields = get_fields($id);
-			$link = get_permalink($id);
-		?>
+		<div class="row">
 
-		<div class='col-3 my-3'>
-			<div class="box">
-				<div class="bg-image thumbnail-image" style="background-image:url('<?php echo $all_fields['thumbnail_image']?>')"></div>
-				<div class="p-3 h-100">
-					<p><?php echo $title ?></p>
-					<p><?php echo $all_fields['description'] ?></p>
-				</div>
-				<div class="pos-bottom">
-					<div class="p-3">
-						<a href="<?php echo $link ?>" class="link">Read more</a>
+			<?php foreach ($programmes as $programme):
+				$id = $programme->ID;
+				$title = get_the_title($id);
+				$all_fields = get_fields($id);
+				$link = get_permalink($id);
+			?>
+
+			<div class='col-3 my-3'>
+				<div class="box">
+					<div class="overflow-hidden">
+						<div class="bg-image thumbnail-image" style="background-image:url('<?php echo $all_fields['thumbnail_image']?>')"></div>
+					</div>
+					<div class="p-3 h-100">
+						<p><?php echo $title ?></p>
+						<p><?php echo $all_fields['description'] ?></p>
+					</div>
+					<div class="pos-bottom">
+						<div class="p-3">
+							<a href="<?php echo $link ?>" class="link">Read more</a>
+						</div>
 					</div>
 				</div>
 			</div>
+
+			<?php endforeach ?>
+
+		</div>
+	
+	<?php else: ?>
+
+		<div class="d-flex justify-content-center text-center align-items-center h-100" style="min-height:550px">
+			<p>No programmes found</p>
 		</div>
 
-		<?endforeach ?>
-
-	</div>
+	<?php endif ?>
+	
 
 	<?php 
 	die();

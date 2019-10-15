@@ -10,7 +10,7 @@
     <!-- Carousel -->
     <div id="carouselBanner" class="carousel slide" data-ride="carousel">
 
-        <!--
+
         <ol class="carousel-indicators">
 
             <?php 
@@ -28,7 +28,7 @@
 
             <?php endif; ?>
 
-        </ol> -->
+        </ol> 
 
         <div class="carousel-inner">
 
@@ -43,7 +43,7 @@
                         <div class="position-relative">
 
                             <div class="bg-image big-banner" style="background-image:url('<?php echo $item['image'] ?>');"></div>
-                            
+
                             <div class="layer h-100 w-100">
                                 <div class="row h-100 m-0">
                                     <div class="col-lg-6 blue-bg h-100"> </div>
@@ -53,10 +53,10 @@
                             <div class="layer h-100 w-100">
                                 <div class="container h-100">
                                     <div class="row h-100">
-                                        <div class="col-lg-5 col-xl-4 h-100 mt-banner h-100">
+                                        <div class="col-lg-5 col-xl-4 h-100 offset-1 mt-banner h-100">
                                             <div class="d-flex align-items-center h-100">
                                                 <div>
-                                                    <h3 class="mb-4"><?php echo $item['headline'] ?></h3>
+                                                    <h3 class="mb-3"><?php echo $item['headline'] ?></h3>
                                                     <p><?php echo $item['text'] ?></p>
                                                 </div>
                                             </div>
@@ -73,6 +73,8 @@
 
         </div>
 
+        <!-- No arrows
+
         <?php if (sizeof($items) > 1): ?>
 
             <a class="carousel-control-prev" href="#carouselBanner" role="button" data-slide="prev">
@@ -84,32 +86,49 @@
                 <span class="sr-only">Next</span>
             </a>
 
-        <?php endif; ?>
+        <?php endif; ?>  -->
 
     </div> <!-- carousel -->
 
     <div class="slider">
-            
-            <?php foreach ($slider as $index=> $slide): ?>
 
-                <?php if ($index == 0): ?>
-
-                    <div class="text-slide h-100" style="display:block">
-
-                <?php else: ?>
-
-                    <div class="text-slide h-100">
-
-                <?php endif ?>
-
-                    <div class="d-flex justify-content-center align-items-center h-100">
-                        <div><p class="my-0 mr-4"><?php echo $slide['slide'] ?></p></div>
-                        <img src="<?php echo get_bloginfo('template_directory')?>/assets/images/speaker.png">    
-                    </div>
-
+        <div class="slider-right">
+            <div class="row h-100">
+                <div class="col-6 offset-6 half">
                 </div>
-                    
-            <?php endforeach ?>
+            </div>
+        </div>
+
+        <div class="container h-100">
+
+            <div class="px-3 bg-lgray h-100">
+            
+                <?php foreach ($slider as $index=> $slide): ?>
+
+                    <?php if ($index == 0): ?>
+
+                        <div class="text-slide h-100" style="display:block">
+
+                    <?php else: ?>
+
+                        <div class="text-slide h-100">
+
+                    <?php endif ?>
+
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <div><p class="my-0 mr-4"><?php echo $slide['slide'] ?></p></div>
+                            <img src="<?php echo get_bloginfo('template_directory')?>/assets/images/speaker.png">    
+                        </div>
+
+                    </div>
+                        
+                <?php endforeach ?>
+            </div>
+
+        </div>
+
+
+        
            
        
     </div>

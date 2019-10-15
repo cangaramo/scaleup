@@ -2,6 +2,13 @@ var map;
 var geocoder;
 var markers = [];
 
+var array_region = [];
+var array_business = [];
+var array_support = [];
+
+var one_to_watch = false;
+var endorsed = false;
+
 $( document ).ready(function() {
 
     $("#submit-form").click(function(){
@@ -71,9 +78,13 @@ $( document ).ready(function() {
     //Search button
     $('body').on('click', '.submit-search', function (){
 
+        //Emtpy arrays
         array_region = [];
         array_business = [];
         array_support = [];
+
+        //Reset filters form
+        $('.tick input:checkbox').prop('checked', false); 
 
         region = $("#dropdown-region :selected").val();
         type_business = $("#dropdown-type-business :selected").val();
@@ -87,11 +98,18 @@ $( document ).ready(function() {
             array_business.push(type_business);
         }
 
-        if (array_support != "") {
+        if (type_support != "") {
             array_support.push(type_support);
         }
+        LoadProgrammes(array_region, array_business, array_support, one_to_watch, endorsed);
 
-        LoadProgrammes(array_region, array_business, array_support);
+        //Mark checkbox as checked 
+        checkbox_region = "#checkbox-" + region;
+        checkbox_business = "#checkbox-" + type_business;
+        checkbox_support = "#checkbox-" + type_support;
+        $(checkbox_region).prop('checked', true); 
+        $(checkbox_business).prop('checked', true); 
+        $(checkbox_support).prop('checked', true); 
     });
 
 
@@ -105,7 +123,33 @@ $( document ).ready(function() {
     });
 
     $('body').on('click', '.more-filters', function (){
-        $(".filters-window").fadeIn("slow");
+        $(".filters-window").fadeToggle("slow");
+    });
+
+    $('body').on('click', '.filter-btn', function(){
+
+        //Get values and filter
+        array_region = $('input[name=checkbox-region]:checked').map(function() {
+            return $(this).val();
+        }).get();
+
+        array_business = $('input[name=checkbox-business]:checked').map(function() {
+            return $(this).val();
+        }).get();
+
+        array_support = $('input[name=checkbox-support]:checked').map(function() {
+            return $(this).val();
+        }).get();
+
+        $(".filters-window").fadeToggle("slow");
+
+        LoadProgrammes(array_region, array_business, array_support, one_to_watch, endorsed);
+
+        //Reset search form
+        $("#dropdown-region").val("");
+        $("#dropdown-type-business").val("");
+        $("#dropdown-type-support").val("");
+
     });
 
 });
@@ -114,14 +158,14 @@ $( document ).ready(function() {
 $(window).on('load', function(){
 
     if ($('.programmes-list').length > 0) {
-        LoadProgrammes();
+        LoadProgrammes(array_region, array_business, array_support, one_to_watch, endorsed);
     }
     
 });
 
 /* Load programmes */
 
-function LoadProgrammes(regions, types_business, types_support){
+function LoadProgrammes(regions, types_business, types_support, one_to_watch, endorsed){
 
     full_url = window.location.href;
     path_url = window.location.pathname;
@@ -136,13 +180,16 @@ function LoadProgrammes(regions, types_business, types_support){
             action: "load_programmes",
             region: regions,
             type_business: types_business,
-            type_support: types_support
+            type_support: types_support,
+            one_to_watch: one_to_watch,
+            endorsed: endorsed       
         },
         beforeSend:function(xhr){
 
         },
         success:function(response){
-            $("#response-programmes").html(response);
+           // $("#response-programmes").html(response);
+            $("#response-programmes").hide().html(response).fadeIn(600);
         }
     });
 
@@ -473,7 +520,14 @@ function sort_results(){
 }
 
 
-function redirectTo(url) {
-    window.location.href = url;
+function redirectTo(url, tab) {
+
+    if (tab) {
+        window.open(url, '_blank');
+    }
+    else {
+        window.location.href = url;
+    }
+   
 
 }

@@ -88,7 +88,7 @@
     <div class="container py-5 position-relative">
 
         <!-- Filters -->
-        <div class="row filters">
+        <div class="row filters pb-4">
             <div class="col-4">
                 <h4>All programmes</h4>
             </div>
@@ -116,8 +116,60 @@
         <div  id="response-programmes"></div>
 
         <!-- Filters window -->
-        <div class="filters-window">
-            <p>Filters go here</p>
+        <div class="filters-window" style="padding-top:140px">
+
+            <h5>Region</h5>
+
+            <div class="row">
+                <?php foreach ($regions as $region):
+                    $name = $region->cat_name;
+                    $id = $region->cat_ID; ?>
+                    <div class="col-4">
+                        <div class="tick">
+                            <input name="checkbox-region" type="checkbox" value="<?php echo $id ?>" id="checkbox-<?php echo $id?>">
+                            <label for="checkbox-<?php echo $id?>"><?php echo $name ?></label>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <hr class="my-4">
+
+            <h5>Types of business</h5>
+
+            <div class="row">
+                <?php foreach ($types_business as $type):
+                    $name = $type->cat_name;
+                    $id = $type->cat_ID; ?>
+                    <div class="col-4">
+                        <div class="tick">
+                            <input name="checkbox-business" type="checkbox" value="<?php echo $id ?>" id="checkbox-<?php echo $id?>">
+                            <label for="checkbox-<?php echo $id?>"><?php echo $name ?></label>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <hr class="my-4">
+
+
+            <h5>Types of support</h5>
+
+            <div class="row">
+                <?php foreach ($types_support as $type):
+                    $name = $type->cat_name;
+                    $id = $type->cat_ID; ?>
+                    <div class="col-4">
+                        <div class="tick">
+                            <input name="checkbox-support" type="checkbox" value="<?php echo $id ?>" id="checkbox-<?php echo $id?>">
+                            <label for="checkbox-<?php echo $id?>"><?php echo $name ?></label>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <button class="filter-btn">Filter</button>
+
         </div>
             
 
