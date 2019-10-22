@@ -1,0 +1,106 @@
+@import 'partials/variables.scss';
+
+#modalNewsletter{
+    
+    .modal-dialog {
+
+        @media (min-width: 576px) {
+            max-width: 950px;
+        }
+
+        .modal-content {
+            background: $blue;
+            color: white;
+
+            .modal-body {
+                padding: 70px 60px;
+            }
+
+            .close-form {
+                background: none;
+                border: none;
+                margin: 10px 3px;
+
+                img {
+                    height: 35px;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+
+                &:hover {
+                    opacity: 0.9;
+                }
+            }
+        }
+    }
+
+
+    /* Form */
+
+    .gform_wrapper {
+
+        margin: 0;
+
+        input[type='text']{
+            width: 100% !important;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            padding: 7px 10px;
+            font-size: 14px;
+            color: $dark;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .gform_title {
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-top: 23px;
+            font-size: 24px;
+        }
+
+        .gform_description {
+            margin-bottom: 20px;
+        }
+
+        .gfield_label {
+            display: none;
+        }
+    
+        .gform_footer {
+            padding-bottom: 0;
+    
+            input[type='submit']{
+                background: #3f3e3d!important;
+                border: none;
+                color: #fff!important;
+                text-transform: uppercase;
+                font-size: 13px!important;
+                padding: 8px 24px;
+            }
+        }
+
+         /* Error */
+
+        div.validation_error{
+            display: none !important;
+        }
+
+        .validation_message {
+            color: $dark;
+            padding-top: 6px;
+        }
+
+        li.gfield.gfield_error {
+            margin: 0;
+            background: transparent !important;
+            border: none;
+        }
+
+    }
+    
+}

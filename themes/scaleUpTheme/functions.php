@@ -192,22 +192,36 @@ function load_programmes(){
 	);
 
 
-	/* Meta 
-
-	$args['meta_query'] = 
-	array(
-		'relation'		=> 'AND',
-		array(
-			'key'	 	=> 'one_to_watch',
-			'value'	  	=> array('1'),
-			'compare' 	=> 'IN',
-		),
-		array(
-			'key'	  	=> 'endorsed',
-			'value'	  	=> array('1'),
-			'compare' 	=> 'IN',
-		),
-	); */
+	//Checkboxes
+	/*
+	echo $one_to_watch;
+	echo ' ';
+	echo $endorsed; */
+	
+	if( ($one_to_watch == 1) && ($endorsed == 1)) {
+		$args['meta_query'] = array(
+			'relation'		=> 'AND',
+			array(
+				'key'	 	=> 'one_to_watch',
+				'value'	  	=> "1",
+				'compare' 	=> '=',
+			),
+			array(
+				'key'	  	=> 'endorsed',
+				'value'	  	=> '1',
+				'compare' 	=> '=',
+			),
+		); 
+	}
+	else if ($one_to_watch == 1) {
+		$args['meta_key'] = 'one_to_watch';
+		$args['meta_value'] = '1';
+	}
+	else if ($endorsed == 1){
+		$args['meta_key'] = 'endorsed';
+		$args['meta_value'] = '1';
+	} 
+	
 	
 	$programmes = get_posts($args);
 
@@ -228,8 +242,16 @@ function load_programmes(){
 						<div class="bg-image thumbnail-image" style="background-image:url('<?php echo $all_fields['thumbnail_image']?>')"></div>
 					</div>
 					<div class="p-3 h-100">
-						<p><?php echo $title ?></p>
-						<p><?php echo $all_fields['description'] ?></p>
+						<div class="row">
+							<div class="col-9 pr-0">
+								<p><?php echo $title ?></p>
+								<p><?php echo $all_fields['description'] ?></p>
+							</div>
+							<div class="col-3">
+								<img class="w-100" src="<?php echo get_bloginfo('template_url')?>/assets/images/one_to_watch.svg">
+								<img class="w-100 mt-2" src="<?php echo get_bloginfo('template_url')?>/assets/images/endorsed.svg">
+							</div>
+						</div>
 					</div>
 					<div class="pos-bottom">
 						<div class="p-3">

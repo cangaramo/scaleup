@@ -25,5 +25,5 @@
                 </div>
             </div>
         </div>
-    <?endforeach ?>
+    <?php endforeach ?>
 </div>

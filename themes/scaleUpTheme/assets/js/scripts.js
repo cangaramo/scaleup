@@ -6,8 +6,8 @@ var array_region = [];
 var array_business = [];
 var array_support = [];
 
-var one_to_watch = false;
-var endorsed = false;
+var one_to_watch = 0;
+var endorsed = 0;
 
 $( document ).ready(function() {
 
@@ -115,11 +115,34 @@ $( document ).ready(function() {
 
     //Search button
     $('body').on('click', '.one-to-watch', function (){
-        $(this).find(".checkbox .fas").toggle();
+       
+        if (one_to_watch == 0) {
+            one_to_watch = 1;
+            $(this).find(".checkbox .fas").css("display", "block");
+        }
+        else {
+            one_to_watch = 0;
+            $(this).find(".checkbox .fas").css("display", "none");
+        }
+
+        LoadProgrammes(array_region, array_business, array_support, one_to_watch, endorsed);
     });
 
     $('body').on('click', '.endorsed', function (){
         $(this).find(".checkbox .fas").toggle();
+
+        console.log(endorsed);
+
+        if (endorsed == 0) {
+            endorsed = 1;
+            $(this).find(".checkbox .fas").css("display", "block");
+        }
+        else {
+            endorsed = 0;
+            $(this).find(".checkbox .fas").css("display", "none");
+        }
+
+        LoadProgrammes(array_region, array_business, array_support, one_to_watch, endorsed);
     });
 
     $('body').on('click', '.more-filters', function (){
@@ -167,6 +190,8 @@ $(window).on('load', function(){
 
 function LoadProgrammes(regions, types_business, types_support, one_to_watch, endorsed){
 
+    console.log(endorsed);
+
     full_url = window.location.href;
     path_url = window.location.pathname;
     home_url = full_url.replace(path_url,"");
@@ -182,14 +207,14 @@ function LoadProgrammes(regions, types_business, types_support, one_to_watch, en
             type_business: types_business,
             type_support: types_support,
             one_to_watch: one_to_watch,
-            endorsed: endorsed       
+            endorsed:endorsed
         },
         beforeSend:function(xhr){
 
         },
         success:function(response){
-           // $("#response-programmes").html(response);
-            $("#response-programmes").hide().html(response).fadeIn(600);
+            $("#response-programmes").html(response);
+           // $("#response-programmes").hide().html(response).fadeIn(600);
         }
     });
 

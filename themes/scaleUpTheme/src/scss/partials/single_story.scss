@@ -1,0 +1,58 @@
+@import 'partials/variables.scss';
+
+.single-story {
+
+    .banner {
+        height: 280px;
+        background: $blue;
+        color: white;
+        p {
+            font-size: 17px;
+        }
+    }
+
+    .quote {
+        font-size: 19px;
+        line-height: 25px;
+        font-weight: 300;
+    }
+
+    .full-name {
+        font-weight: 500;
+        font-size: 19px;
+    }
+
+
+    .more-stories {
+
+        .box {
+            height: 350px;
+            background: white;
+            position: relative;
+
+            .title {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            p {
+                line-height: 21px;
+                margin-bottom: 7px;
+            }
+
+            .description {
+                max-height: 85px;
+                overflow: hidden;
+            }
+
+            .bg-image {
+                height: 140px;
+            }
+
+            .pos-bottom {
+                position: absolute;
+                bottom: 20px;
+            }
+        }
+    }
+}

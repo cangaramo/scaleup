@@ -91,6 +91,10 @@ h5 {
     background: $dark;
 }
 
+.bg-black {
+    background: #2B2B2B;
+}
+
 .slider {
     position:absolute; 
     bottom:0; 
@@ -187,46 +191,11 @@ footer {
 @import 'partials/programmes_list.scss';
 
 
-.contact-form {
+@import 'partials/contact_form.scss';
+@import 'partials/download_banner.scss';
+@import 'partials/single_story.scss';
+@import 'partials/modal_newsletter.scss';
 
-    .address {
-        font-size: 19px;
-    }
-
-    .gform_wrapper {
-        .gfield_label {
-            display: none !important;
-        }
-
-
-        input[type="text"], textarea {
-            width: 100% !important;
-            border: 1px solid white !important;
-            border-radius: 4px !important;
-            padding: 10px !important;
-
-            &:focus {
-                outline: none;
-            }
-        }
-
-        .gform_footer {
-            margin-top: 0px !important;
-            input[type="submit"]{
-                background: $dark !important;
-                color: white !important;
-                text-transform: uppercase;
-                font-size: 13px !important;
-                padding: 8px 24px;
-
-                &:hover {
-                    background: $gray !important;
-                }
-            }
-        }
-        
-    }
-}
     
 
 .double-link {
@@ -262,36 +231,94 @@ footer {
 }
 
 
-.download {
-    
-    height:200px;
-    position: relative;
 
-    .overlay {
-        opacity: 0;
-        position: absolute; 
-        top: 0; 
-        background: linear-gradient(to right, rgba(255,255,255,0.1) 25%, transparent 100%);
-        width: 100%; 
-        height:100%;
-        transition: opacity 0.4s;
-    }
 
-    p {
-        margin-bottom: 0;
-        color: white;
-        font-size: 28px;
-        font-weight: 300;
-    }
+.list-stories {
+    .story {
+        height: 350px;
+        background: white;
+        position: relative;
 
-    &:hover {
-        cursor: pointer;
+        .title {
+            font-weight: bold;
+            font-size: 20px;
+        }
 
-        .overlay {
-            background: linear-gradient(to right, rgba(255,255,255,0.1) 35%, transparent 100%);
-            opacity: 1;
-            transition: opacity 0.4s;
+        p {
+            line-height: 21px;
+            margin-bottom: 7px;
+        }
+
+        .bg-image {
+            height: 140px;
+        }
+
+        .pos-bottom {
+            position: absolute;
+            bottom: 20px;
         }
     }
 
+    .story.tall {
+        height: 715px;
+        .bg-image {
+            height: 350px;
+        }
+    }
 }
+
+
+
+.single-report {
+
+    .download-btn{
+        background: #5da0b4;
+        color: #fff!important;
+        padding: 8px 20px;
+        text-transform: uppercase;
+        font-size: 13px;
+        text-decoration: none;
+
+        img {
+            height: 18px;
+            vertical-align: top;
+            margin-left: 10px;
+        }
+    }
+}
+
+.themes {
+    color: white;
+
+    .title {
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
+
+    .desc {
+        font-size: 17px;
+    }
+    
+    .box {
+        p {
+            font-size: 11px;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        img {
+            margin: auto;
+            display: block;
+        }
+
+        &:hover {
+            background: $orange !important;
+        }
+    }
+    
+}
+
+

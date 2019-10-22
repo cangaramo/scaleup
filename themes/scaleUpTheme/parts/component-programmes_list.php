@@ -168,7 +168,7 @@
                 <?php endforeach; ?>
             </div>
 
-            <button class="filter-btn">Filter</button>
+            <button class="filter-btn">Update the results</button>
 
         </div>
             

@@ -1,0 +1,59 @@
+@import 'partials/variables.scss';
+
+.contact-form {
+
+    .address {
+        font-size: 19px;
+    }
+
+    .gform_wrapper {
+        .gfield_label {
+            display: none !important;
+        }
+
+
+        input[type="text"], textarea {
+            width: 100% !important;
+            border: 1px solid white !important;
+            border-radius: 4px !important;
+            padding: 10px !important;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .gform_footer {
+            margin-top: 0px !important;
+            input[type="submit"]{
+                background: $dark !important;
+                color: white !important;
+                text-transform: uppercase;
+                font-size: 13px !important;
+                padding: 8px 24px;
+
+                &:hover {
+                    background: $gray !important;
+                }
+            }
+        }
+
+         /* Error */
+
+         div.validation_error{
+            display: none !important;
+        }
+
+        .validation_message {
+            color: $dark;
+            padding-top: 6px !important;
+        }
+
+        li.gfield.gfield_error {
+            margin: 0;
+            background: transparent !important;
+            border: none;
+        }
+        
+    }
+}
