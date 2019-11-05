@@ -1,0 +1,49 @@
+@import 'partials/variables.scss';
+
+.single-summary {
+
+    .label {
+        color: #fdb03c;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 3px;
+    }
+
+    h3 {
+        margin: 0;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .heading {
+        color: $orange;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 15px;
+    }
+
+    .side-boxes {
+        
+        p {
+            color: white;
+            line-height: 21px;
+        }
+
+        p.color-black {
+            color: $black !important;
+        }
+
+        p.color-orange {
+            color: $orange !important;
+        }
+    }
+
+    .call-to-action {
+        color: white;
+        font-weight: 500;
+
+        img {
+            height: 50px;
+        }
+    }
+}

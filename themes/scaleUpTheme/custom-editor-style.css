@@ -1,0 +1,24 @@
+.heading {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.subheading {
+    font-size: 20px;
+    color: #548095;
+    font-weight: 600;
+}
+
+.color-orange {
+    color: #DC8821 !important;
+}
+
+.box-quote {
+    background: #5DA0B4;
+    color: white;
+    display: block;
+    padding: 20px;
+    font-size: 18px;
+    line-height: 23px;
+    font-weight: 500;
+}

@@ -1,0 +1,98 @@
+@import 'partials/variables.scss';
+
+#carouselBanner{
+    .layer {
+
+        h3 {
+            font-weight: 600;
+            font-size: 40px;
+            line-height: 45px;
+        }
+        
+        p {
+            font-size: 19px;
+            line-height: 24px;
+        }
+    }
+
+    .carousel-indicators {
+        right: 0;
+        top: 0;
+        left: 0;
+        z-index: 15;
+        display: -ms-flexbox;
+        display: flex;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+
+
+        li {
+            width: 5px;
+            height: 30px;
+            transition: height 0.4s;
+            -webkit-transition: height 0.4s;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+        }
+
+        .active {
+            height: 55px;
+            transition: height 0.4s;
+            -webkit-transition: height 0.4s;
+        }
+    }
+}
+
+.slider {
+    background: $ligh_gray;
+    padding-top: 20px;
+
+    @media (min-width:992px){
+        padding-top: 0;
+        background: none;
+        position:absolute; 
+        bottom:0; 
+        width:100%;
+        height: 70px; 
+
+        .slider-right {
+            height: 70px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+
+            .row {
+                margin: 0;
+            }
+    
+            .half {
+                background: $ligh_gray;
+                height: 100%;
+            }
+        }
+    }
+
+    .bg-lgray {
+        background: $ligh_gray;
+        position: relative;
+    }
+
+    p {
+        font-size: 23px;
+        font-weight: 300;
+        color: $dark;
+        margin-bottom: 0;
+    }
+
+    img {
+        height:30px; 
+        width: auto;
+    }
+
+    .text-slide {
+        display: none;
+    }
+
+}

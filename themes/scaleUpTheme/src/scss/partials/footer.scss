@@ -1,0 +1,98 @@
+@import 'variables.scss';
+
+footer {
+    background: $dark;
+    color: white;
+
+    a {
+        color: white;
+        &:hover {
+            color: $accent_orange;
+            text-decoration: none;
+        }
+    }
+
+    .fab {
+        color: white;
+        font-size: 35px;
+    }
+    
+    .contact-info {
+        .fab {
+            font-size: 21px;
+            margin-right: 10px;
+            margin-top: 5px;
+            transform: scale(1);
+            transition: transform 0.1s;
+
+            &:hover {
+                transform: scale(1.15);
+                transition: transform 0.1s;
+            }
+        }
+    }
+
+    p {
+        margin-bottom: 3px;
+    }
+}
+
+
+.juiz_last_tweet_inside {
+   
+    background: transparent !important;
+
+    .juiz_last_tweet_tweetlist {
+        padding: 0;
+    }
+    
+
+    .juiz_lt_content {
+        color: white;
+        font-size: 17px;
+        font-weight: 400;
+    }
+     
+
+    .juiz_action_links {
+        display: none;
+    }
+
+    .juiz_last_tweet_hastag {
+        color: $accent_orange !important;
+    }
+
+    .juiz_last_tweet_url {
+        color: $blue !important;
+    }
+
+    .juiz_last_tweet_tweetos {
+        color: $blue !important;
+    }
+
+    .juiz_last_tweet_footer_item  {
+        background: transparent;
+
+        .juiz_last_tweet_metadata {
+            color: white !important;
+            padding-left: 0;
+            font-size: 15px;
+            font-weight: 500;
+
+            a {
+                color: white !important;
+                text-decoration: none;
+            }
+        }
+
+        .juiz_ltw_source {
+           display: none;
+        }
+    } 
+
+
+    .juiz_last_tweet_follow_us {
+        display: none;
+    }
+    
+}

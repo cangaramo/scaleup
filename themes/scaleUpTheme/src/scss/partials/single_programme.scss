@@ -1,0 +1,59 @@
+@import 'partials/variables.scss';
+
+.single-programme {
+
+    .heading {
+        font-size: 35px;
+        font-weight: 600;
+    }
+
+    .subheading {
+        font-size: 20px;
+        color: $dark-blue;
+        font-weight: 500;
+    }
+
+    .programmes-top {
+
+        h2 {
+            margin: 0;
+            color: white;
+           font-weight: 500;
+           font-size: 38px;
+        }
+
+        .btn-blue img{
+            height: 12px;
+            margin-right: 10px;
+            margin-top: -1px;
+        }
+    }
+
+    .programme-banner {
+        h3 {
+            margin: 0;
+            color: white;
+            text-transform: uppercase;
+        }
+    }
+    .label {
+        color: $accent_orange;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 3px;
+    }
+
+    .quote {
+
+        .author {
+            font-size: 13px;
+            font-weight: 600;;
+        }
+    }
+
+    .sector .title{
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;;
+    }
+}
