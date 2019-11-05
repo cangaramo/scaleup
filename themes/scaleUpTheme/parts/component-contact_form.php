@@ -7,18 +7,18 @@
 ?>
 
 <!-- Banner -->
-<div class="bg-image banner" style="background-image:url(<?php echo $banner_image ?>); color: <?php echo $colour ?>">
-    <div class="container h-100">
+<div class="bg-image banner contact-banner" style="background-image:url(<?php echo $banner_image ?>); color: <?php echo $colour ?>">
+    <div class="container h-100 py-5 py-lg-0">
         <div class="d-flex align-items-center h-100">
             <div class="row">
-                <div class="col-7">
+                <div class="col-lg-7">
                     <div class="title"><?php echo $banner_title ?></div>
                     <div class="description mt-4"><?php echo $banner_description ?></div>
                     <div class="d-flex mt-4 pt-1">
-                        <a class="btn-blue" href="" data-toggle="modal" data-target="#modalNewsletter"><?php echo $button_label ?></a>
+                        <a class="btn-blue" href="" data-toggle="modal" data-target="#modalNewsletter"><?php echo $button_label ?><img src="<?php echo get_bloginfo('template_url')?>/assets/images/newsletter.png"></a>
                     </div>
                 </div>
-                <div class="col-3 offset-2">
+                <div class="col-lg-3 offset-2 d-none d-lg-block">
                     <img height="180" src="<?php echo $icon ?>">
                 </div>
             </div>

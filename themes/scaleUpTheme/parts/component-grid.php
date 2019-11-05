@@ -8,10 +8,17 @@
     <div class="container pt-5 pb-4" id="grid">
 
         <!-- First call to action -->
-        <div class="box-200 bg-image p-5" style="background-image:url('<?php echo $group1['image']?>')">
-            <p class="title"><?php echo $group1['title'] ?></p>
-            <p class="mb-4"><?php echo $group1['description'] ?></p>
-            <a class="link white" href="<?php echo $group1['link_url'] ?>"><?php echo $group1['link_label'] ?></a>
+        <div class="box-200 bg-image" style="background-image:url('<?php echo $group1['image']?>')">
+
+            <div class="overlay">
+            </div>
+
+            <div class="p-5 position-relative">
+                <p class="title"><?php echo $group1['title'] ?></p>
+                <p class="mb-4"><?php echo $group1['description'] ?></p>
+                <a class="link white" href="<?php echo $group1['link_url'] ?>"><?php echo $group1['link_label'] ?></a>
+            </div>
+            
         </div>
 
         <div class="row pt-3">

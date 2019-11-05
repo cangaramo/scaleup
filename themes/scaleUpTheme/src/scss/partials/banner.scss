@@ -1,7 +1,12 @@
 @import 'partials/variables.scss';
 
 .banner {
-    height: 370px;
+
+
+    @media (min-width:768px){
+        height: 370px;
+    }
+    
 
     .title {
         font-size: 35px;
@@ -23,14 +28,16 @@
         margin-right: 10px;
     }
 
-    .btn-blue {
+    .btn-blue-overblue {
         background-color: $dark_blue;
         color: white;
+        line-height: 40px;
 
         &:hover {
             background: white;
             color: $blue;
         }
+        
     }
 
     .btn-white {

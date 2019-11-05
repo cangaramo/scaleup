@@ -7,7 +7,7 @@
 
     <div class="row mt-4">
     <?php foreach ($boxes as $box): ?>
-        <div class="col-4">
+        <div class="col-lg-4 mb-3">
             <div class="box" onClick="redirectTo('<?php echo $box['link'] ?>')"
                 style="background-color:<?php echo $box['background_colour']?>">
                 <div class="overflow-hidden">

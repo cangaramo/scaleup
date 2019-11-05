@@ -6,6 +6,56 @@
         height: 350px;
         background: white;
         position: relative;
+        animation: moveUp 0.3s ease-in-out;
+    }
+
+    @keyframes moveUp {
+        0%{
+            opacity: 0;
+            top: 25px;
+        }
+        100%{
+            opacity: 1;
+            top: 0;
+        }
+    }
+
+    .call-to-action.bg-blue {
+        background: $dark-blue;
+    }
+
+    .call-to-action.bg-orange {
+        background: $orange;
+    }
+
+    .call-to-action {
+        color: white;
+        text-align: center;
+        
+        img {
+            margin: auto;
+            display: block;
+            height: 60px;
+            margin-top: 20px;
+        }
+        p {
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        a {
+            background: white;
+            padding: 6px 22px;
+            color: $dark;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+
+            &:hover {
+                color: white;
+                background: $dark;
+                text-decoration: none;
+            }
+        }
     }
 
     .thumbnail-image {
@@ -41,6 +91,10 @@
             line-height: 37px;
             font-weight: 500;
             margin-bottom: 20px;
+            
+            p {
+                margin: 3px;
+            }
         }
         .description {
             font-size: 20px;
@@ -49,7 +103,7 @@
         }
 
         select {
-            width: 80%;
+            width: 100%;
             margin: 4px 0;
             height: 38px;
             -webkit-appearance: none;
@@ -58,26 +112,38 @@
             border: none;
             border-radius: 2px;
             padding-left: 12px;
+            background-color: white;
             background-image: url(../../images/select-arrow.png);
             background-position-x: 95%;   
             background-position-y: center;         
             background-size: 20px 12px;
             background-repeat: no-repeat;
 
+            @media (min-width:992px){
+                width: 80%;
+            }
+
             &:focus {
                 outline: none;
             }
         }
 
-        input[type="submit"]{
+        .submit-search{
             background: $dark_blue;
             color: white;
             text-transform: uppercase;
             font-size: 14px;
             font-weight: 400;
             border: none;
-            padding: 6px 18px;
+            padding: 7px 18px;
             margin-top: 20px;
+            display: block;
+
+            img {
+                height: 13px;
+                margin-left: 10px;
+                margin-top: -4px;
+            }
 
             &:hover {
                 background: $blue;
@@ -95,11 +161,20 @@
 
         .item {
             background: white;
-            width: 170px;
-            margin-left: 10px;
+            width: 100%;
+            margin-right: 10px;
             padding: 10px;
             border-radius: 4px;
+            margin-bottom: 10px;
             cursor: pointer;
+
+            @media (min-width:576px){
+                width: 170px;
+            }
+
+            @media (min-width: 992px){
+                margin-left: 10px;
+            }
 
             .checkbox {
                 border: 2px solid $dark-blue;
@@ -121,11 +196,17 @@
         
         .item-black {
             background: $dark;
-            width: 170px;
-            margin-left: 10px;
+            width: 100%;
+            border-radius: 4px;
             padding: 10px;
             color: white;
+            margin-bottom: 10px;
             cursor: pointer;
+
+            @media (min-width:576px){
+                width: 170px;
+                margin-left: 10px;
+            }
 
             .open-filters {
                 height: 22px;
@@ -144,16 +225,24 @@
 
             }
         }
+
+        .close-filters {
+            height: 44px;
+            margin-left: 10px;
+            display: none;
+            cursor: pointer;
+        }
     }
 
 
     .filters-window {
         //background: $ligh_gray;
-        background: rgba(240, 240, 240, 0.95);
+        background: rgba(240, 240, 240, 1);
+        z-index: 1;
         position: absolute; 
         top: 0; 
         width:100%; 
-        height:100%; 
+        //height:100%; 
         display: none;
         //opacity: 0.95;
 
@@ -165,8 +254,10 @@
             label {
                 padding-left: 0px !important;
                 padding-top: 0px !important;
+                margin-bottom: 0px !important;
                 text-transform: uppercase;
                 font-size: 13px;
+                line-height: 15px;
                 &:after {
                     content:"";
                     background: transparent;
@@ -244,6 +335,12 @@
 
             &:hover {
                 background: $blue;
+            }
+
+            img {
+                height: 13px;
+                margin-left: 10px;
+                margin-top: -4px;
             }
         }
     }

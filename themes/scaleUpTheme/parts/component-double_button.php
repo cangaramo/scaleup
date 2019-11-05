@@ -7,10 +7,10 @@
 <div class="container double-link">
 
     <div class="row py-4">
-        <div class="col-6 pr-0">
+        <div class="col-md-6 pr-md-0">
             <a class="first-link btn-link" href="<?php echo $link1 ?>"><?php echo $text_1 ?></a>
         </div>
-        <div class="col-6 pl-0">
+        <div class="col-md-6 pl-md-0">
             <a class="second-link btn-link" href="<?php echo $link2 ?>"><?php echo $text_2 ?></a>
         </div>
     </div>

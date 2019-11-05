@@ -6,7 +6,7 @@
 
 
 <div class="bg-gray">
-    <div class="container themes">
+    <div class="container themes py-3">
         <div class="row">
             <div class="col-lg-3 pr-lg-0">
                 <div class="bg-dark h-100 p-4">

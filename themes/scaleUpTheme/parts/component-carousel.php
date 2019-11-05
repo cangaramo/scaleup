@@ -10,25 +10,26 @@
     <!-- Carousel -->
     <div id="carouselBanner" class="carousel slide" data-ride="carousel">
 
+        <div class="w-100 h-100" style="height: 552px; position: absolute;" >
+            <div class="container w-100 h-100" style="position:relative">
+                <ol class="carousel-indicators">
+                        <?php 
+                        if (sizeof($items) > 1): ?>
 
-        <ol class="carousel-indicators">
+                            <?php foreach ($items as $index=>$item): ?>
 
-            <?php 
-            if (sizeof($items) > 1): ?>
+                                <?php if ($index == 0): ?>
+                                    <li data-target="#carouselBanner" data-slide-to="<?php echo $index?>" class="active"></li>
+                                <?php else: ?>
+                                    <li data-target="#carouselBanner" data-slide-to="<?php echo $index?>"></li>
+                                <?php endif; ?>
 
-                <?php foreach ($items as $index=>$item): ?>
+                            <?php endforeach ?>
 
-                    <?php if ($index == 0): ?>
-                        <li data-target="#carouselBanner" data-slide-to="<?php echo $index?>" class="active"></li>
-                    <?php else: ?>
-                        <li data-target="#carouselBanner" data-slide-to="<?php echo $index?>"></li>
-                    <?php endif; ?>
-
-                <?php endforeach ?>
-
-            <?php endif; ?>
-
-        </ol> 
+                        <?php endif; ?>
+                </ol> 
+            </div>
+        </div>
 
         <div class="carousel-inner">
 
@@ -53,10 +54,10 @@
                             <div class="layer h-100 w-100">
                                 <div class="container h-100">
                                     <div class="row h-100">
-                                        <div class="col-lg-5 col-xl-4 h-100 offset-1 mt-banner h-100">
+                                        <div class="col-lg-6 col-xl-5 h-100 offset-1 mt-banner h-100">
                                             <div class="d-flex align-items-center h-100">
                                                 <div>
-                                                    <h3 class="mb-3"><?php echo $item['headline'] ?></h3>
+                                                    <div class="mb-3"><?php echo $item['headline'] ?></div>
                                                     <p><?php echo $item['text'] ?></p>
                                                 </div>
                                             </div>
@@ -115,7 +116,7 @@
 
                     <?php endif ?>
 
-                        <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="d-flex justify-content-lg-end align-items-center h-100">
                             <div><p class="my-0 mr-4"><?php echo $slide['slide'] ?></p></div>
                             <img src="<?php echo get_bloginfo('template_directory')?>/assets/images/speaker.png">    
                         </div>
@@ -126,10 +127,6 @@
             </div>
 
         </div>
-
-
-        
-           
        
     </div>
 

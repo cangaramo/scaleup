@@ -5,11 +5,31 @@ var markers = [];
 var array_region = [];
 var array_business = [];
 var array_support = [];
+var array_aims = [];
+var array_cost = [];
+var array_types = [];
+var array_providers = [];
 
 var one_to_watch = 0;
 var endorsed = 0;
 
+var home_url;
+
+var posts_per_page = 8;
+
 $( document ).ready(function() {
+
+    //Get home url
+    full_url = window.location.href;
+    path_url = window.location.pathname;
+    home_url = full_url.replace(path_url,"");
+
+
+    // Count up
+    $('.counter').counterUp({
+        delay: 10,
+        time: 1000,
+    });
 
     $("#submit-form").click(function(){
         SearchMarkers();
@@ -25,29 +45,25 @@ $( document ).ready(function() {
     $('body').on('mouseenter', '.card', function (){
         $(this).css("background-color", "#fdd38d");
         index = $(this).attr("id");
-        var image = 'http://localhost:8019/wp-content/themes/scaleUpTheme/assets/images/marker_hover.png'
+        var image = home_url + "/wp-content/themes/scaleUpTheme/assets/images/marker_hover.png";
         markers[index].setIcon(image);        
         
     });
 
     $('body').on('mouseleave', '.card', function (){
         $(this).css("background-color", "white");
-        var image = 'http://localhost:8019/wp-content/themes/scaleUpTheme/assets/images/marker.png'
+        var image = home_url + "/wp-content/themes/scaleUpTheme/assets/images/marker.png";
         markers[index].setIcon(image);        
     });
 
-
     $(".custom-link").mouseenter(function() {
-
         if ( !($(this).hasClass("active")) ){
             $(this).find(".line").removeClass("leaveLink");
             $(this).find(".line").addClass("overLink");
         }
-       
     });
 
     $(".custom-link").mouseleave(function() {
-
         if ( !($(this).hasClass("active")) ){
             $(this).find(".line").removeClass("overLink");
             $(this).find(".line").addClass("leaveLink");
@@ -61,8 +77,6 @@ $( document ).ready(function() {
             size = $('.text-slide').length;
             last = size - 1;
 
-            //haz cosis aqui
-            console.log(pos);
             $('.text-slide').hide();
             $('.text-slide').eq(pos).fadeIn("slow");
 
@@ -82,6 +96,10 @@ $( document ).ready(function() {
         array_region = [];
         array_business = [];
         array_support = [];
+        array_aims = [];
+        array_cost = [];
+        array_types = [];
+        array_providers = [];
 
         //Reset filters form
         $('.tick input:checkbox').prop('checked', false); 
@@ -101,7 +119,8 @@ $( document ).ready(function() {
         if (type_support != "") {
             array_support.push(type_support);
         }
-        LoadProgrammes(array_region, array_business, array_support, one_to_watch, endorsed);
+        
+        LoadProgrammes(array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
 
         //Mark checkbox as checked 
         checkbox_region = "#checkbox-" + region;
@@ -125,13 +144,11 @@ $( document ).ready(function() {
             $(this).find(".checkbox .fas").css("display", "none");
         }
 
-        LoadProgrammes(array_region, array_business, array_support, one_to_watch, endorsed);
+        LoadProgrammes(array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
     });
 
     $('body').on('click', '.endorsed', function (){
         $(this).find(".checkbox .fas").toggle();
-
-        console.log(endorsed);
 
         if (endorsed == 0) {
             endorsed = 1;
@@ -142,12 +159,20 @@ $( document ).ready(function() {
             $(this).find(".checkbox .fas").css("display", "none");
         }
 
-        LoadProgrammes(array_region, array_business, array_support, one_to_watch, endorsed);
+        LoadProgrammes(array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
     });
 
+    
     $('body').on('click', '.more-filters', function (){
-        $(".filters-window").fadeToggle("slow");
+        $(".filters-window").fadeIn("slow");
+        $(".close-filters").show();
     });
+
+    $('body').on('click', '.close-filters', function (){
+        $(".close-filters").hide();
+        $(".filters-window").fadeOut("slow");
+    });
+
 
     $('body').on('click', '.filter-btn', function(){
 
@@ -164,37 +189,154 @@ $( document ).ready(function() {
             return $(this).val();
         }).get();
 
-        $(".filters-window").fadeToggle("slow");
+        array_aims = $('input[name=checkbox-aim]:checked').map(function() {
+            return $(this).val();
+        }).get();
 
-        LoadProgrammes(array_region, array_business, array_support, one_to_watch, endorsed);
+        array_cost = $('input[name=checkbox-cost]:checked').map(function() {
+            return $(this).val();
+        }).get();
 
+        array_types = $('input[name=checkbox-type]:checked').map(function() {
+            return $(this).val();
+        }).get();
+
+        array_providers = $('input[name=checkbox-provider]:checked').map(function() {
+            return $(this).val();
+        }).get();
+
+
+        LoadProgrammes(array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+
+        //Close window and scroll to top
+        section = ".all-programmes";
+        $('html, body').animate({
+            scrollTop: $(section).offset().top},
+            500,
+            function(){
+                $(".close-filters").hide();
+                $(".filters-window").fadeOut(600);
+            }    
+        );  
+        
         //Reset search form
         $("#dropdown-region").val("");
         $("#dropdown-type-business").val("");
         $("#dropdown-type-support").val("");
 
+        return false;
+
     });
 
+
+    /* Stories */
+    $('body').on('click', '.all-stories', function (){
+        num_posts = parseInt(posts_per_page);
+        posts_per_page = num_posts + 8;
+        LoadStories(posts_per_page);
+    });
+
+
+    /* Chapters */
+
+    $('body').on('click', '.chapter .header', function (){
+        console.log ("click");
+        img = $(this).find('img');
+
+        if (img.hasClass("arrow-down")){
+            console.log("yes");
+            img.removeClass("arrow-down");
+            img.addClass("arrow-up");
+        }
+        
+        else if (img.hasClass("arrow-up")) {
+            console.log("no");
+            img.removeClass("arrow-up");
+            img.addClass("arrow-down");
+        }
+    });
+    
+
+    $('body').on('click', '.load-chapter', function (){
+        chapter = $(this).data("article");
+        console.log(chapter);
+        LoadChapter(chapter);
+    });
+
+    $('body').on('click', '.open-content', function (){
+        index = $('.open-content').index(this);
+       // $('.content-box').show();
+       // $('.content-box').eq(index).fadeOut();
+        $('.content-piece').hide();
+        $('.content-piece').eq(index).slideDown("slow");
+    });
+
+    $('body').on('click', '.close-content', function (){
+        $('.content-box').fadeIn();
+        $('.content-piece').slideUp("slow");
+    });
 });
 
 
 $(window).on('load', function(){
 
     if ($('.programmes-list').length > 0) {
-        LoadProgrammes(array_region, array_business, array_support, one_to_watch, endorsed);
+        LoadProgrammes(array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+    }
+
+    if ($('.list-stories').length > 0) {
+        LoadStories(posts_per_page);
+    }
+
+    if ($('.scaleup-review').length > 0) {
+        chapter = 464;
+        LoadChapter(chapter);
     }
     
 });
 
+$hidden = false;
+var lastScrollTop = 0;
+
+$(window).scroll(function() {
+    var scrollTop = $(window).scrollTop();
+    elemTop = $('.menu').offset().top;
+    elemBottom = elemTop + $('.menu').height();
+
+    var st = $(this).scrollTop();
+
+    //Down
+    if (st > lastScrollTop){
+        if ( !$hidden && scrollTop > elemTop ) { 
+           $('.fixed-menu').show();
+           $('.static-menu').hide();
+        $hidden = true;
+        }
+
+    } 
+    //Up
+    else {
+        if ($hidden && elemBottom > scrollTop) {    
+            $('.fixed-menu').hide();
+            $('.static-menu').show();
+            $hidden = false; 
+        } 
+    }
+    lastScrollTop = st;
+}); 
+
 /* Load programmes */
 
-function LoadProgrammes(regions, types_business, types_support, one_to_watch, endorsed){
+/*
+1 - Region (Geography)
+2 - Business (sector)
+3 - Support 
+4 - Aims of the programme
+5 - Cost
+6 - Type of programme
 
-    console.log(endorsed);
-
-    full_url = window.location.href;
-    path_url = window.location.pathname;
-    home_url = full_url.replace(path_url,"");
+*/
+function LoadProgrammes(regions, types_business, types_support, aims, costs, types, providers, one_to_watch, endorsed){
 
     ajax_url = home_url + "/wp-admin/admin-ajax.php";
 
@@ -206,6 +348,10 @@ function LoadProgrammes(regions, types_business, types_support, one_to_watch, en
             region: regions,
             type_business: types_business,
             type_support: types_support,
+            aims: aims,
+            costs: costs,
+            types: types,
+            providers: providers,
             one_to_watch: one_to_watch,
             endorsed:endorsed
         },
@@ -219,6 +365,53 @@ function LoadProgrammes(regions, types_business, types_support, one_to_watch, en
     });
 
     return false;
+}
+
+
+function LoadChapter(chapter){
+
+    ajax_url = home_url + "/wp-admin/admin-ajax.php";
+
+    
+    $.ajax({
+        url: ajax_url,
+        type: 'post',
+        data : {
+            action: "load_chapter",
+            chapter: chapter
+        },
+        beforeSend:function(xhr){
+
+        },
+        success:function(response){
+            $("#response-chapter").html(response);
+        }
+    });
+
+    return false;
+}
+
+function LoadStories(posts_per_page){
+
+    ajax_url = home_url + "/wp-admin/admin-ajax.php";
+
+    $.ajax({
+        url: ajax_url,
+        type: 'post',
+        data : {
+            action: "load_stories",
+            posts_per_page: posts_per_page
+        },
+        beforeSend:function(xhr){
+
+        },
+        success:function(response){
+            $("#response-stories").html(response);
+        }
+    });
+
+    return false;
+
 }
 
 //Init map without markers
@@ -415,7 +608,7 @@ function add_markers(){
     array_lng = $('#loop-location').data("lng");
     array_description = $('#loop-location').data("description");
 
-    var image = 'http://localhost:8019/wp-content/themes/scaleUpTheme/assets/images/marker.png'
+    var image = home_url + "/wp-content/themes/scaleUpTheme/assets/images/marker.png";
 
     for (var i = 0; i < array_lat.length; i++) {
 

@@ -44,25 +44,22 @@ function enqueue_theme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_theme_scripts' );
 
+
 /* ACF */
 function my_acf_init() {
-	
 	acf_update_setting('google_api_key', 'AIzaSyDb4aa1NMZ5gB0NclaWCOkyxIWD53rX4kU');
 }
-
 add_action('acf/init', 'my_acf_init');
 
-
 function my_acf_google_map_api( $api ){
-	
-	$api['key'] = 'AIzaSyDb4aa1NMZ5gB0NclaWCOkyxIWD53rX4kU';
-	
-	return $api;
-	
-}
 
+	$api['key'] = 'AIzaSyDb4aa1NMZ5gB0NclaWCOkyxIWD53rX4kU';
+	return $api;
+}
 add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
+
+/* AJAX LOAD POSTS */
 
 function load_posts(){
 
@@ -119,164 +116,163 @@ function load_posts(){
 
 	die();
 }
-
 add_action( 'wp_ajax_nopriv_load_posts', 'load_posts' );
 add_action( 'wp_ajax_load_posts', 'load_posts' );
 
-function load_programmes(){
 
-	/* Get arrays */
-	$array_regions = $_POST['region'];
-	$array_types_business = $_POST['type_business'];
-	$array_types_support = $_POST['type_support'];
-
-	$one_to_watch = $_POST['one_to_watch'];
-	$endorsed = $_POST['endorsed'];
+/* AJAX LOAD PROGRAMMES */
+require 'functions/function_load_programmes.php';
+add_action ('wp_ajax_nopriv_load_programmes', 'load_programmes');
+add_action ('wp_ajax_load_programmes', 'load_programmes');
 
 
-	/* If empty: Get all of them (NOT IN empty array) */
-	
-	//Regions
-	if( sizeof($array_regions) == 0 ) {
-		$region_operator = "NOT IN";
-	}
-	else {
-		$region_operator = "IN";
-	}
+/* AJAX LOAD STORIES */
+function load_stories (){
 
-	//Types of business
-	if( sizeof($array_types_business) == 0 ) {
-		$business_operator = "NOT IN";
-	}
-	else {
-		$business_operator = "IN";
-	}
+	$posts_per_page = $_POST['posts_per_page'];
 
-	//Types of support
-	if( sizeof($array_types_support) == 0 ) {
-		$support_operator = "NOT IN";
-	}
-	else {
-		$support_operator = "IN";
-	}
+	$args = array(
+        'post_type' => 'stories',
+        'posts_per_page' => $posts_per_page
+    );
+	$posts = get_posts($args);
+	?>
 
+	<div class="row">
 
-	/* Query */
+		<?php foreach ($posts as $index=>$post): 
+			$post_id = $post->ID;
+			$title = get_the_title($post_id);
+			$permalink = get_the_permalink($post_id);
+			$all_fields = get_fields($post_id);
 
-	$args = array (
-        'post_type' => 'programmes',
-		'posts_per_page' => -1
-	);
+			//Padding medium screen
+			if ($index%2 ==0 ){
+				$class_md = "pr-md-0";
+			}
+			else {
+				$class_md = "pl-md-0";
+			}
 
-	$args['tax_query'] = 
-	array(
-        'relation' => 'AND',
-        array(
-            'taxonomy' => 'category',
-            'field'    => 'term_id',
-			'terms'    => $array_regions,
-			'operator' => $region_operator,
-        ),
-        array(
-            'taxonomy' => 'category',
-            'field'    => 'term_id',
-            'terms'    => $array_types_business,
-            'operator' => $business_operator,
-		),
-		array(
-            'taxonomy' => 'category',
-            'field'    => 'term_id',
-            'terms'    => $array_types_support,
-            'operator' => $support_operator,
-        ),
-	);
+			//Padding large screen
+			if ($index%4 == 0) {
+				$class_lg = "pr-lg-0";
+			}
+			else if (($index+1)%4 == 0){
+				$class_lg = "pl-lg-0 ";
+			}
+			else {
+				$class_lg = "p-lg-0";
+			}
+		?>
 
-
-	//Checkboxes
-	/*
-	echo $one_to_watch;
-	echo ' ';
-	echo $endorsed; */
-	
-	if( ($one_to_watch == 1) && ($endorsed == 1)) {
-		$args['meta_query'] = array(
-			'relation'		=> 'AND',
-			array(
-				'key'	 	=> 'one_to_watch',
-				'value'	  	=> "1",
-				'compare' 	=> '=',
-			),
-			array(
-				'key'	  	=> 'endorsed',
-				'value'	  	=> '1',
-				'compare' 	=> '=',
-			),
-		); 
-	}
-	else if ($one_to_watch == 1) {
-		$args['meta_key'] = 'one_to_watch';
-		$args['meta_value'] = '1';
-	}
-	else if ($endorsed == 1){
-		$args['meta_key'] = 'endorsed';
-		$args['meta_value'] = '1';
-	} 
-	
-	
-	$programmes = get_posts($args);
-
-	if ($programmes): ?>
-
-		<div class="row">
-
-			<?php foreach ($programmes as $programme):
-				$id = $programme->ID;
-				$title = get_the_title($id);
-				$all_fields = get_fields($id);
-				$link = get_permalink($id);
-			?>
-
-			<div class='col-3 my-3'>
-				<div class="box">
-					<div class="overflow-hidden">
-						<div class="bg-image thumbnail-image" style="background-image:url('<?php echo $all_fields['thumbnail_image']?>')"></div>
-					</div>
-					<div class="p-3 h-100">
-						<div class="row">
-							<div class="col-9 pr-0">
-								<p><?php echo $title ?></p>
-								<p><?php echo $all_fields['description'] ?></p>
+			<div class="col-md-6 col-lg-3 <?php echo $class_lg?> <?php echo $class_md?>">
+				<div class="story">
+					<div class="bg-image w-100 h-100" style="background-image:url('<?php echo $all_fields['image_thumbnail']?>')"></div>
+					<div class="layer">
+						<div class="d-flex h-100 w-100 align-items-center text-center justify-content-center">
+							<div class="p-3">
+								<p class="title"><?php echo $title ?></p>
+								<p class="description mb-4"><?php echo $all_fields['description']?></p>
+								<a href="<?php echo $permalink ?>" class="link white">Read more</a>
 							</div>
-							<div class="col-3">
-								<img class="w-100" src="<?php echo get_bloginfo('template_url')?>/assets/images/one_to_watch.svg">
-								<img class="w-100 mt-2" src="<?php echo get_bloginfo('template_url')?>/assets/images/endorsed.svg">
-							</div>
-						</div>
-					</div>
-					<div class="pos-bottom">
-						<div class="p-3">
-							<a href="<?php echo $link ?>" class="link">Read more</a>
 						</div>
 					</div>
 				</div>
 			</div>
+				
+		<?php endforeach ?>
 
-			<?php endforeach ?>
-
-		</div>
-	
-	<?php else: ?>
-
-		<div class="d-flex justify-content-center text-center align-items-center h-100" style="min-height:550px">
-			<p>No programmes found</p>
-		</div>
-
-	<?php endif ?>
-	
+	</div>
 
 	<?php 
-	die();
+	die ();
 }
 
-add_action ('wp_ajax_nopriv_load_programmes', 'load_programmes');
-add_action ('wp_ajax_load_programmes', 'load_programmes');
+
+add_action( 'wp_ajax_nopriv_load_stories', 'load_stories' );
+add_action( 'wp_ajax_load_stories', 'load_stories' );
+
+
+/* AJAX LOAD CHAPTER */
+
+function load_chapter(){
+
+	$chapter = $_POST['chapter'];
+    $all_fields = get_fields($chapter);
+    $components_article = $all_fields['components'];
+
+    foreach ($components_article as $component):
+        $layout_name = $component['acf_fc_layout'];
+        $layout_path = "parts/review/module-" . $layout_name . ".php";
+        require($layout_path);
+    endforeach; 
+
+	die();
+}
+add_action( 'wp_ajax_nopriv_load_chapter', 'load_chapter' );
+add_action( 'wp_ajax_load_chapter', 'load_chapter' );
+
+/* TWITTER */
+
+if( !function_exists('see_more_tweets_link')) {
+
+	function see_more_tweets_link($time_ago) {
+		$time_ago['before']  = '<span>';
+		$time_ago['content'] = __('See the status', 'juiz_ltw');
+		$time_ago['after']   = __(' Ago', 'juiz_ltw') . '</span>';
+		
+		return $time_ago;
+	}
+}
+add_filter('juiz_ltw_time_ago', 'see_more_tweets_link');
+
+
+/* Custom formats WYSIWYG */
+
+//Add buttons to editor
+function wpb_mce_buttons_2($buttons) {
+    array_unshift($buttons, 'styleselect');
+	return $buttons;
+}
+add_filter('mce_buttons_2', 'wpb_mce_buttons_2');
+
+//Create styles
+function my_mce_before_init_insert_formats( $init_array ) {  
+	 
+	$style_formats = array(  
+		array(  
+			'title' => 'Black heading',  
+			'block' => 'span',  
+			'classes' => 'heading',
+			'wrapper' => true,
+		),
+		array(  
+			'title' => 'Blue subheading',  
+			'inline' => 'span',  
+			'classes' => 'subheading',
+			'wrapper' => true,
+		),
+		array(  
+			'title' => 'Orange',  
+			'inline' => 'span',  
+			'classes' => 'color-orange',
+			'wrapper' => true,
+		),
+		array(  
+			'title' => 'Quote',  
+			'block' => 'span',  
+			'classes' => 'box-quote',
+			'wrapper' => true,
+		)
+	);  
+	$init_array['style_formats'] = json_encode( $style_formats );  
+	return $init_array;  
+} 
+// Attach callback to 'tiny_mce_before_init' 
+add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' ); 
+
+function my_theme_add_editor_styles() {
+    add_editor_style( 'custom-editor-style.css' );
+}
+add_action( 'init', 'my_theme_add_editor_styles' );

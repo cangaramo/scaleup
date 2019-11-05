@@ -1,5 +1,19 @@
 @import 'partials/variables.scss';
 
+.contact-banner {
+
+    .btn-blue {
+
+        padding: 10px 20px 8px 20px;
+
+        img {
+            height: 22px;
+            margin-left: 10px;
+            margin-top: -9px;
+        }
+    }
+}
+
 .contact-form {
 
     .address {
