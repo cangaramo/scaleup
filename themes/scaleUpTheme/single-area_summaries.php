@@ -1,5 +1,6 @@
 <?php get_header(); 
 $all_fields = get_fields();
+print_r($all_fields);
 ?>
 
 <main class="single-summary">
@@ -7,8 +8,13 @@ $all_fields = get_fields();
     <!-- Title -->
     <div class="bg-blue">
         <div class="container py-5">
-            <p class="label">LOCAL AREA SUMARY:</p>
-            <h3><?php echo get_the_title(); ?></h3>
+            <div class="d-flex">
+                <img height="150" src="<?php echo $all_fields['map_icon'] ?>">
+                <div>
+                    <p class="label">LOCAL AREA SUMARY:</p>
+                    <h3><?php echo get_the_title(); ?></h3>
+                </div>
+            </div>
         </div>
     </div>
 

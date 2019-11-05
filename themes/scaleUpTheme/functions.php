@@ -213,6 +213,21 @@ function load_chapter(){
 add_action( 'wp_ajax_nopriv_load_chapter', 'load_chapter' );
 add_action( 'wp_ajax_load_chapter', 'load_chapter' );
 
+
+/* AJAX LOAD AREA */
+
+function load_area(){
+
+	$area_id = $_POST['area'];
+	
+	require 'parts/part-area_summary.php';
+
+	die();
+}
+add_action( 'wp_ajax_nopriv_load_area', 'load_area' );
+add_action( 'wp_ajax_load_area', 'load_area' );
+
+
 /* TWITTER */
 
 if( !function_exists('see_more_tweets_link')) {

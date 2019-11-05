@@ -38,12 +38,45 @@
         }
     }
 
+    .key-sectors {
+
+        p {
+            margin-bottom: 0;
+            margin-right: 25px;
+        }
+
+        img {
+            height: 55px;
+            margin-right: 3px;
+        }
+    }
+
     .call-to-action {
         color: white;
         font-weight: 500;
 
         img {
             height: 50px;
+        }
+    }
+
+    .close-container {
+        position:absolute; 
+        top: 0; 
+        right: 0;
+        
+        .close-area {
+            background: 0 0;
+            border: none;
+            margin: 10px 3px;
+
+            img {
+                height: 35px;
+            }
+
+            &:focus {
+                outline: none;
+            }
         }
     }
 }

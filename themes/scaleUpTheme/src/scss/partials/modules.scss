@@ -16,6 +16,8 @@
 
 .module-content-collection {
 
+    min-height: 700px;
+
     .content-box {
         color: white;
         height: 410px;
@@ -207,4 +209,14 @@
         margin-bottom: 20px;
         border-top: 1px solid $dark;
     }
+}
+
+.module-areas {
+
+    min-height: 750px;
+
+    #response-area {
+        display: none;
+    }
+   
 }

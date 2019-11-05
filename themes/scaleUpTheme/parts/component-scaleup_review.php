@@ -8,14 +8,79 @@
                 <div class="col-4">
                     <div class="d-flex align-items-center h-100">
                         <div>
-                            <p class="title">Explore the ScaleUp Annual Review 2019</p>
-                            <p>Select a section to expand and explore this years review.</p>
+                            <p class="title-review">Explore the ScaleUp Annual Review <span style="color:#FDB03C">2019</span></p>
+                            <p class="subtitle-review">Select a section to expand and explore this years review.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-8">
-                    <img style="height:300px" src="<?php echo get_bloginfo('template_url')?>/assets/images/review.png">
+                <div class="col-3">
+                    <img style="height:390px" src="<?php echo get_bloginfo('template_url')?>/assets/images/review.png">
+                </div>
+
+                <div class="col-3">
+
+                    <div class="d-flex h-100 w-100 align-items-center">
+                        <div class="short-menu w-100">
+
+                            <?php 
+                            $chapters = get_terms( array(
+                                'taxonomy' => 'chapter',
+                                'hide_empty' => false,
+                                'orderby' => 'slug',
+                                'order' => 'ASC'
+                            ) );
+
+                            foreach ($chapters as $chapter):
+
+                                $title = $chapter->name;
+                                $description = $chapter->description;
+                                $term_id = $chapter->term_id;
+                                $taxonomy = $chapter->taxonomy;
+                                $ref = $taxonomy . '_' . $term_id;
+                                $highlight_colour = get_field('highlight_colour', $ref);
+
+                                if ($highlight_colour == "#DDE3E8"){
+                                    $class_colour = "colour-dark";
+                                }
+                                else {
+                                    $class_colour = "";
+                                }
+
+                                $args = array(
+                                    'post_type' => 'articles',
+                                    'posts_per_page' => 1,
+                                    'tax_query' => array(
+                                        array(
+                                            'taxonomy' => 'chapter',
+                                            'field' => 'term_id',
+                                            'terms' => $term_id,
+                                        )
+                                    )
+                                );
+                                $articles = get_posts($args);
+                                $first_article = $articles[0]->ID;
+                                ?>
+
+                                <div class="chapter <?php echo $class_colour ?>" data-chapter="<?php echo $first_article ?>"
+                                    style="background-color:<?php echo $highlight_colour?>">
+                                    
+                                    <div class="d-flex py-2 px-2 header" data-toggle="collapse">
+                                        <div style="margin-top:1px">
+                                            <img class="arrow-down" src="<?php echo get_bloginfo('template_url')?>/assets/images/chevron.png">
+                                        </div>
+
+                                        <div>
+                                            <p class="title"><?php echo $title ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <?php endforeach ?>
+
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -83,7 +148,7 @@
                                 style="background-color:<?php echo $highlight_colour?>">
                                 
                                 <!-- Header -->
-                                <div class="d-flex py-2 px-2 header" data-toggle="collapse" data-target="#collapse<?php echo $term_id?>" aria-expanded="false" aria-controls="collapse<?php echo $term_id?>">
+                                <div class="d-flex py-2 px-2 header" data-toggle="collapse">
                                     <div style="margin-top:1px">
                                         <img class="arrow-down" src="<?php echo get_bloginfo('template_url')?>/assets/images/chevron.png">
                                     </div>
@@ -95,7 +160,7 @@
                                 </div>
 
                                 <!-- Articles -->
-                                <div class="collapse" id="collapse<?php echo $term_id?>">
+                                <div class="collapse content">
                                     <div class="d-flex flex-column py-2" style="margin-left:42px">
                                         <?php foreach ($articles as $article): 
                                             $article_id = $article->ID;
@@ -179,7 +244,7 @@
                                 style="background-color:<?php echo $highlight_colour?>">
                                 
                                 <!-- Header -->
-                                <div class="d-flex py-2 px-2 header" data-toggle="collapse" data-target="#collapse<?php echo $term_id?>" aria-expanded="false" aria-controls="collapse<?php echo $term_id?>">
+                                <div class="d-flex py-2 px-2 header" data-toggle="collapse">
                                     <div style="margin-top:1px">
                                         <img class="arrow-down" src="<?php echo get_bloginfo('template_url')?>/assets/images/chevron.png">
                                     </div>
@@ -191,7 +256,7 @@
                                 </div>
 
                                 <!-- Articles -->
-                                <div class="collapse" id="collapse<?php echo $term_id?>">
+                                <div class="collapse content">
                                     <div class="d-flex flex-column py-2" style="margin-left:42px">
                                         <?php foreach ($articles as $article): 
                                             $article_id = $article->ID;

@@ -72,6 +72,10 @@ h5 {
     background: $blue;
 }
 
+.bg-dark-blue {
+    background: $dark_blue; 
+}
+
 /* Text styles */
 .color-orange {
     color: $orange;
@@ -431,14 +435,19 @@ strong {
     .top-banner {
         color: white;
 
-        .title {
+        .title-review {
             font-size: 35px;
             line-height: 40px;
-            font-weight: 500;
+            font-weight: 600;
+        }
+
+        .subtitle-review {
+            font-size: 20px;
+            line-height: 25px;
         }
     }
 
-    .menu {
+    .menu, .short-menu{
         
         .chapter{
 
@@ -500,6 +509,11 @@ strong {
         .colour-dark p, .colour-dark a{
             color: $dark !important;
         }
+    }
+
+    #response-chapter {
+        z-index:999; 
+        position:relative;
     }
 
 }
