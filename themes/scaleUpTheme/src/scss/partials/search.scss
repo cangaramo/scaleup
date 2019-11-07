@@ -1,0 +1,62 @@
+@import 'variables.scss';
+
+.search-box {
+    height: 450px;
+
+    .close-search {
+        float: right;
+        margin-bottom: 15px;
+        background: 0 0;
+        border: none;
+
+        img {
+            height: 25px;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    input{
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(255,255,255,0.5);
+        color: white;
+        padding-bottom: 10px;
+        font-size: 20px;
+        font-weight: 300;
+
+        &:focus {
+            outline: none;
+        }
+
+    }
+
+    input::placeholder {
+        color: rgba(255,255,255,0.5);
+    }
+
+    #search-results {
+        .result {
+            padding: 7px 0;
+            color: white;
+            font-weight: 400;
+            font-size: 14px;
+            text-transform: uppercase;
+
+            &:hover {
+                text-decoration: none;
+                color: $dark !important;
+            }
+        }
+
+        .no-posts {
+            color: white;
+        }
+    }
+}
