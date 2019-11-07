@@ -1,7 +1,7 @@
 <?php 
     $quote = $component['pull_quote'];
 ?>
-<div class="module-quote py-3">
+<div class="module-quote py-3 px-45 bg-white">
 
     <div class="row">
         <div class="col-6">

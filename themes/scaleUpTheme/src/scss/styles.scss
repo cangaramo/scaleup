@@ -5,6 +5,8 @@ body {
     color: $dark;
 }
 
+
+
 h2 {
     font-weight: 600;
     font-size: 45px;
@@ -20,6 +22,12 @@ h5 {
     margin-bottom: 30px;
 }
 
+.title-blue {
+    text-transform: uppercase;
+    color: $dark_blue;
+    font-weight: 500;
+    margin-bottom: 0;
+}
 .bg-image {
     background-size:cover; 
     background-position:center;
@@ -75,6 +83,7 @@ h5 {
 .bg-dark-blue {
     background: $dark_blue; 
 }
+
 
 /* Text styles */
 .color-orange {
@@ -419,104 +428,14 @@ strong {
             right: 0;
             opacity: 0.5;
         }
+        
     }
 }
 
 
 @import 'partials/single_summary.scss';
 
-.scaleup-review {
-
-    h5 {
-        font-weight: 500;
-        font-size: 16px;
-    }
-
-    .top-banner {
-        color: white;
-
-        .title-review {
-            font-size: 35px;
-            line-height: 40px;
-            font-weight: 600;
-        }
-
-        .subtitle-review {
-            font-size: 20px;
-            line-height: 25px;
-        }
-    }
-
-    .menu, .short-menu{
-        
-        .chapter{
-
-            a {
-                color: white;
-                font-weight: 300;
-                font-size: 15px;
-                margin-bottom: 4px;
-                line-height: 19px;
-
-                &:hover {
-                    text-decoration: underline;
-                    cursor: pointer;
-                }
-            }
-
-            img {
-                height: 20px;
-                margin-right: 15px;
-                margin-left: 7px;
-                transition: margin 0.2s;
-            }
-
-            .arrow-down {
-                transition: transform 0.2s;
-                transform: rotate(0deg);
-            }
-            
-            .arrow-up {
-                transition: transform 0.2s;
-                transform: rotate(90deg);
-            }
-
-            p {
-                margin: 0;
-                font-size: 15px;
-                color: white;
-                margin-top: 2px;
-            }
-
-            .title {
-                text-transform: uppercase;
-                font-weight: 600;
-                font-size: 15px;
-            }
-
-            &:hover {
-                cursor: pointer;
-                opacity: 0.95;
-                /*
-                
-                img {
-                    margin-left: 15px;
-                    transition: margin 0.2s;
-                }  */
-            }
-        }
-
-        .colour-dark p, .colour-dark a{
-            color: $dark !important;
-        }
-    }
-
-    #response-chapter {
-        z-index:999; 
-        position:relative;
-    }
-
-}
+@import 'partials/scaleup_review.scss';
 
 @import 'partials/modules.scss';
 
@@ -545,4 +464,196 @@ strong {
 
 .fixed-menu {
     display: none;
+}
+
+.vacancy {
+    background: white;
+
+    button {
+        background: $dark_orange;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        text-transform: uppercase;
+        font-size: 13px;
+
+        img {
+            margin-left: 20px;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            background: $orange;
+        }
+    }
+
+    .label {
+        color: black;
+        margin-bottom: 0;
+    }
+
+    .info {
+        margin-bottom: 0;
+        color: #757575;
+    }
+
+    p {
+        color: #757575;
+    }
+}
+
+.people-slider {
+    .person {
+
+        img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+
+        p {
+            text-align: center;
+            margin-bottom: 5px;
+            color: #757575;
+        }
+
+        a {
+            text-align: center;
+            cursor: pointer;
+            
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .pos {
+            color: $dark;
+        }
+
+        .name {
+            font-weight: 500;
+            color: $blue;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+    }
+
+    .slick-prev {
+        position: absolute;
+        top: 50%;
+        left: -50px;
+        background-image: url('../../../assets/images/arrow_blue_back.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+
+        &:before {
+            content: "";
+        }
+
+        &:hover, &:focus {
+            background-image: url('../../../assets/images/arrow_blue_back.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+
+    .slick-next {
+        position: absolute;
+        top: 50%;
+        right: -50px;
+        background-image: url('../../../assets/images/arrow_blue.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+
+        &:before {
+            content: "";
+        }
+
+        &:hover, &:focus {
+            background-image: url('../../../assets/images/arrow_blue.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    }
+
+}
+
+
+
+
+@import 'partials/search.scss';
+
+.committees .box {
+    p {
+        margin-bottom: 5px;
+    }
+
+    a {
+        color: $blue;
+    }
+}
+
+.supporters {
+    .box {
+        cursor: pointer;
+
+        .info {
+            height: 140px;
+        }
+    }
+}
+
+.modalBasic {
+
+    .modal-dialog {
+
+        @media (min-width: 576px){
+            max-width: 850px;
+        }
+
+        .modal-content {
+            position: relative;
+            border-radius: 0;
+            border: none;
+            background: $gray_blue;
+
+            .pos-top {
+                position: absolute; 
+                top: 10px;
+                right: 7px;
+
+                button {
+                    background: transparent;
+                    border: none;
+
+                    img {
+                        height: 35px;
+                    }
+                    
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+
+.copy {
+    h1, h2, h3, h4, h5, h6, p, a {
+        color: white;
+    }
+
+    p {
+        font-size: 18px;
+    }
 }

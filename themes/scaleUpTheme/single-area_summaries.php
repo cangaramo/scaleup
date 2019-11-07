@@ -1,6 +1,5 @@
 <?php get_header(); 
 $all_fields = get_fields();
-print_r($all_fields);
 ?>
 
 <main class="single-summary">

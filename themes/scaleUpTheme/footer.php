@@ -1,16 +1,14 @@
 <?php 
 ?>
-
-
 <footer>
 
-   <div class="container py-5">
+   <div class="container py-4">
 
       <div class="row">
          
          <!-- Twitter -->
-         <div class="col-lg-8 mb-4">
-            <div class="d-flex flex-column flex-lg-row">
+         <div class="col-lg-8">
+            <div class="d-flex flex-column flex-lg-row h-100 align-items-center">
 
                <div class="mr-3 mb-3"><i class="fab fa-twitter"></i></div>
                <div class="">

@@ -20,10 +20,20 @@ var posts_per_page = 8;
 $( document ).ready(function() {
 
     //Get home url
+    /*
     full_url = window.location.href;
     path_url = window.location.pathname;
-    home_url = full_url.replace(path_url,"");
+    home_url = full_url.replace(path_url,""); */
 
+    var host = window.location.host;
+    home_url = "http://" + host;
+
+    //Slick
+    $('.multiple-items').slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 4
+    });
 
     // Count up
     $('.counter').counterUp({
@@ -332,6 +342,77 @@ $( document ).ready(function() {
         $('#response-area').hide();
         $('.list-areas-section').show();
     });
+
+
+    $('.open-vacancy button').click(function(){
+        index = $(this).index(".open-vacancy button");
+        current_vacancy = $(".vacancy-info").eq(index);
+        button_span = $(".open-vacancy button span").eq(index);
+        if ( current_vacancy.hasClass('show')){
+            button_span.text("View");
+            current_vacancy.collapse("toggle");
+        }
+        else {
+            button_span.text("Close");
+            current_vacancy.collapse("toggle");
+        }
+    });
+
+
+    /* Open sidebar */
+    var close = false;
+    $( "#open-btn" ).click(function() {
+
+        //Close
+        if (close) {           
+            $("#sidebar .sidebar-nav").fadeOut("fast", function() {
+                $("#sidebar").animate({width:'toggle'},350);
+            });
+
+            $(this).addClass("close-anim");
+            close = false;
+        }
+        //Open
+        else {
+            $("#sidebar").animate(
+                {
+                width: "toggle",
+                }, 
+                {
+                duration: 350,
+                complete: function() {
+                    $("#sidebar .sidebar-nav").fadeIn();
+                    }
+                }
+            );
+            $(this).removeClass("close-anim");
+            close = true;
+        }
+    }); 
+
+    /* Open search */
+    $( ".open-search" ).click(function() {
+        console.log("open search");
+        $(".search-box").slideDown( "slow", function() {
+            $(".search-content").fadeIn("fast");
+            $("#query-search").focus();
+        }); 
+    });
+
+    $( ".close-search" ).click(function() {
+        $(".search-content").fadeOut( "fast", function() {
+            $(".search-box").slideUp("slow");
+        });
+    });
+
+    /* Search */
+    $( "#query-search" ).on('change keydown paste input', function(){
+        s = $(this).val();
+        console.log(s);
+        //LoadPosts(s);
+        LoadSearchResults(s);
+    });
+
 });
 
 
@@ -357,38 +438,44 @@ var lastScrollTop = 0;
 
 $(window).scroll(function() {
 
-    //If starts scrolling toggle menu
-    if ($(window).scrollTop() >= 200) {
-        //Close menu
-        $('.chapter .content').collapse("hide");
-        $('.chapter .header img').removeClass("arrow-up");
-        $('.chapter .header img').addClass("arrow-down");
-    }
 
+    if (window.innerWidth > 992) { 
 
-    var scrollTop = $(window).scrollTop();
-    elemTop = $('.menu').offset().top;
-    elemBottom = elemTop + $('.menu').height();
-
-    var st = $(this).scrollTop();
-
-    //Down
-    if (st > lastScrollTop){
-        if ( !$hidden && scrollTop > elemTop ) { 
-           $('.fixed-menu').show();
-           $('.static-menu').hide();
-        $hidden = true;
+        //If starts scrolling toggle menu
+        if ($(window).scrollTop() >= 10) {
+            //Close menu
+            $('.chapter .content').collapse("hide");
+            $('.chapter .header img').removeClass("arrow-up");
+            $('.chapter .header img').addClass("arrow-down");
         }
-    } 
-    //Up
-    else {
-        if ($hidden && elemBottom > (scrollTop - 20)) {    
-            $('.fixed-menu').hide();
-            $('.static-menu').show();
-            $hidden = false; 
+
+
+        var scrollTop = $(window).scrollTop();
+        elemTop = $('.menu').offset().top;
+        elemBottom = elemTop + $('.menu').height();
+
+        var st = $(this).scrollTop();
+
+        //Down
+        if (st > lastScrollTop){
+            if ( !$hidden && scrollTop > elemTop ) { 
+            $('.fixed-menu').show();
+            $('.static-menu').hide();
+            $hidden = true;
+            }
         } 
+        //Up
+        else {
+            if ($hidden && elemBottom > (scrollTop - 100)) {    
+                $('.fixed-menu').hide();
+                $('.static-menu').show();
+                $hidden = false; 
+            } 
+        }
+        lastScrollTop = st;
     }
-    lastScrollTop = st;
+
+
 }); 
 
 /* Load programmes */
@@ -528,6 +615,31 @@ function LoadArea(area_id){
         success:function(response){
             $("#response-area").hide().html(response).fadeIn(200);
             //$("#response-area").html(response);
+        }
+    });
+
+    return false;
+}
+
+function LoadSearchResults(keyword){
+
+    ajax_url = home_url + "/wp-admin/admin-ajax.php";
+
+    console.log('ajax url');
+    console.log(ajax_url);
+
+    $.ajax({
+        url: ajax_url,
+        type: 'post',
+        data : {
+            action: "load_search",
+            keyword: keyword
+        },
+        beforeSend:function(xhr){
+
+        },
+        success:function(response){
+            $("#search-results").html(response);
         }
     });
 

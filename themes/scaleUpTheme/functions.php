@@ -21,7 +21,8 @@ function enqueue_theme_scripts() {
 	wp_enqueue_style( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
 	wp_enqueue_style( 'font-brandon', 'https://use.typekit.net/rxd1qvx.css');
 	wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/min/styles.min.css', '', '1.1'); // Register the compiled stylesheets
-
+	wp_enqueue_style( 'slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css');
+	wp_enqueue_style( 'slick-theme', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css');
 
 	//JS
 	wp_deregister_script( 'jquery' );
@@ -29,6 +30,7 @@ function enqueue_theme_scripts() {
 	wp_register_script('popper-js', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', array('jquery'));
 	wp_register_script('bootstrap-js', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', array('jquery'));
 	wp_register_script('main-js', get_template_directory_uri() . '/assets/js/min/scripts.min.js', array('jquery'), '1.1');
+	wp_register_script('slick-js', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js', array('jquery'));
 
 	//Google maps
 	//wp_register_script('marker-clusterer', 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js');
@@ -38,6 +40,7 @@ function enqueue_theme_scripts() {
 	wp_enqueue_script('popper-js');
 	wp_enqueue_script('bootstrap-js');
 	wp_enqueue_script('main-js');
+	wp_enqueue_script('slick-js');
 	//wp_enqueue_script('marker-clusterer');
 	//wp_enqueue_script('google-maps');
 	
@@ -204,7 +207,8 @@ function load_chapter(){
 
     foreach ($components_article as $component):
         $layout_name = $component['acf_fc_layout'];
-        $layout_path = "parts/review/module-" . $layout_name . ".php";
+		$layout_path = "parts/review/module-" . $layout_name . ".php";
+		
         require($layout_path);
     endforeach; 
 
@@ -226,6 +230,54 @@ function load_area(){
 }
 add_action( 'wp_ajax_nopriv_load_area', 'load_area' );
 add_action( 'wp_ajax_load_area', 'load_area' );
+
+
+/* AJAX LOAD SEARCH RESULTS */
+
+function load_search(){
+	
+	$keyword = $_POST['keyword'];
+
+	/* General arguments */
+	$args = array(
+		'post_type'   => array('page'),
+		'orderby' => 'relevance', 
+		'order'	=> 'ASC',
+		'posts_per_page' => 5,
+		's' => $keyword
+	);
+
+	//Main query 
+	$query = new WP_Query( $args );
+
+	// LOOP - show posts
+	if( $query->have_posts() ) :
+
+		while( $query->have_posts() ): $query->the_post();
+			$mypost = $query->post;
+			$id = get_the_ID();
+			$link = get_the_permalink(); 
+			$post_type = get_post_type($id);
+			$title = get_the_title($id);
+			?>	
+			<a class="result" data-link="<?php echo $link ?>" href="<?php echo $link ?>"> <?php echo $title ?></a>
+		<?php
+
+		endwhile;
+
+			
+		wp_reset_postdata();
+	else : ?>
+			
+		<p class="no-posts">No posts found</p>
+			
+	<?php endif;
+
+
+	die();
+}
+add_action( 'wp_ajax_nopriv_load_search', 'load_search' );
+add_action( 'wp_ajax_load_search', 'load_search' );
 
 
 /* TWITTER */
@@ -279,6 +331,12 @@ function my_mce_before_init_insert_formats( $init_array ) {
 			'block' => 'span',  
 			'classes' => 'box-quote',
 			'wrapper' => true,
+		),
+		array(
+			'title' => 'Blue title section',
+			'block' => 'span',
+			'classes' => 'title-blue',
+			'wrapper' => 'title'
 		)
 	);  
 	$init_array['style_formats'] = json_encode( $style_formats );  

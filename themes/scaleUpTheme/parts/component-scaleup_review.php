@@ -5,7 +5,7 @@
         <div class="container ">
             <div class="row">
             
-                <div class="col-4">
+                <div class="col-lg-4">
                     <div class="d-flex align-items-center h-100">
                         <div>
                             <p class="title-review">Explore the ScaleUp Annual Review <span style="color:#FDB03C">2019</span></p>
@@ -14,13 +14,13 @@
                     </div>
                 </div>
 
-                <div class="col-3">
+                <div class="col-lg-3">
                     <img style="height:390px" src="<?php echo get_bloginfo('template_url')?>/assets/images/review.png">
                 </div>
 
-                <div class="col-3">
+                <div class="col-lg-3">
 
-                    <div class="d-flex h-100 w-100 align-items-center">
+                    <div class="d-none d-lg-flex h-100 w-100 align-items-center">
                         <div class="short-menu w-100">
 
                             <?php 
@@ -100,9 +100,9 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-3">
+                <div class="col-lg-3">
                     
-                    <div class="menu static-menu py-5">
+                    <div class="menu static-menu py-4">
 
                         <h5>CONTENTS</h5>
 
@@ -148,7 +148,7 @@
                                 style="background-color:<?php echo $highlight_colour?>">
                                 
                                 <!-- Header -->
-                                <div class="d-flex py-2 px-2 header" data-toggle="collapse">
+                                <div class="d-flex py-1 px-2 header" data-toggle="collapse">
                                     <div style="margin-top:1px">
                                         <img class="arrow-down" src="<?php echo get_bloginfo('template_url')?>/assets/images/chevron.png">
                                     </div>
@@ -179,9 +179,9 @@
                     
                 </div>
 
-                <div class="col-9">
+                <div class="col-lg-9">
                     
-                    <div id="response-chapter" class="py-5 mt-3"></div>
+                    <div id="response-chapter" class="py-4 mt-3"></div>
 
                 </div>
             </div>
@@ -197,7 +197,7 @@
 
                 <div class="col-3">
 
-                    <div class="menu py-5">
+                    <div class="menu py-4">
 
                         <h5>CONTENTS</h5>
 
@@ -244,7 +244,7 @@
                                 style="background-color:<?php echo $highlight_colour?>">
                                 
                                 <!-- Header -->
-                                <div class="d-flex py-2 px-2 header" data-toggle="collapse">
+                                <div class="d-flex py-1 px-2 header" data-toggle="collapse">
                                     <div style="margin-top:1px">
                                         <img class="arrow-down" src="<?php echo get_bloginfo('template_url')?>/assets/images/chevron.png">
                                     </div>

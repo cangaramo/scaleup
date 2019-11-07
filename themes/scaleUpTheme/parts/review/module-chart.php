@@ -4,7 +4,7 @@
     $footnote = $component['footnote'];
 ?>
 
-<div class="module-chart py-3">
+<div class="module-chart py-3 px-45 bg-white">
     <hr>
     <h5><?php echo $title ?></h5>
     <img src="<?php echo $image ?>">

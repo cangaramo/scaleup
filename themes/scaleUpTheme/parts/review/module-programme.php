@@ -14,13 +14,40 @@
     <div class="bg-blue">
         <div class="container programme-banner py-5">
             <div class="row">
-                <div class="col-9">
+                <div class="col-lg-6">
                     <p class="label">Programme</p>
-                    <h3><?php echo $title ?></h3>
+                    <h3 class="mb-4 mb-lg-0"><?php echo $title ?></h3>
                 </div>
-                <div class="col-3 float-right">
-                    <img height="55" class="ml-3" src="<?php echo get_bloginfo('template_url')?>/assets/images/endorsed.svg">
-                    <img height="55" class="ml-3" src="<?php echo get_bloginfo('template_url')?>/assets/images/leadership.png">
+                <div class="col-lg-6 float-lg-right">
+
+                    <div class="d-flex justify-content-lg-end badges h-100 align-items-center">
+
+                        <?php if ($all_fields['endorsed']): ?>
+                            <img height="58" class="ml-3" src="<?php echo get_bloginfo('template_url')?>/assets/images/endorsed.svg">
+                        <?php endif ?>
+
+                        <!-- Themes -->
+                        <?php foreach ($categories as $category):
+                            $term_id = $category->term_id;
+                            $name = $category->name;
+                            $parent = $category->category_parent;
+                    
+                            if ($parent == 97) :
+                                $taxonomy = $category->taxonomy;
+                                $ref = $taxonomy . '_' . $term_id;
+                                $icon_cat = get_field('icon', $ref); ?>
+                            
+                                <div class="theme ml-3">
+                                    <img height="50" title="<?php echo $name ?>" src="<?php echo $icon_cat ?>">
+                                    <p><?php echo $name ?></p>
+                                </div>
+
+                            <?php endif ?>
+
+                        <?php endforeach; ?>
+
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -34,7 +61,7 @@
             <div class="row numbers pt-4">
 
                 <?php foreach ($icons as $icon): ?>
-                    <div class="col-2">
+                    <div class="col-sm mb-4 mb-lg-0">
                         <div class="box">
                             <img class="mx-auto d-block" src="<?php echo $icon['icon']?>">
                             <p class="num counter"><?php echo $icon['number'] ?></p>
@@ -86,12 +113,12 @@
     <div class="bg-white">
         <div class="container">
             <div class="row">
-                <div class="col-8">
+                <div class="col-lg-8">
                     <div class="py-5 p-3">
                         <?php echo $all_fields['copy'] ?>
                     </div>
                 </div>
-                <div class="col-4 bg-gray_blue p-0">
+                <div class="col-lg-4 bg-gray_blue p-0">
                     <img class="w-100" src="<?php echo $all_fields['thumbnail_image']?>">
                     
                     <!-- Reviews -->
@@ -117,12 +144,12 @@
     <div class="bg-orange">
         <div class="container px-4 py-5 call-to-action">
             <div class="row">
-                <div class="col-3">
+                <div class="col-lg-3 mb-4">
                     <div class="d-flex align-items-center h-100">
                         <img src="<?php echo get_bloginfo('template_url')?>/assets/images/CTA.png">
                     </div>
                 </div>
-                <div class="col-9">
+                <div class="col-lg-9">
                     <?php echo $all_fields['call_to_action'];  ?>
                 </div>
             </div>

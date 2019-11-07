@@ -5,7 +5,7 @@
     $footnote = $component['footnote'];
 ?>
 
-<div class="module-graphic">
+<div class="module-graphic py-3 px-45 bg-white">
     <h3><?php echo $heading ?></h3>
     <h4><?php echo $subheading ?></h4>
     <hr>

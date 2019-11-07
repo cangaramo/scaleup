@@ -22,3 +22,10 @@
     line-height: 23px;
     font-weight: 500;
 }
+
+.title-blue{
+    text-transform: uppercase;
+    color: #548095;
+    font-weight: 600;
+    margin-bottom: 0;
+}
