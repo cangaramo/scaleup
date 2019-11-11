@@ -273,6 +273,7 @@ strong {
 @import 'partials/search.scss';
 @import 'partials/people.scss';
 @import 'partials/form_banner.scss';
+@import 'partials/modal_basic.scss';
 
 .single-report {
 
@@ -291,9 +292,6 @@ strong {
         }
     }
 }
-
-
-
 
 .committees .box {
     p {
@@ -315,50 +313,12 @@ strong {
     }
 }
 
-.modalBasic {
-
-    .modal-dialog {
-
-        @media (min-width: 576px){
-            max-width: 850px;
-        }
-
-        .modal-content {
-            position: relative;
-            border-radius: 0;
-            border: none;
-            background: $gray_blue;
-
-            .pos-top {
-                position: absolute; 
-                top: 10px;
-                right: 7px;
-
-                button {
-                    background: transparent;
-                    border: none;
-
-                    img {
-                        height: 35px;
-                    }
-                    
-                    &:focus {
-                        outline: none;
-                    }
-                }
-            }
-        }
-    }
-    
-}
-
-
 .copy {
-    h1, h2, h3, h4, h5, h6, p, a {
+    h1, h2, h3, h4, h5, h6, p, a, li {
         color: white;
     }
 
-    p {
+    p, li {
         font-size: 18px;
     }
 }
@@ -366,3 +326,5 @@ strong {
 #response-ambassadors{
     min-height: 250px;
 }
+
+@import 'partials/infographic.scss';

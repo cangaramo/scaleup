@@ -1,5 +1,5 @@
 <!-- Filters window -->
-<div class="filters-window" style="padding-top:140px; padding-bottom: 100px">
+<div class="filters-window" style="">
 
     <?php 
     $cat_region = get_category_by_slug("region");
@@ -75,7 +75,7 @@
             <?php foreach ($types_support as $type):
                 $name = $type->cat_name;
                 $id = $type->cat_ID; ?>
-                <div class="col-4">
+                <div class="col-lg-4">
                     <div class="tick">
                         <input name="checkbox-support" type="checkbox" value="<?php echo $id ?>" id="checkbox-<?php echo $id?>">
                         <label for="checkbox-<?php echo $id?>"><?php echo $name ?></label>
@@ -92,7 +92,7 @@
             <?php foreach ($types_aims as $type):
                 $name = $type->cat_name;
                 $id = $type->cat_ID; ?>
-                <div class="col-4">
+                <div class="col-lg-4">
                     <div class="tick">
                         <input name="checkbox-aim" type="checkbox" value="<?php echo $id ?>" id="checkbox-<?php echo $id?>">
                         <label for="checkbox-<?php echo $id?>"><?php echo $name ?></label>
@@ -109,7 +109,7 @@
             <?php foreach ($types_cost as $type):
                 $name = $type->cat_name;
                 $id = $type->cat_ID; ?>
-                <div class="col-4">
+                <div class="col-lg-4">
                     <div class="tick">
                         <input name="checkbox-cost" type="checkbox" value="<?php echo $id ?>" id="checkbox-<?php echo $id?>">
                         <label for="checkbox-<?php echo $id?>"><?php echo $name ?></label>
@@ -126,7 +126,7 @@
             <?php foreach ($regions as $region):
                 $name = $region->cat_name;
                 $id = $region->cat_ID; ?>
-                <div class="col-4">
+                <div class="col-lg-4">
                     <div class="tick">
                         <input name="checkbox-region" type="checkbox" value="<?php echo $id ?>" id="checkbox-<?php echo $id?>">
                         <label for="checkbox-<?php echo $id?>"><?php echo $name ?></label>
@@ -143,7 +143,7 @@
             <?php foreach ($types_programmes as $type):
                 $name = $type->cat_name;
                 $id = $type->cat_ID; ?>
-                <div class="col-4">
+                <div class="col-lg-4">
                     <div class="tick">
                         <input name="checkbox-type" type="checkbox" value="<?php echo $id ?>" id="checkbox-<?php echo $id?>">
                         <label for="checkbox-<?php echo $id?>"><?php echo $name ?></label>
@@ -160,7 +160,7 @@
             <?php foreach ($types_business as $type):
                 $name = $type->cat_name;
                 $id = $type->cat_ID; ?>
-                <div class="col-4">
+                <div class="col-lg-4">
                     <div class="tick">
                         <input name="checkbox-business" type="checkbox" value="<?php echo $id ?>" id="checkbox-<?php echo $id?>">
                         <label for="checkbox-<?php echo $id?>"><?php echo $name ?></label>
@@ -178,7 +178,7 @@
             <?php foreach ($types_providers as $type):
                 $name = $type->cat_name;
                 $id = $type->cat_ID; ?>
-                <div class="col-4">
+                <div class="col-lg-4">
                     <div class="tick">
                         <input name="checkbox-provider" type="checkbox" value="<?php echo $id ?>" id="checkbox-<?php echo $id?>">
                         <label for="checkbox-<?php echo $id?>"><?php echo $name ?></label>

@@ -60,5 +60,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.js"></script>
 
+
+<!-- Infographic scripts -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!--
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+                  --> 
+
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
+
+<script src="<?php echo get_bloginfo('template_url')?>/infographic/js/vendor/modernizr-3.7.1.min.js"></script>
+<script src="<?php echo get_bloginfo('template_url')?>/infographic/js/vendor/visible.js"></script>
+<script src="<?php echo get_bloginfo('template_url')?>/infographic/js/vendor/animateNumber.js"></script>
+<script src="<?php echo get_bloginfo('template_url')?>/infographic/js/plugins.js"></script>
+<script src="<?php echo get_bloginfo('template_url')?>/infographic/js/main.js"></script>
+
 </body>
 </html>

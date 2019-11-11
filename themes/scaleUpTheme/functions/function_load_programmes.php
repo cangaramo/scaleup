@@ -281,7 +281,7 @@ function load_programmes(){
 					$current_page_next_next = $current_page + 2;
                     ?>
 
-                    <div class="w100 d-flex justify-content-center pagination mt-5 mb-4 pt-2" >
+                    <div class="w100 d-flex justify-content-center pagination mt-5 mb-4 pt-3" >
 
                         <form >
                             <!-- Prev button -->

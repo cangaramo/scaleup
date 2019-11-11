@@ -19,7 +19,7 @@
                 $title = get_the_title ($member);
                 $all_fields = get_fields($member);
             ?>
-                <div class="col-4">
+                <div class="col-lg-4">
                     <div class="bg-white box m-2 p-3">
                         <p><?php echo $title ?></p>
                         <p><?php echo $all_fields['position']?></p>

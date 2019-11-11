@@ -194,7 +194,7 @@ function load_ambassadors(){
 					</div>
 					<div style="position: absolute; bottom: 15px; width: 100%">
 						<div class="d-flex justify-content-center">
-							<a class="link" data-toggle="modal" data-target="#modalBasic<?php echo $partner_id?>">More</a>
+							<a class="link" data-toggle="modal" data-target="#modalBasic<?php echo $ambassador_id?>">More</a>
 						</div>
 					</div>
 				</div>
@@ -203,6 +203,16 @@ function load_ambassadors(){
 		<?php endforeach ?>
 
 	</div>
+
+
+	<?php foreach ($ambassadors as $ambassador): 
+		$person_id = $ambassador->ID;
+		$title = get_the_title($person_id);
+		$all_fields = get_fields($person_id);
+
+		require 'parts/part-modal.php';
+
+	endforeach ?>
 
 	<?php 
 	die();

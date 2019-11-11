@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
+
+    <!-- Move to functions.php later 
+    <link rel="stylesheet" href="css/normalize.css"> -->
+
     <title><?php wp_title(); ?></title>
 
     <?php wp_head();?>
@@ -207,9 +211,9 @@
                 </div>
 
                 <a class="mt-2 mx- open-search"><img height="17" src="<?php echo get_bloginfo('template_directory'); ?>/assets/images/search_icon.png"></a>
-                <a href="#" class="mt-2 mx-3 login-btn" >Login</a>
-                <a href="http://www.twitter.com/scaleupinst" class="m-2 pt-2"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/irene-graham-1ab87ab7" class="m-2 pt-2"><i class="fab fa-linkedin-in"></i></a>
+                <!-- <a href="#" class="mt-2 mx-3 login-btn" >Login</a> -->
+                <a href="http://www.twitter.com/scaleupinst" class="ml-4 mr-2 pt-3"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/irene-graham-1ab87ab7" class="m-2 pt-3"><i class="fab fa-linkedin-in"></i></a>
 
             </div>
         </nav>

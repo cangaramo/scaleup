@@ -40,7 +40,7 @@
                     </div>
                     <div style="position: absolute; bottom: 15px; width: 100%">
                         <div class="d-flex justify-content-center">
-                            <a class="link" data-toggle="modal" data-target="#modalBasic<?php echo $partner_id?>">More</a>
+                            <a class="link" data-toggle="modal" data-target="#modalBasic<?php echo $person_id?>">More</a>
                         </div>
                     </div>
                 </div>
@@ -50,36 +50,11 @@
     </div>
 </div>
 
-
 <?php foreach ($people as $person): 
     $person_id = $person->ID;
     $title = get_the_title($person_id);
     $all_fields = get_fields($person_id);
-?>
 
-    <!-- Modal -->
-    <div class="modal fade modalBasic" id="modalBasic<?php echo $partner_id?>" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content p-4">
+    require 'part-modal.php';
 
-                <div class="modal-body p-4">
-                    <div class="row">
-                        <div class="col-4">
-                            <img class="w-100" src="<?php echo $all_fields['picture'] ?>">
-                        </div>
-                        <div class="col-8">
-                            <h3 class="mb-3"><?php echo $title ?></h3>
-                            <?php echo $all_fields['long_bio'] ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="pos-top">
-                    <button data-dismiss="modal"><img src="<?php echo get_bloginfo('template_url') ?>/assets/images/close-form.png"></button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-     
-<?php endforeach ?>
+ endforeach ?>

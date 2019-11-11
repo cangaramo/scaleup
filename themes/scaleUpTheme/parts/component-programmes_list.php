@@ -110,7 +110,7 @@
                             <div class="open-filters"><i class="fas fa-caret-down"></i></div>
                         </div>
                         <div>
-                            <img class="close-filters" src="<?php echo get_bloginfo('template_url') ?>/assets/images/close-form.png">
+                            <img class="close-filters float-right" src="<?php echo get_bloginfo('template_url') ?>/assets/images/close-form.png">
                         </div>
                     </div>
 
@@ -119,7 +119,7 @@
         </div>
 
         <!-- Response -->
-        <div class="container">
+        <div class="container pt-4">
             <div  id="response-programmes"></div>
         </div>
 

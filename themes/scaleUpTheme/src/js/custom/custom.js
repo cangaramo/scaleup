@@ -510,7 +510,6 @@ $( document ).ready(function() {
 
     /* Open search */
     $( ".open-search" ).click(function() {
-        console.log("open search");
         $(".search-box").slideDown( "slow", function() {
             $(".search-content").fadeIn("fast");
             $("#query-search").focus();
@@ -526,7 +525,6 @@ $( document ).ready(function() {
     /* Search */
     $( "#query-search" ).on('change keydown paste input', function(){
         s = $(this).val();
-        console.log(s);
         //LoadPosts(s);
         LoadSearchResults(s);
     });
@@ -579,32 +577,36 @@ $(window).scroll(function() {
             $('.chapter .header img').addClass("arrow-down");
         } */
 
-        var scrollTop = $(window).scrollTop();
-        elemTop = $('.menu').offset().top;
-        elemBottom = elemTop + $('.menu').height();
+        if ($('.scaleup-review').length > 0) {
 
-        var st = $(this).scrollTop();
-
-        //Down
-        if (st > lastScrollTop){
-            if ( !$hidden && scrollTop > elemTop ) { 
-            $('.fixed-menu').show();
-            $('.static-menu').hide();
-            $hidden = true;
-            }
-        } 
-        //Up
-        else {
-            if ($hidden && elemBottom > (scrollTop - 102)) {    
-                $('.fixed-menu').hide();
-                $('.static-menu').show();
-                $hidden = false; 
+            var scrollTop = $(window).scrollTop();
+            elemTop = $('.menu').offset().top;
+            elemBottom = elemTop + $('.menu').height();
+    
+            var st = $(this).scrollTop();
+    
+            //Down
+            if (st > lastScrollTop){
+                if ( !$hidden && scrollTop > elemTop ) { 
+                $('.fixed-menu').show();
+                $('.static-menu').hide();
+                $hidden = true;
+                }
             } 
+            //Up
+            else {
+                if ($hidden && elemBottom > (scrollTop - 102)) {    
+                    $('.fixed-menu').hide();
+                    $('.static-menu').show();
+                    $hidden = false; 
+                } 
+            }
+            lastScrollTop = st;
+    
+            //After swapping, scroll menu to position of the other menu, so it looks like one menu
+            $('.chapters-list').scrollTop(scrollingChapters);
         }
-        lastScrollTop = st;
-
-        //After swapping, scroll menu to position of the other menu, so it looks like one menu
-        $('.chapters-list').scrollTop(scrollingChapters);
+        
     }
 
 
@@ -683,7 +685,6 @@ function LoadChapter(chapter, event){
         },
         success:function(response){
 
-            console.log(response);
         
             //Always scroll to bottom from short menu
             if (event == 'shortmenu') {
@@ -759,6 +760,7 @@ function LoadArea(area_id){
 
         },
         success:function(response){
+            $("html, body").scrollTop( ($("#response-area").offset().top) - 20);
             $("#response-area").hide().html(response).fadeIn(200);
             //$("#response-area").html(response);
         }
