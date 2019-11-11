@@ -38,7 +38,7 @@
             <p>A: 101 Euston Road, London, NW1 2RA</p>
             <p>E: <a href="mailto:info@scaleupinstitute.org.uk">info@scaleupinstitute.org.uk</a></p><br>
             <p><a href="#">Privacy Policy</a> | <a href="#">Data Protection Policy</a></p>
-            <p><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></p>
+            <p><a href="http://www.twitter.com/scaleupinst"><i class="fab fa-twitter"></i></a><a href="https://www.linkedin.com/in/irene-graham-1ab87ab7"><i class="fab fa-linkedin-in"></i></a></p>
          </div>
    
       </div> <!-- row -->

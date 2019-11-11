@@ -58,7 +58,10 @@
                                             <div class="d-flex align-items-center h-100">
                                                 <div>
                                                     <div class="mb-3"><?php echo $item['headline'] ?></div>
-                                                    <p><?php echo $item['text'] ?></p>
+                                                    <p class="mb-4"><?php echo $item['text'] ?></p>
+                                                    <?php if ($item['button_label']): ?>
+                                                        <a class="link white" href="<?php echo $item['url'] ?>"><?php echo $item['button_label'] ?></a>
+                                                    <?php endif ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -73,21 +76,6 @@
             <?php endforeach ?>
 
         </div>
-
-        <!-- No arrows
-
-        <?php if (sizeof($items) > 1): ?>
-
-            <a class="carousel-control-prev" href="#carouselBanner" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselBanner" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-
-        <?php endif; ?>  -->
 
     </div> <!-- carousel -->
 

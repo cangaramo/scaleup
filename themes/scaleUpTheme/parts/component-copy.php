@@ -4,9 +4,9 @@
 ?>
 
 <div class="copy" style="background:<?php echo $background ?>">
-    <div class="container py-5">
+    <div class="container pt-5 pb-4">
         <div class="row">
-            <div class="col-7">
+            <div class="col-lg-7">
                 <?php echo $copy ?>
             </div>
         </div>

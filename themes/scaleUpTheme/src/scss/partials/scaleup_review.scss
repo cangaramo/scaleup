@@ -24,8 +24,8 @@
 
     .chapters-list {
         //max-height: 392px;
-        max-height: 402px;
         //max-height: 465px;
+        max-height: 402px;
         overflow: scroll;
     }
 
@@ -40,13 +40,18 @@
             a {
                 color: white;
                 font-weight: 300;
-                font-size: 15px;
+                font-size: 17px;
                 margin-bottom: 4px;
-                line-height: 19px;
+                line-height: 22px;
 
                 &:hover {
                     text-decoration: underline;
                     cursor: pointer;
+                }
+
+                @media (min-width:992px) {
+                    font-size: 15px;
+                    line-height: 20px;
                 }
             }
 
@@ -69,9 +74,13 @@
 
             p {
                 margin: 0;
-                font-size: 15px;
+                font-size: 17px;
                 color: white;
                 margin-top: 2px;
+
+                @media (min-width:992px) {
+                    font-size: 15px;
+                }
             }
 
             .desc {
@@ -81,7 +90,11 @@
             .title {
                 text-transform: uppercase;
                 font-weight: 600;
-                font-size: 15px;
+                font-size: 17px;
+
+                @media (min-width:992px) {
+                    font-size: 15px;
+                }
             }
 
             &:hover {

@@ -6,7 +6,7 @@
 
         <div class="px-45 py-3 top" style="background-color:<?php echo $piece['background_colour']?>">
             <div class="row h-100">
-                <div class="col-8">
+                <div class="col-lg-8">
                     <div class="d-flex h-100 align-items-center">
                          <div>
                             <p class="title-heading" style="color:<?php echo $piece['heading_colour']?>"><?php echo $piece['heading'] ?></p>
@@ -16,8 +16,10 @@
                         </div>
                      </div>
                 </div>
-                <div class="col-4">
-                    <img class="float-right icon-bg" src="<?php echo $piece['background_icon']?>">
+                <div class="col-lg-4">
+                    <?php if ($piece['background_icon']): ?>
+                        <img class="float-lg-right icon-bg" src="<?php echo $piece['background_icon']?>">
+                    <?php endif ?>
                 </div>
              </div>
         </div>

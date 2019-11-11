@@ -272,6 +272,7 @@ strong {
 @import 'partials/vacancy.scss';
 @import 'partials/search.scss';
 @import 'partials/people.scss';
+@import 'partials/form_banner.scss';
 
 .single-report {
 
@@ -362,3 +363,6 @@ strong {
     }
 }
 
+#response-ambassadors{
+    min-height: 250px;
+}

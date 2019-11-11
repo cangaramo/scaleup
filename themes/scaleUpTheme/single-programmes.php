@@ -104,7 +104,7 @@
     endforeach; ?>
 
     <?php if ($show_sectors): ?>
-        <div class="bg-black">ßßß
+        <div class="bg-black">
             <div class="container py-4 key-sectors">
 
                 <div class="d-flex h-100 align-items-center">

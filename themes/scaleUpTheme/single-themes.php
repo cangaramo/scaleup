@@ -15,8 +15,8 @@
 
             <!-- Title and copy -->
             <div class="row pb-3">
-                <div class="col-7">
-                    <div class="d-flex align-items-center mb-4">
+                <div class="col-lg-7">
+                    <div class="d-flex flex-column flex-lg-row align-items-center mb-4">
                         <img height="60" class="mr-3" src="<?php echo $all_fields['icon'] ?>">
                         <h2 class="mb-0"><?php echo $title ?></h2>
                     </div>  
@@ -32,8 +32,8 @@
                     $title = get_the_title($committee_id);
                     $committee_fields = get_fields($committee_id);
                 ?>
-                    <div class="col-4">
-                        <div class="bg-white box m-2 p-3">
+                    <div class="col-lg-4">
+                        <div class="bg-white box mx-lg-2 my-2 p-3">
                             <p><?php echo $title ?></p>
                             <p><?php echo $committee_fields['position']?></p>
                             <a href="<?php echo $committee_fields['link'] ?>">View Linkedin Profile</a>
@@ -44,7 +44,7 @@
 
             <!-- Title and copy -->
             <div class="row pt-4">
-                <div class="col-7">
+                <div class="col-lg-7">
                     <div><?php echo $all_fields['copy_2']?></div>
                 </div>
             </div>
@@ -130,19 +130,19 @@
     <div class="bg-gray">
         <div class="container py-5">
             <div class="row">
-                <div class="col-8">
+                <div class="col-lg-8">
                     <h4>Responses to consultations</h4>
                     <p><?php echo ($all_fields['responses']['copy']) ?></p>
 
                     <div class="bg-white p-3">
 
                         <div class="row">
-                            <div class="col-9">
+                            <div class="col-lg-9">
                                 <p class="title-blue-lowercase mb-3"><?php echo ($all_fields['responses']['title']) ?></p>
                                 <p><?php echo ($all_fields['responses']['description']) ?></p>
                             </div>
-                            <div class="col-3">
-                                <a href="<?php echo $all_fields['responses']['file'] ?>" target="_blank" class="btn-blue float-right">Download<img class="btn-icon" src="<?php echo get_bloginfo('template_url')?>/assets/images/download-icon.png"></a>
+                            <div class="col-lg-3">
+                                <a href="<?php echo $all_fields['responses']['file'] ?>" target="_blank" class="btn-blue float-lg-right">Download<img class="btn-icon" src="<?php echo get_bloginfo('template_url')?>/assets/images/download-icon.png"></a>
                             </div>
                         </div>    
 

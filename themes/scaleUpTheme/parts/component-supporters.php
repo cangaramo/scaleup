@@ -40,7 +40,7 @@
                 $partner_id = $partner->ID;
                 $all_fields = get_fields($partner_id);
             ?>
-                <div class="col-3">
+                <div class="col-lg-3">
                     <div class="bg-white box mb-4" data-toggle="modal" data-target="#modalBasic<?php echo $partner_id?>">
                         <img class="w-100" src="<?php echo $all_fields['picture'] ?>">
                         <?php if ($type == "Lead"): ?>

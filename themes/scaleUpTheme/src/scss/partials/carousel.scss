@@ -19,7 +19,7 @@
         right: 0;
         top: 0;
         left: 0;
-        z-index: 15;
+        z-index: initial;
         display: -ms-flexbox;
         display: flex;
         padding-left: 0;
@@ -29,6 +29,7 @@
 
 
         li {
+            z-index: 15;
             width: 5px;
             height: 30px;
             transition: height 0.4s;

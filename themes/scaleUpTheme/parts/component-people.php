@@ -31,12 +31,14 @@
                 $title = get_the_title($person_id);
                 $all_fields = get_fields($person_id);
             ?>
-                <div class="person">
-                    <div class="bg-white mx-2 p-3">
+                <div class="person position-relative">
+                    <div class="bg-white h-100 mx-2 p-3">
                         <img height="100" src="<?php echo $all_fields['picture'] ?>">
                         <p class="name mt-3"><?php echo $title ?></p>
                         <p class="pos"><?php echo $all_fields['position'] ?></p>
                         <p class="mb-3"><?php echo $all_fields['short_bio'] ?></p>
+                    </div>
+                    <div style="position: absolute; bottom: 15px; width: 100%">
                         <div class="d-flex justify-content-center">
                             <a class="link" data-toggle="modal" data-target="#modalBasic<?php echo $partner_id?>">More</a>
                         </div>

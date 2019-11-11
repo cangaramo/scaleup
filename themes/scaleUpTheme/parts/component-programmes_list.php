@@ -8,7 +8,7 @@
 <div class="programmes-list bg-gray">
 
     <div class="bg-image" style="background-image: url('<?php echo $form_bg_image ?>')">
-        <div class="container form-programmes py-5">
+        <div class="container form-banner py-5">
             <div class="row">
                 <div class="col-lg-5">
                     <div class="title"><?php echo $form_title ?></div>

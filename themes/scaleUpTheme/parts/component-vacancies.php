@@ -24,23 +24,23 @@
 
                 <div class="open-vacancy">
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-md-4 mb-2 mb-md-0">
                             <p class="label">Job title</p>
                             <p class="info"><?php echo $title ?></p>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-md-3 mb-2 mb-md-0">
                             <p class="label">Role</p>
                             <p class="info"><?php echo $all_fields['role'] ?></p>
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-md-3 mb-4 mb-md-0">
                             <p class="label">Date</p>
                             <p class="info"><?php echo $all_fields['date'] ?></p>
                         </div>
 
-                        <div class="col-2">
-                            <div class="h-100 d-flex align-items-center justify-content-end">
+                        <div class="col-md-2 mb-2 mb-md-0">
+                            <div class="h-100 d-flex align-items-center justify-content-md-end">
                                 <button><span>View</span><img height="15" src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow.png"></button>
                             </div>
                         </div>

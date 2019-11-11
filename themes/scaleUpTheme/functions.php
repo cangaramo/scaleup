@@ -1,7 +1,5 @@
 <?php
-/***********************************************************************************************/
-/* Add Menus */
-/***********************************************************************************************/
+/* Add menus */
   add_theme_support( 'post-thumbnails' ); 
   
 	register_nav_menus(
@@ -10,8 +8,6 @@
 			'footer' => __('Footer  Menu')
 		)
 	);
-
-
 
 /* Enqueue styles and scripts */
 
@@ -63,62 +59,7 @@ add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
 
 /* AJAX LOAD POSTS */
-
-function load_posts(){
-
-	$speciality = $_POST['speciality'];
-	
-	$args = array (
-		'post_type' => 'programmes',
-		'posts_per_page' => -1,
-		'meta_key'		=> 'speciality',
-		'meta_value'	=> $speciality
-	);
-	$programmes = get_posts($args);
-	$lat_array = array();
-	$lng_array = array();
-	$description_array = array();
-
-	?>
-
-			<div id="cards-list">
-
-                    <?php foreach ($programmes as $index=>$programme): 
-                        $post_id = $programme->ID;
-                        $title = get_the_title($post_id);
-                        $fields = get_fields($post_id);
-                        $location = $fields['location'];
-                        $lat = $location['lat'];
-						$lng = $location['lng'];
-						$loc = $fields['location_text'];
-                        array_push($lat_array,$lat);
-                        array_push($lng_array,$lng);
-						array_push($description_array,$loc);
-
-                        ?>
-                        <div class="card my-3 p-3">
-
-                            <p class="m-0 title"><?php echo $title ?></p>
-                            <hr>
-							<p class="m-0 subtitle">LOCATION:</p>
-                            <p><?php echo $fields['location_text'] ?></p>
-							<p class="m-0 subtitle">SPECIALITY:</p>
-                            <p><?php echo $fields['speciality'] ?></p>
-							<p class="m-0 subtitle">TOP STAT:</p>
-                            <p class="m-0"><?php echo $fields['stat'] ?></p>
-                        </div>
-                    <?php 
-                    endforeach;
-                    ?>
-
-			</div>
-
-			<div id="loop-location"  data-lat='<?php echo json_encode ($lat_array)?>' data-lng='<?php echo json_encode($lng_array) ?>' data-description='<?php echo json_encode($description_array) ?>'></div>
-
-	<?php 
-
-	die();
-}
+require 'functions/function_load_posts.php';
 add_action( 'wp_ajax_nopriv_load_posts', 'load_posts' );
 add_action( 'wp_ajax_load_posts', 'load_posts' );
 
@@ -130,69 +71,7 @@ add_action ('wp_ajax_load_programmes', 'load_programmes');
 
 
 /* AJAX LOAD STORIES */
-function load_stories (){
-
-	$posts_per_page = $_POST['posts_per_page'];
-
-	$args = array(
-        'post_type' => 'stories',
-        'posts_per_page' => $posts_per_page
-    );
-	$posts = get_posts($args);
-	?>
-
-	<div class="row">
-
-		<?php foreach ($posts as $index=>$post): 
-			$post_id = $post->ID;
-			$title = get_the_title($post_id);
-			$permalink = get_the_permalink($post_id);
-			$all_fields = get_fields($post_id);
-
-			//Padding medium screen
-			if ($index%2 ==0 ){
-				$class_md = "pr-md-0";
-			}
-			else {
-				$class_md = "pl-md-0";
-			}
-
-			//Padding large screen
-			if ($index%4 == 0) {
-				$class_lg = "pr-lg-0";
-			}
-			else if (($index+1)%4 == 0){
-				$class_lg = "pl-lg-0 ";
-			}
-			else {
-				$class_lg = "p-lg-0";
-			}
-		?>
-
-			<div class="col-md-6 col-lg-3 <?php echo $class_lg?> <?php echo $class_md?>">
-				<div class="story">
-					<div class="bg-image w-100 h-100" style="background-image:url('<?php echo $all_fields['image_thumbnail']?>')"></div>
-					<div class="layer">
-						<div class="d-flex h-100 w-100 align-items-center text-center justify-content-center">
-							<div class="p-3">
-								<p class="title"><?php echo $title ?></p>
-								<p class="description mb-4"><?php echo $all_fields['description']?></p>
-								<a href="<?php echo $permalink ?>" class="link white">Read more</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-				
-		<?php endforeach ?>
-
-	</div>
-
-	<?php 
-	die ();
-}
-
-
+require 'functions/function_load_stories.php';
 add_action( 'wp_ajax_nopriv_load_stories', 'load_stories' );
 add_action( 'wp_ajax_load_stories', 'load_stories' );
 
@@ -233,13 +112,9 @@ add_action( 'wp_ajax_load_chapter', 'load_chapter' );
 
 
 /* AJAX LOAD AREA */
-
 function load_area(){
-
 	$area_id = $_POST['area'];
-	
 	require 'parts/part-area_summary.php';
-
 	die();
 }
 add_action( 'wp_ajax_nopriv_load_area', 'load_area' );
@@ -247,52 +122,93 @@ add_action( 'wp_ajax_load_area', 'load_area' );
 
 
 /* AJAX LOAD SEARCH RESULTS */
-
-function load_search(){
-	
-	$keyword = $_POST['keyword'];
-
-	/* General arguments */
-	$args = array(
-		'post_type'   => array('page'),
-		'orderby' => 'relevance', 
-		'order'	=> 'ASC',
-		'posts_per_page' => 5,
-		's' => $keyword
-	);
-
-	//Main query 
-	$query = new WP_Query( $args );
-
-	// LOOP - show posts
-	if( $query->have_posts() ) :
-
-		while( $query->have_posts() ): $query->the_post();
-			$mypost = $query->post;
-			$id = get_the_ID();
-			$link = get_the_permalink(); 
-			$post_type = get_post_type($id);
-			$title = get_the_title($id);
-			?>	
-			<a class="result" data-link="<?php echo $link ?>" href="<?php echo $link ?>"> <?php echo $title ?></a>
-		<?php
-
-		endwhile;
-
-			
-		wp_reset_postdata();
-	else : ?>
-			
-		<p class="no-posts">No posts found</p>
-			
-	<?php endif;
-
-
-	die();
-}
+require 'functions/function_load_search.php';
 add_action( 'wp_ajax_nopriv_load_search', 'load_search' );
 add_action( 'wp_ajax_load_search', 'load_search' );
 
+/* AJAX LOAD AMBASSADORS */
+function load_ambassadors(){
+
+	$lep = $_POST['lep'];
+	$sector = $_POST['sector'];
+
+	$args = array(
+        'post_type' => 'ambassadors',
+        'posts_per_page' => -1
+	);
+	
+	//LEP
+    if($lep) {
+        $lep_operator = "IN";
+    }
+    else {
+        $lep_operator = "NOT IN";
+	}
+	
+	//Ecosystem sector
+	if($sector) {
+        $sector_operator = "IN";
+    }
+    else {
+        $sector_operator = "NOT IN";
+	}	
+
+	$args['tax_query'] = 
+	array(
+		'relation' => 'AND',
+		array(
+			'taxonomy' => 'lep',
+			'field' => 'term_id',
+			'terms' => $lep,
+			'operator' => $lep_operator,
+		),
+		array(
+            'taxonomy' => 'ecosystem_sector',
+            'field'    => 'term_id',
+            'terms'    => $sector,
+            'operator' => $sector_operator,
+        ),
+	);
+
+	$ambassadors = get_posts($args);
+	$query = new WP_Query($args);
+	$total = $query->post_count;
+	?>
+
+	<h4><?php echo $total?> Found</h4>
+
+	<div class="row">
+        
+		<?php foreach ($ambassadors as $ambassador): 
+			$ambassador_id = $ambassador->ID;
+			$title = get_the_title($ambassador_id);
+			$all_fields = get_fields($ambassador_id);
+		?>
+			<div class="col-lg-3">
+				<div class="person position-relative my-3">
+					<div class="bg-white h-100 p-3">
+						<img height="100" src="<?php echo $all_fields['picture'] ?>">
+						<p class="name mt-3"><?php echo $title ?></p>
+						<p class="pos"><?php echo $all_fields['position'] ?></p>
+						<p class="mb-3"><?php echo $all_fields['short_bio'] ?></p>
+					</div>
+					<div style="position: absolute; bottom: 15px; width: 100%">
+						<div class="d-flex justify-content-center">
+							<a class="link" data-toggle="modal" data-target="#modalBasic<?php echo $partner_id?>">More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<?php endforeach ?>
+
+	</div>
+
+	<?php 
+	die();
+}
+add_action( 'wp_ajax_nopriv_load_ambassadors', 'load_ambassadors' );
+add_action( 'wp_ajax_load_ambassadors', 'load_ambassadors' );
 
 /* TWITTER */
 
@@ -311,14 +227,12 @@ add_filter('juiz_ltw_time_ago', 'see_more_tweets_link');
 
 /* Custom formats WYSIWYG */
 
-//Add buttons to editor
 function wpb_mce_buttons_2($buttons) {
     array_unshift($buttons, 'styleselect');
 	return $buttons;
 }
 add_filter('mce_buttons_2', 'wpb_mce_buttons_2');
 
-//Create styles
 function my_mce_before_init_insert_formats( $init_array ) {  
 	 
 	$style_formats = array(  
@@ -368,7 +282,6 @@ function my_mce_before_init_insert_formats( $init_array ) {
 	$init_array['style_formats'] = json_encode( $style_formats );  
 	return $init_array;  
 } 
-// Attach callback to 'tiny_mce_before_init' 
 add_filter( 'tiny_mce_before_init', 'my_mce_before_init_insert_formats' ); 
 
 function my_theme_add_editor_styles() {

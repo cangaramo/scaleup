@@ -8,10 +8,10 @@
 
     <div class="row py-4">
         <div class="col-md-6 pr-md-0">
-            <a class="first-link btn-link" href="<?php echo $link1 ?>"><?php echo $text_1 ?></a>
+            <a class="first-link btn-link" href="<?php echo $link_1 ?>"><?php echo $text_1 ?></a>
         </div>
         <div class="col-md-6 pl-md-0">
-            <a class="second-link btn-link" href="<?php echo $link2 ?>"><?php echo $text_2 ?></a>
+            <a class="second-link btn-link" href="<?php echo $link_2 ?>"><?php echo $text_2 ?></a>
         </div>
     </div>
 

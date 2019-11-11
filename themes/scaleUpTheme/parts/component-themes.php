@@ -35,7 +35,7 @@
                             <p><?php echo $title?></p>
                         </div>
              
-                        <div class="col-12 d-block d-lg-none">
+                        <div class="col-12 d-block d-lg-none" onClick="redirectTo('<?php echo $link ?>')">
                             <div class="<?php echo $class ?> py-4 py-md-3 box">
                                 <img style="height:60px" src="<?php echo $theme_fields['white_icon'] ?>">
                                 <p><?php echo $title?></p>
