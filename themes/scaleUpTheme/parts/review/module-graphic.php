@@ -9,6 +9,6 @@
     <h3><?php echo $heading ?></h3>
     <h4><?php echo $subheading ?></h4>
     <hr>
-    <img src="<?php echo $image ?>">
+    <a href="<?php echo $image ?>" target="_blank"><img src="<?php echo $image ?>"></a>
     <p class="footnote"><?php echo $footnote ?></p>
 </div>

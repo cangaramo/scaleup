@@ -1,3 +1,11 @@
+<?php 
+    $chapters = get_terms( array(
+        'taxonomy' => 'chapter',
+        'hide_empty' => false,
+        'orderby' => 'slug',
+        'order' => 'ASC'
+    ) );
+?>
 <div class="scaleup-review">
 
     <!-- Banner -->
@@ -24,13 +32,6 @@
                         <div class="short-menu w-100">
 
                             <?php 
-                            $chapters = get_terms( array(
-                                'taxonomy' => 'chapter',
-                                'hide_empty' => false,
-                                'orderby' => 'slug',
-                                'order' => 'ASC'
-                            ) );
-
                             foreach ($chapters as $chapter):
 
                                 $title = $chapter->name;
@@ -96,6 +97,7 @@
         $articles = get_posts($args);
     ?>
 
+    <!-- Static menu -->
     <div class="bg-light_gray">
         <div class="container">
 
@@ -106,73 +108,70 @@
 
                         <h5>CONTENTS</h5>
 
-                        <?php 
-                        $chapters = get_terms( array(
-                            'taxonomy' => 'chapter',
-                            'hide_empty' => false,
-                            'orderby' => 'slug',
-                            'order' => 'ASC'
-                        ) );
+                        <div class="chapters-list">          
 
-                        foreach ($chapters as $chapter):
+                            <?php 
+                            foreach ($chapters as $chapter):
 
-                            $title = $chapter->name;
-                            $description = $chapter->description;
-                            $term_id = $chapter->term_id;
-                            $taxonomy = $chapter->taxonomy;
-                            $ref = $taxonomy . '_' . $term_id;
-                            $highlight_colour = get_field('highlight_colour', $ref);
+                                $title = $chapter->name;
+                                $description = $chapter->description;
+                                $term_id = $chapter->term_id;
+                                $taxonomy = $chapter->taxonomy;
+                                $ref = $taxonomy . '_' . $term_id;
+                                $highlight_colour = get_field('highlight_colour', $ref);
 
-                            if ($highlight_colour == "#DDE3E8"){
-                                $class_colour = "colour-dark";
-                            }
-                            else {
-                                $class_colour = "";
-                            }
+                                if ($highlight_colour == "#DDE3E8"){
+                                    $class_colour = "colour-dark";
+                                }
+                                else {
+                                    $class_colour = "";
+                                }
 
-                            $args = array(
-                                'post_type' => 'articles',
-                                'posts_per_page' => -1,
-                                'tax_query' => array(
-                                    array(
-                                        'taxonomy' => 'chapter',
-                                        'field' => 'term_id',
-                                        'terms' => $term_id,
+                                $args = array(
+                                    'post_type' => 'articles',
+                                    'posts_per_page' => -1,
+                                    'tax_query' => array(
+                                        array(
+                                            'taxonomy' => 'chapter',
+                                            'field' => 'term_id',
+                                            'terms' => $term_id,
+                                        )
                                     )
-                                )
-                            );
-                            $articles = get_posts($args);
+                                );
+                                $articles = get_posts($args);
 
-                        ?>
-                            <div class="chapter <?php echo $class_colour ?>" data-chapter="<?php echo $article_id ?>"
-                                style="background-color:<?php echo $highlight_colour?>">
-                                
-                                <!-- Header -->
-                                <div class="d-flex py-1 px-2 header" data-toggle="collapse">
-                                    <div style="margin-top:1px">
-                                        <img class="arrow-down" src="<?php echo get_bloginfo('template_url')?>/assets/images/chevron.png">
+                            ?>
+                                <div class="chapter <?php echo $class_colour ?>" data-chapter="<?php echo $article_id ?>"
+                                    style="background-color:<?php echo $highlight_colour?>">
+                                    
+                                    <!-- Header -->
+                                    <div class="d-flex py-2 px-2 header" data-toggle="collapse">
+                                        <div style="margin-top:1px">
+                                            <img class="arrow-down" src="<?php echo get_bloginfo('template_url')?>/assets/images/chevron.png">
+                                        </div>
+
+                                        <div>
+                                            <p class="title"><?php echo $title ?></p>
+                                            <p class="desc"><?php echo $description?></p> 
+                                        </div>
                                     </div>
 
-                                    <div>
-                                        <p class="title"><?php echo $title ?></p>
-                                        <p><?php echo $description?></p> 
+                                    <!-- Articles -->
+                                    <div class="collapse content">
+                                        <div class="d-flex flex-column py-2" style="margin-left:42px">
+                                            <?php foreach ($articles as $article): 
+                                                $article_id = $article->ID;
+                                                $title = get_the_title($article_id); ?>
+                                                <a class="load-chapter" data-article="<?php echo $article_id?>"><?php echo $title ?></a>
+                                            <?php endforeach ?>
+                                        </div>
                                     </div>
+                                    
                                 </div>
 
-                                <!-- Articles -->
-                                <div class="collapse content">
-                                    <div class="d-flex flex-column py-2" style="margin-left:42px">
-                                        <?php foreach ($articles as $article): 
-                                            $article_id = $article->ID;
-                                            $title = get_the_title($article_id); ?>
-                                            <a class="load-chapter" data-article="<?php echo $article_id?>"><?php echo $title ?></a>
-                                        <?php endforeach ?>
-                                    </div>
-                                </div>
-                                
-                            </div>
+                            <?php endforeach; ?>
 
-                        <?php endforeach; ?>
+                        </div>
 
                     </div>
 
@@ -188,7 +187,7 @@
         </div>
     </div>
 
-
+    <!-- Fixed menu -->
     <div class="fixed-menu" style="position:fixed; top: 0; width: 100%; height: 100%; ">
         <div class="container">
 
@@ -201,91 +200,69 @@
 
                         <h5>CONTENTS</h5>
 
+                        <div class="chapters-list">                
+                            <?php 
+                            foreach ($chapters as $chapter):
 
-                        <?php 
-                        $chapters = get_terms( array(
-                            'taxonomy' => 'chapter',
-                            'hide_empty' => false,
-                            'orderby' => 'slug',
-                            'order' => 'ASC'
-                        ) );
+                                $title = $chapter->name;
+                                $description = $chapter->description;
+                                $term_id = $chapter->term_id;
+                                $taxonomy = $chapter->taxonomy;
+                                $ref = $taxonomy . '_' . $term_id;
+                                $highlight_colour = get_field('highlight_colour', $ref);
 
-                        foreach ($chapters as $chapter):
+                                if ($highlight_colour == "#DDE3E8"){
+                                    $class_colour = "colour-dark";
+                                }
+                                else {
+                                    $class_colour = "";
+                                }
 
-                            $title = $chapter->name;
-                            $description = $chapter->description;
-                            $term_id = $chapter->term_id;
-                            $taxonomy = $chapter->taxonomy;
-                            $ref = $taxonomy . '_' . $term_id;
-                            $highlight_colour = get_field('highlight_colour', $ref);
-
-                            if ($highlight_colour == "#DDE3E8"){
-                                $class_colour = "colour-dark";
-                            }
-                            else {
-                                $class_colour = "";
-                            }
-
-                            $args = array(
-                                'post_type' => 'articles',
-                                'posts_per_page' => -1,
-                                'tax_query' => array(
-                                    array(
-                                        'taxonomy' => 'chapter',
-                                        'field' => 'term_id',
-                                        'terms' => $term_id,
+                                $args = array(
+                                    'post_type' => 'articles',
+                                    'posts_per_page' => -1,
+                                    'tax_query' => array(
+                                        array(
+                                            'taxonomy' => 'chapter',
+                                            'field' => 'term_id',
+                                            'terms' => $term_id,
+                                        )
                                     )
-                                )
-                            );
-                            $articles = get_posts($args);
-                        ?>
+                                );
+                                $articles = get_posts($args);
+                            ?>
 
-                            <div class="chapter <?php echo $class_colour ?>" data-chapter="<?php echo $article_id ?>"
-                                style="background-color:<?php echo $highlight_colour?>">
-                                
-                                <!-- Header -->
-                                <div class="d-flex py-1 px-2 header" data-toggle="collapse">
-                                    <div style="margin-top:1px">
-                                        <img class="arrow-down" src="<?php echo get_bloginfo('template_url')?>/assets/images/chevron.png">
+                                <div class="chapter <?php echo $class_colour ?>" data-chapter="<?php echo $article_id ?>"
+                                    style="background-color:<?php echo $highlight_colour?>">
+                                    
+                                    <!-- Header -->
+                                    <div class="d-flex py-2 px-2 header" data-toggle="collapse">
+                                        <div style="margin-top:1px">
+                                            <img class="arrow-down" src="<?php echo get_bloginfo('template_url')?>/assets/images/chevron.png">
+                                        </div>
+
+                                        <div>
+                                            <p class="title"><?php echo $title ?></p>
+                                            <p class="desc"><?php echo $description?></p> 
+                                        </div>
                                     </div>
 
-                                    <div>
-                                        <p class="title"><?php echo $title ?></p>
-                                        <p><?php echo $description?></p> 
+                                    <!-- Articles -->
+                                    <div class="collapse content">
+                                        <div class="d-flex flex-column py-2" style="margin-left:42px">
+                                            <?php foreach ($articles as $article): 
+                                                $article_id = $article->ID;
+                                                $title = get_the_title($article_id); ?>
+                                                <a class="load-chapter" data-article="<?php echo $article_id?>"><?php echo $title ?></a>
+                                            <?php endforeach ?>
+                                        </div>
                                     </div>
+                                    
                                 </div>
 
-                                <!-- Articles -->
-                                <div class="collapse content">
-                                    <div class="d-flex flex-column py-2" style="margin-left:42px">
-                                        <?php foreach ($articles as $article): 
-                                            $article_id = $article->ID;
-                                            $title = get_the_title($article_id); ?>
-                                            <a class="load-chapter" data-article="<?php echo $article_id?>"><?php echo $title ?></a>
-                                        <?php endforeach ?>
-                                    </div>
-                                </div>
-                                
-                            </div>
+                            <?php endforeach; ?>
 
-                        <?php endforeach; ?>
-
-                        <?php 
-                        /*
-                        foreach ($articles as $article):
-                            $article_id = $article->ID;
-                            $title = get_the_title($article_id); 
-                            $all_fields = get_fields($article_id);
-
-                            if ($all_fields['highlight_colour'] == "#FDB03C"){
-                                $class_colour = "colour-dark";
-                            }
-                            else {
-                                $class_colour = "";
-                            }
-                            
-                        endforeach; */ ?>
-                                                
+                        </div>                          
 
                     </div>
                     

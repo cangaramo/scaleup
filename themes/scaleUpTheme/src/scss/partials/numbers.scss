@@ -1,0 +1,43 @@
+@import 'variables.scss';
+
+.numbers {
+
+    .col-2 {
+        position: relative;
+    }
+
+    .box {
+                
+        p {
+            margin-bottom: 0;
+            color: white;
+            text-align:center;
+        }
+
+        .desc {
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .num {
+            font-weight: 600;
+            font-size: 28px;
+            margin-top: 10px;
+        }
+
+        img {
+            height: 45px;
+        }
+
+        .line {
+            height: 100%;
+            width: 1px;
+            background: white;
+            position: absolute;
+            top: 0;
+            right: 0;
+            opacity: 0.5;
+        }
+        
+    }
+}

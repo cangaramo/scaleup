@@ -1,0 +1,40 @@
+@import 'variables.scss';
+
+.vacancy {
+    background: white;
+
+    button {
+        background: $dark_orange;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        text-transform: uppercase;
+        font-size: 13px;
+
+        img {
+            margin-left: 20px;
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            background: $orange;
+        }
+    }
+
+    .label {
+        color: black;
+        margin-bottom: 0;
+    }
+
+    .info {
+        margin-bottom: 0;
+        color: #757575;
+    }
+
+    p {
+        color: #757575;
+    }
+}

@@ -1,7 +1,9 @@
 <?php 
     $args = array(
         'post_type' => 'area_summaries',
-        'posts_per_page' => -1
+        'posts_per_page' => -1,
+        'orderby' => 'menu_order',
+	    'order' => 'ASC'
     );
     $areas = get_posts($args);
 ?>
@@ -23,8 +25,10 @@
 
                 <div class="col-6 mb-2">
                     <div class="area py-2" data-area="<?php echo $area_id ?>">
-                        <?php echo $title ?>
-                        <img src="<?php echo get_bloginfo('template_url')?>/assets/images/chevron.png">
+                        <div class="d-flex h-100 align-items-center justify-content-between">
+                            <p class="w-100 text-center mb-0"><?php echo $title ?></p>
+                            <img src="<?php echo get_bloginfo('template_url')?>/assets/images/chevron.png">
+                        </div>
                     </div>
                 </div>
 

@@ -22,6 +22,17 @@
         }
     }
 
+    .chapters-list {
+        //max-height: 392px;
+        max-height: 402px;
+        //max-height: 465px;
+        overflow: scroll;
+    }
+
+    .fixed-menu {
+        display: none;
+    }
+    
     .menu, .short-menu{
         
         .chapter{
@@ -61,6 +72,10 @@
                 font-size: 15px;
                 color: white;
                 margin-top: 2px;
+            }
+
+            .desc {
+                line-height: 19px;
             }
 
             .title {

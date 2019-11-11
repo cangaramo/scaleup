@@ -2,6 +2,10 @@
 
 .single-programme {
 
+    a {
+        color: $orange;
+    }
+
     .heading {
         font-size: 35px;
         font-weight: 600;
@@ -9,7 +13,7 @@
 
     .subheading {
         font-size: 20px;
-        color: $dark-blue;
+        color: $orange;
         font-weight: 500;
     }
 

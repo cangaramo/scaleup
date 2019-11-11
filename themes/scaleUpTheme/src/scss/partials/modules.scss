@@ -14,8 +14,15 @@
 }
 
 .module-content {
+
+    h2 {
+        text-transform: uppercase;
+        color: $dark_blue;
+        font-weight: 500;
+        margin-bottom: 0;
+    }
     
-    .heading {
+    .heading{
         font-size: 35px;
         font-weight: 600;
         line-height: 38px;
@@ -207,7 +214,8 @@
 
     p {
         margin-top: 10px;
-        font-size: 12px;
+        font-size: 15px;
+        line-height: 18px;
         font-weight: 500;
         text-align: center;
     }
@@ -215,10 +223,46 @@
 
 .module-quote {
 
+    /*
     .quote {
         border-left: 1px solid $dark;
         font-weight: 500;
+    } */
+
+    .quote-cont {
+        color: white;
+        
+
+        .quote {
+            display: block;
+            font-weight: 400;
+            line-height: 23px;
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .quote:before {
+            content: '❝';
+            color: $accent_orange;
+            margin-right: 10px;
+            font-size: 26px;
+            
+        }
+        
+        .quote:after {
+            content: '❞';
+            color: $accent_orange;
+            margin-left: 10px;
+            font-size: 26px;
+            font-weight: 400;
+        }
+
+        .author, .company {
+            margin-bottom: 0;
+        }
+    
     }
+    
 }
 
 .module-footnote {
@@ -241,6 +285,30 @@
 
     #response-area {
         display: none;
+    }
+
+    .list-areas {
+
+        .area {
+            background: $blue;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 15px;
+            cursor: pointer;
+            height: 55px;
+    
+            img {
+                float: right;
+                height: 20px;
+                margin-right: 20px;
+                margin-top: 2px;
+            }
+    
+            &:hover {
+                background: $dark_blue;
+            }
+        }
     }
    
 }

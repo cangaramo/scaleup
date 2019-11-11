@@ -1,8 +1,16 @@
 <?php 
     $title = $component['title'];
     $icons = $component['icons'];
+    $bg = $component['background'];
+    $text_colour = $component['text_colour'];
+
+    if(count($bg) == 0) {
+        $bg = "#548095";
+        $text_colour = "#FFFFFF";
+    }
+
 ?>
-<div class="module-icons py-3 px-45 bg-white">
+<div class="module-icons py-2 px-45" style="background: <?php echo $bg?>; color: <?php echo $text_colour ?>">
     <p class="title"><?php echo $title ?></p>
 
     <div class="row">

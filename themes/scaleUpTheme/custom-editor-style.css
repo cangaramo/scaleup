@@ -29,3 +29,21 @@
     font-weight: 600;
     margin-bottom: 0;
 }
+
+.border-blue {
+    color: #5da0b4; 
+    padding: 5px 0px 0px 0px; 
+    border-width: 2px 0px 0px 0px; 
+    border-style: solid;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+}
+
+.border-orange {
+    color: #dc8821; 
+    padding: 5px 0px 0px 0px; 
+    border-width: 2px 0px 0px 0px; 
+    border-style: solid;
+    display: block;
+}

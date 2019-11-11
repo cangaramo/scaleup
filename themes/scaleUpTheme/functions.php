@@ -202,6 +202,20 @@ add_action( 'wp_ajax_load_stories', 'load_stories' );
 function load_chapter(){
 
 	$chapter = $_POST['chapter'];
+
+	if ($chapter == "first") {
+
+		$args = array(
+			'post_type' => 'articles',
+			'posts_per_page' => 1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC'
+		);
+
+		$chapter = get_posts($args)[0]->ID; 
+
+	}
+
     $all_fields = get_fields($chapter);
     $components_article = $all_fields['components'];
 
@@ -337,7 +351,19 @@ function my_mce_before_init_insert_formats( $init_array ) {
 			'block' => 'span',
 			'classes' => 'title-blue',
 			'wrapper' => 'title'
-		)
+		),
+		array(
+			'title' => 'Orange with border',
+			'block' => 'span',
+			'classes' => 'border-orange',
+			'wrapper' => 'title'
+		),
+		array(
+			'title' => 'Blue with border',
+			'block' => 'span',
+			'classes' => 'border-blue',
+			'wrapper' => 'title'
+		),
 	);  
 	$init_array['style_formats'] = json_encode( $style_formats );  
 	return $init_array;  

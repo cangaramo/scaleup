@@ -18,6 +18,11 @@
                 <div class="row">
                     <?php foreach ($areas as $index=>$area): 
 
+                        $theme_id = $area['theme'];
+                        $title = get_the_title($theme_id);
+                        $link = get_the_permalink($theme_id);
+                        $theme_fields = get_fields($theme_id);
+
                         if ($index%2 == 0): 
                             $class = "bg-black";
                         else:
@@ -25,19 +30,17 @@
                         endif; ?>
 
         
-                        <div class="col <?php echo $class ?> py-5 box d-none d-lg-block">
-                            <img style="height:60px" src="<?php echo $area['icon'] ?>">
-                            <p><?php echo $area['title'] ?></p>
+                        <div class="col <?php echo $class ?> py-5 box d-none d-lg-block" onClick="redirectTo('<?php echo $link ?>')">
+                            <img style="height:60px" src="<?php echo $theme_fields['white_icon'] ?>">
+                            <p><?php echo $title?></p>
                         </div>
-              
              
                         <div class="col-12 d-block d-lg-none">
                             <div class="<?php echo $class ?> py-4 py-md-3 box">
-                                <img style="height:60px" src="<?php echo $area['icon'] ?>">
-                                <p><?php echo $area['title'] ?></p>
+                                <img style="height:60px" src="<?php echo $theme_fields['white_icon'] ?>">
+                                <p><?php echo $title?></p>
                             </div>
                         </div>
-              
 
                     <?php endforeach ?>
                 </div>

@@ -17,6 +17,10 @@ var home_url;
 
 var posts_per_page = 8;
 
+var scrollingChapters = 0;
+
+var current_page = 1;
+
 $( document ).ready(function() {
 
     //Get home url
@@ -130,7 +134,7 @@ $( document ).ready(function() {
             array_support.push(type_support);
         }
         
-        LoadProgrammes(array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
 
         //Mark checkbox as checked 
         checkbox_region = "#checkbox-" + region;
@@ -154,7 +158,7 @@ $( document ).ready(function() {
             $(this).find(".checkbox .fas").css("display", "none");
         }
 
-        LoadProgrammes(array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
     });
 
     $('body').on('click', '.endorsed', function (){
@@ -169,7 +173,7 @@ $( document ).ready(function() {
             $(this).find(".checkbox .fas").css("display", "none");
         }
 
-        LoadProgrammes(array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
     });
 
     
@@ -216,7 +220,7 @@ $( document ).ready(function() {
         }).get();
 
 
-        LoadProgrammes(array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
 
         //Close window and scroll to top
         section = ".all-programmes";
@@ -239,6 +243,26 @@ $( document ).ready(function() {
     });
 
 
+    /* Pagination */
+
+    $('body').on('click', '.next-btn', function(){
+        current_page = parseInt(current_page) + 1;
+        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+	});
+
+	$('body').on('click', '.prev-btn', function(){
+		current_page = parseInt(current_page) - 1;
+        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+	});
+
+    
+	$('body').on('click', '.changePage', function(){
+		new_page = $(this).val();
+		current_page = new_page;
+        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+	}); 
+
+
     /* Stories */
     $('body').on('click', '.all-stories', function (){
         num_posts = parseInt(posts_per_page);
@@ -251,6 +275,8 @@ $( document ).ready(function() {
 
     /* Chapter menu */
     $('body').on('click', '.static-menu .chapter .header', function (){
+
+        //1
 
         index = $(this).index('.static-menu .chapter .header');
         parent = ".static-menu";
@@ -274,9 +300,36 @@ $( document ).ready(function() {
             img.addClass("arrow-down");
             $(parent + ' .chapter .content').eq(index).collapse("hide");
         }
-    });
+
+
+        //2
+
+        parent = ".fixed-menu";
+        
+        //Hide or show current
+        img =  $(parent + ' .chapter .header img').eq(index);
+
+        if (img.hasClass("arrow-down")){
+            //Hide the rest
+            $(parent + ' .chapter .content').not(':eq(' + index + ')').collapse("hide");
+            $(parent + ' .chapter .header img').removeClass("arrow-up");
+            $(parent + ' .chapter .header img').addClass("arrow-down");
+
+            img.removeClass("arrow-down");
+            img.addClass("arrow-up");
+            $(parent + ' .chapter .content').eq(index).collapse("show");
+        }
+        
+        else if (img.hasClass("arrow-up")) {
+            img.removeClass("arrow-up");
+            img.addClass("arrow-down");
+            $(parent + ' .chapter .content').eq(index).collapse("hide");
+        }
+    }); 
 
     $('body').on('click', '.fixed-menu .chapter .header', function (){
+
+        //2
 
         index = $(this).index('.fixed-menu .chapter .header');
         parent = ".fixed-menu";
@@ -300,7 +353,34 @@ $( document ).ready(function() {
             img.addClass("arrow-down");
             $(parent + ' .chapter .content').eq(index).collapse("hide");
         }
-    });
+
+        //1
+
+        parent = ".static-menu";
+        
+        //Hide or show current
+        img =  $(parent + ' .chapter .header img').eq(index);
+
+        if (img.hasClass("arrow-down")){
+            //Hide the rest
+            $(parent + ' .chapter .content').not(':eq(' + index + ')').collapse("hide");
+            $(parent + ' .chapter .header img').removeClass("arrow-up");
+            $(parent + ' .chapter .header img').addClass("arrow-down");
+
+            img.removeClass("arrow-down");
+            img.addClass("arrow-up");
+            $(parent + ' .chapter .content').eq(index).collapse("show");
+        }
+        
+        else if (img.hasClass("arrow-up")) {
+            img.removeClass("arrow-up");
+            img.addClass("arrow-down");
+            $(parent + ' .chapter .content').eq(index).collapse("hide");
+        }
+
+    });  
+
+
     
     /* Load chapter from menu */
     $('body').on('click', '.load-chapter', function (){
@@ -320,6 +400,10 @@ $( document ).ready(function() {
         index = $('.open-content').index(this);
         $('.content-piece').hide();
         $('.content-piece').eq(index).slideDown("slow");
+
+        $('html, body').animate({
+            scrollTop: ( ($('.content-piece').eq(index).offset().top) - 50 )
+        },1100);
     });
 
     $('body').on('click', '.close-content', function (){
@@ -413,13 +497,19 @@ $( document ).ready(function() {
         LoadSearchResults(s);
     });
 
+    $('.chapters-list').on('scroll', function(){
+        index = $(this).index('.chapters-list');
+        var scrollTop = $('.chapters-list').eq(index).scrollTop();
+        scrollingChapters = scrollTop;        
+    });
+
 });
 
 
 $(window).on('load', function(){
 
     if ($('.programmes-list').length > 0) {
-        LoadProgrammes(array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+        LoadProgrammes("onload", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
     }
 
     if ($('.list-stories').length > 0) {
@@ -427,7 +517,7 @@ $(window).on('load', function(){
     }
 
     if ($('.scaleup-review').length > 0) {
-        chapter = 464;
+        chapter = "first";
         LoadChapter(chapter, "onload");
     }
     
@@ -436,19 +526,20 @@ $(window).on('load', function(){
 $hidden = false;
 var lastScrollTop = 0;
 
+
 $(window).scroll(function() {
 
-
+    //Swap menus
     if (window.innerWidth > 992) { 
 
         //If starts scrolling toggle menu
+        /*
         if ($(window).scrollTop() >= 10) {
             //Close menu
             $('.chapter .content').collapse("hide");
             $('.chapter .header img').removeClass("arrow-up");
             $('.chapter .header img').addClass("arrow-down");
-        }
-
+        } */
 
         var scrollTop = $(window).scrollTop();
         elemTop = $('.menu').offset().top;
@@ -466,13 +557,16 @@ $(window).scroll(function() {
         } 
         //Up
         else {
-            if ($hidden && elemBottom > (scrollTop - 100)) {    
+            if ($hidden && elemBottom > (scrollTop - 102)) {    
                 $('.fixed-menu').hide();
                 $('.static-menu').show();
                 $hidden = false; 
             } 
         }
         lastScrollTop = st;
+
+        //After swapping, scroll menu to position of the other menu, so it looks like one menu
+        $('.chapters-list').scrollTop(scrollingChapters);
     }
 
 
@@ -489,7 +583,7 @@ $(window).scroll(function() {
 6 - Type of programme
 
 */
-function LoadProgrammes(regions, types_business, types_support, aims, costs, types, providers, one_to_watch, endorsed){
+function LoadProgrammes(event, regions, types_business, types_support, aims, costs, types, providers, one_to_watch, endorsed){
 
     ajax_url = home_url + "/wp-admin/admin-ajax.php";
 
@@ -498,6 +592,7 @@ function LoadProgrammes(regions, types_business, types_support, aims, costs, typ
         type: 'post',
         data : {
             action: "load_programmes",
+            current_page: current_page,
             region: regions,
             type_business: types_business,
             type_support: types_support,
@@ -512,8 +607,19 @@ function LoadProgrammes(regions, types_business, types_support, aims, costs, typ
 
         },
         success:function(response){
-            $("#response-programmes").html(response);
-           // $("#response-programmes").hide().html(response).fadeIn(600);
+
+            if (event == 'onload') {
+                $("#response-programmes").html(response);
+            }
+            else {
+                $("#response-programmes").html(response);
+                $("html, body").scrollTop( ($("#response-programmes").offset().top) - 100);
+            }
+
+            /*
+            $("html, body").animate({ 
+                scrollTop: $('#response-programmes').offset().top 
+            }, "slow"); */
         }
     });
 

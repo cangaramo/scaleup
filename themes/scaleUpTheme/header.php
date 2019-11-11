@@ -33,24 +33,81 @@
                     $id = $menuitem->ID;
 
                     $current_title = get_the_title();
-                        if ($current_title == $title) {
-                            $class= "active";
-                        }
-                        else {
-                            $class = "";
-                        } ?>
+                    if ($current_title == $title) {
+                        $class= "active";
+                    }
+                    else {
+                        $class = "";
+                    } ?>
 
-                        <a class="nav-item nav-link text-center my-4 <?php echo $class ?>" href="<?php echo $url?>"><?php echo $title ?></a>
-                        <!-- <a class="nav-item nav-link px-2 mx-5 my-4 <?php echo $class ?>" href="<?php echo $url?>"><?php echo $title ?></a> -->
-                            
+                    <?php if ($parent == 0) :?>
+                        <!--
+                        <a class="nav-item nav-link px-3 mx-4 my-3 <?php echo $class ?>" href="<?php echo $url?>"><?php echo $title ?></a> --->
+
+                        <?php
+                        $dropdown = false;
+                        foreach ($menuitems as $menusubitem):
+                            $parentsubitem = $menusubitem->menu_item_parent;
+                            if ($parentsubitem == $id ):
+                                $dropdown = true;
+                            endif; 
+                        endforeach; 
+
+                        /* Dropdown item */
+                        if ($dropdown): ?>
+
+                            <div class="dropdown">
+
+                                <!-- Desktop -->
+                                <a href="<?php echo $url ?>" class="nav-item nav-link dropdown-toggle <?php echo $class ?> text-center my-2 mx-lg-2 mx-xl-3 d-none d-lg-inline-block" 
+                                id="dropdownMenuButton" ><?php echo $title ?>
+                                </a>
+
+                                <!-- Mobile -->
+                                <div class="text-center">
+
+                                    <a href="<?php echo $url ?>" class="nav-item nav-link d-inline-block d-lg-none text-center my-3 mx-lg-2 mx-xl-3">
+                                        <?php echo $title ?>
+                                    </a> 
+                                  
+                                    <a href="#" class="dropdown-toggle d-inline-block d-lg-none open-dropdown" id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-chevron-down"></i></a> 
+                                    
+                                    <div class="dropdown-menu m-0" style="transform: 0" aria-labelledby="dropdownMenuLink">
+
+                                        <?php foreach ($menuitems as $menusubitem):
+                                            $parentsubitem = $menusubitem->menu_item_parent;
+                                            $titlesubitem = $menusubitem->title;
+                                            $urlsubitem = $menusubitem->url;
+                                            $idsubitem = $menusubitem->object_id;
+                                                        
+                                            if ($parentsubitem == $id ): ?>   
+                                                <div><a class="dropdown-item text-center my-3" href="<?php echo $urlsubitem?>"><?php echo $titlesubitem;?></a></div>
+                                            <?php endif; 
+                                        endforeach; ?>
+
+                                    </div>
+
+                                </div>
+                                
+                            </div>
+
+                        <!-- Normal item -->
+                        <?php else: ?>
+                            <div class="text-center"><a class="nav-item nav-link d-inline-block text-center my-3 <?php echo $class ?>" href="<?php echo $url?>"><span><?php echo $title ?></span></a></div> 
+                            <!-- <a class="nav-item nav-link px-3 mx-4 my-3 <?php echo $class ?>" href="<?php echo $url?>"><?php echo $title ?></a> -->
+                        <?php endif; ?>
+            
+                    <?php endif ?> <!-- parent 0 -->
+             
                 <?php endforeach ?>
             </div>
         </div>
     </div>
 
     <!-- Open sidebar -->
+    
     <div id="open-btn-container" class="d-block d-lg-none">
-        <button style="z-index:14" id="open-btn" class="navbar-toggler collapsed close-anim mx-4 my-4" type="button"  data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button style="z-index:14" id="open-btn" class="navbar-toggler collapsed close-anim my-4" type="button"  data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar top-bar"></span>
             <span class="icon-bar middle-bar"></span>
             <span class="icon-bar bottom-bar"></span>	
@@ -63,7 +120,9 @@
         <nav class="navbar navbar-expand-lg py-3 py-lg-4 px-0">
 
             <!-- Align center -->
-            <div></div>
+            <div>
+                <a style="margin-left: 80px" class="open-search d-block d-lg-none"><img height="17" src="<?php echo get_bloginfo('template_directory'); ?>/assets/images/search_icon.png"></a>
+            </div>
 
             <!-- Logo mobile -->
             <div class="d-block d-lg-none">

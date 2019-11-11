@@ -14,6 +14,7 @@ function load_programmes(){
     $one_to_watch = $_POST['one_to_watch'];
     $endorsed = $_POST['endorsed'];
 
+    $current_page = $_POST['current_page'];
 
     /* If empty: Get all of them (NOT IN empty array) */
 
@@ -78,7 +79,10 @@ function load_programmes(){
 
     $args = array (
         'post_type' => 'programmes',
-        'posts_per_page' => -1
+        'posts_per_page' => -1,
+        'post_status' => 'publish',
+        'orderby' => 'menu_order',
+	    'order' => 'ASC'
     );
 
     $args['tax_query'] = 
@@ -155,8 +159,22 @@ function load_programmes(){
         $args['meta_value'] = '1';
     } 
 
+    /* Pagination */
+    $pagination_enabled = true;
 
+    if($pagination_enabled){
+        //$args['posts_per_page'] = intval($posts_per_page);
+        //$args['paged'] = $current_page;
+        $args['posts_per_page'] = 10;
+        $args['paged'] = $current_page;
+    };
+    
+
+    //Get programmes
     $programmes = get_posts($args);
+
+    //Main query
+	$query = new WP_Query( $args );
 
     if ($programmes): ?>
 
@@ -179,13 +197,11 @@ function load_programmes(){
                         <div class="bg-image thumbnail-image" onClick="redirectTo('<?php echo $link ?>')"
                         style="background-image:url('<?php echo $all_fields['thumbnail_image']?>')"></div>
                     </div>
-                    <div class="p-3 h-100">
+                    <div class="p-3">
                         <div class="row">
-                            <div class="col-9 pr-0">
+                            <div class="col-12">
                                 <p><?php echo $title ?></p>
-                                <p><?php echo $all_fields['description'] ?></p>
-                            </div>
-                            <div class="col-3">
+                                <!-- <p><?php echo $all_fields['description'] ?></p> -->
                             </div>
                         </div>
                     </div>
@@ -196,7 +212,17 @@ function load_programmes(){
                                     <a href="<?php echo $link ?>" class="link">Read more</a>
                                 </div>
                                 <div class="col-3">
-                                    <img style="height:40px; margin-top:-5px" src="<?php echo get_bloginfo('template_url')?>/assets/images/endorsed.svg">
+
+                                    <!-- Endorsed programmes -->
+                                    <?php 
+                                    if ($all_fields['endorsed'] == 1 ): ?>
+                                        <img style="height:40px; margin-top:-5px" src="<?php echo get_bloginfo('template_url')?>/assets/images/endorsed.svg">
+                                    <?php elseif ($all_fields['one_to_watch'] == 1 ): ?>
+                                        <img style="height:40px; margin-top:-5px" src="<?php echo get_bloginfo('template_url')?>/assets/images/teal_one_to_watch.png">
+                                    <?php else: ?>
+                                        <div style="height:40px"></div>
+                                    <?php endif; ?>
+
                                 </div>
                             </div>
                         </div>
@@ -205,11 +231,11 @@ function load_programmes(){
             </div>
 
 
-            <?php  if ($count == 3 || $count == 6 ): 
+            <?php  if ($count == 3 || $count == 10 ): 
 
                 if ($count == 3):
                     $class = "bg-orange";
-                elseif ($count == 6):
+                elseif ($count == 10):
                     $class = "bg-blue";
                     $count = 0; 
                 endif;
@@ -221,7 +247,7 @@ function load_programmes(){
                         <div class="d-flex flex-column justify-content-between h-100">
                             <div><img src="<?php echo get_bloginfo('template_url')?>/assets/images/question_mark.png"></div>
                             <p>Want to be considered for a programme?</p>
-                            <a href="">Tell us now</a>
+                            <a href="https://www.surveymonkey.co.uk/r/2JQ2XHJ">Tell us now</a>
                         </div>
                     </div>
                 </div>
@@ -231,6 +257,94 @@ function load_programmes(){
         <?php endforeach ?>
 
         </div>
+
+        <?php 
+        /* Pagination */
+        if($pagination_enabled){ 
+
+            $max = $query->max_num_pages;
+
+                if($max > 1){ 
+
+                    $next_disabled = false;
+                    $prev_disabled = false;
+
+                    if ($current_page == $max):
+                        $next_disabled = true;
+                    elseif ($current_page == 1):
+                        $prev_disabled = true;
+                    endif;
+                    					
+					$current_page_prev_prev = $current_page - 2;
+					$current_page_prev = $current_page - 1;
+					$current_page_next = $current_page + 1;
+					$current_page_next_next = $current_page + 2;
+                    ?>
+
+                    <div class="w100 d-flex justify-content-center pagination mt-5 mb-4 pt-2" >
+
+                        <form >
+                            <!-- Prev button -->
+                            <?php if (!$prev_disabled) : ?>
+                                <input type="button"  id="prev-btn" class="align-middle prev-btn"> 
+                            <?php else: ?>
+                                <input type="button"  id="prev-btn" disabled class="align-middle prev-btn"> 
+                            <?php endif; ?>
+
+							<!-- First item -->
+							<?php if ( ($current_page > 2) && ($max>3) ): ?>
+								<input type="button" value="1" class="changePage"> 
+								<!-- Hide ellipsis -->
+								<?php if ( ($current_page > 3) && ($max>4) ) : ?>
+									<input type="button" value="..." class="dots"> 
+								<?php endif ?>
+							<?php endif ?>
+
+							<!-- Go to other page -->
+							<!-- First page is active -->
+							<?php if ($current_page == 1): ?>
+								<input type="button" value="<?php echo $current_page?>" class="active changePage"> 
+								<input type="button" value="<?php echo $current_page_next?>" class="changePage"> 
+								<?php if ($current_page_next_next <= $max): ?>
+									<input type="button" value="<?php echo $current_page_next_next?>" class="changePage"> 
+								<?php endif ?>
+							<!-- Last page is active -->
+							<?php elseif ($current_page == $max): ?>
+								<?php if ($current_page_prev > 1): ?>
+									<input type="button" value="<?php echo $current_page_prev_prev?>" class="changePage"> 
+								<?php endif ?>
+								<input type="button" value="<?php echo $current_page_prev?>" class="changePage"> 
+								<input type="button" value="<?php echo $current_page?>" class="active changePage"> 
+							<?php else: ?>
+								<input type="button" value="<?php echo $current_page_prev?>" class="changePage"> 
+								<input type="button" value="<?php echo $current_page?>" class="active changePage"> 
+                            	<input type="button" value="<?php echo $current_page_next?>" class="changePage"> 
+							<?php endif ?>
+							
+
+							<!-- Last item -->
+							<?php if ( ($current_page < ($max-1)) && ($max>3) ): ?>
+								<!-- Hide ellipsis -->
+								<?php if (($current_page < ($max-2)) && ($max>4) ): ?>
+									<input type="button" value="..." class="dots"> 
+								<?php endif ?>
+								<input type="button" value="<?php echo $max?>" class="changePage"> 
+							<?php endif ?>
+
+                            <!-- Next button -->
+                            <?php if (!$next_disabled) : ?>
+                                <input type="button" value="" class="next-btn align-middle">
+                            <?php else: ?>
+                                <input type="button" value="" disabled class="next-btn align-middle"> 
+                            <?php endif; ?>
+                        
+                        </form>
+                    
+                    </div>
+            	<?php
+				}
+		
+		} ?>
 
     <?php else: ?>
 

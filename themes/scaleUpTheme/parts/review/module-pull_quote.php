@@ -1,14 +1,14 @@
 <?php 
     $quote = $component['pull_quote'];
+    $author = $component['author'];
+    $company = $component['company'];
 ?>
 <div class="module-quote py-3 px-45 bg-white">
 
-    <div class="row">
-        <div class="col-6">
-            <div class="quote px-3">
-                <p><?php echo $quote ?></p>
-            </div>
-        </div>
+    <div class="bg-blue p-4 quote-cont">
+        <p><span class="quote"><?php echo $quote ?></span></p>
+        <p class="author"><?php echo $author ?></p>
+        <p class="company"><?php echo $company ?></p>
     </div>
    
 </div>

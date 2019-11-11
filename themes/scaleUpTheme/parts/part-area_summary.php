@@ -19,7 +19,7 @@
             <div class="d-flex h-100 align-items-center">
                 <img height="150" src="<?php echo $all_fields['map_icon'] ?>">
                 <div class="pl-4">
-                    <p class="label">LOCAL AREA SUMARY:</p>
+                    <p class="label">LOCAL AREA SUMMARY:</p>
                     <h3><?php echo $title ?></h3>
                 </div>
             </div>
@@ -52,34 +52,48 @@
     </div>
 
     <!-- Sectors -->
-    <div class="bg-black">
-        <div class="container py-4 key-sectors">
+    <?php 
+    $show_sectors = false;
+    foreach ($categories as $category):
+        $term_id = $category->term_id;
+        $name = $category->name;
+        $parent = $category->category_parent;
+        if ($parent == 154) :
+            $show_sectors = true; 
+        endif;
+    endforeach; ?>
 
-            <div class="d-flex h-100 align-items-center">
-                <p class="label">Key sectors</p>
-                <div>
-                    <?php
-                        foreach ($categories as $category):
-                            $term_id = $category->term_id;
-                            $parent = $category->category_parent;
+    <?php if ($show_sectors): ?>
+        <div class="bg-black">
+            <div class="container py-4 key-sectors">
+
+                <div class="d-flex h-100 align-items-center">
+                    <p class="label">Key sectors</p>
+                    <div>
+                        <?php
+                            foreach ($categories as $category):
+                                $term_id = $category->term_id;
+                                $name = $category->name;
+                                $parent = $category->category_parent;
+                        
+                                if ($parent == 154):
+                                    $taxonomy = $category->taxonomy;
+                                    $ref = $taxonomy . '_' . $term_id;
+                                    $icon_cat = get_field('white_icon', $ref);  ?>
+
+                                    <img alt="<?php echo $name ?>" title="<?php echo $name ?>" src="<?php echo $icon_cat ?>">
+
+                                <?php endif ?>
+
+                            <?php endforeach;
+                        ?>
                     
-                            if ($parent == 34) {
-                                $taxonomy = $category->taxonomy;
-                                $ref = $taxonomy . '_' . $term_id;
-                                $icon_cat = get_field('icon', $ref);
-                            }
-                            ?>
-
-                            <img src="<?php echo $icon_cat ?>">
-                            
-                        <?php endforeach;
-                    ?>
-                   
+                    </div>
                 </div>
+                
             </div>
-            
         </div>
-    </div>
+    <?php endif ?>
 
     <!-- Copy -->
     <div class="bg-white">

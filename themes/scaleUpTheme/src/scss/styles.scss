@@ -28,6 +28,32 @@ h5 {
     font-weight: 500;
     margin-bottom: 0;
 }
+
+.title-blue-lowercase {
+    color: $blue;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.border-blue {
+    color: #5da0b4; 
+    padding: 5px 0px 0px 0px; 
+    border-width: 2px 0px 0px 0px; 
+    border-style: solid;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+}
+
+.border-orange {
+    color: #dc8821; 
+    padding: 5px 0px 0px 0px; 
+    border-width: 2px 0px 0px 0px; 
+    border-style: solid;
+    display: block;
+}
+
+
 .bg-image {
     background-size:cover; 
     background-position:center;
@@ -159,7 +185,7 @@ strong {
 
 
 .btn-blue {
-    background: $dark_blue;
+    background: $blue;
     color: #fff!important;
     padding: 8px 20px;
     text-transform: uppercase;
@@ -168,7 +194,7 @@ strong {
 
     &:hover {
         text-decoration: none;
-        background: $blue;
+        background: $dark_blue;
     }
 }
 
@@ -181,24 +207,6 @@ strong {
         color: white;
     }
 }
-
-@import 'partials/carousel.scss';
-@import 'partials/map.scss';
-@import 'partials/grid.scss';
-@import 'partials/featured_posts.scss';
-@import 'partials/banner.scss';
-@import 'partials/boxes.scss';
-@import 'partials/header.scss';
-@import 'partials/latest_reports.scss';
-@import 'partials/all_posts.scss';
-@import 'partials/latest_reports.scss';
-@import 'partials/programmes_list.scss';
-@import 'partials/contact_form.scss';
-@import 'partials/download_banner.scss';
-@import 'partials/single_story.scss';
-@import 'partials/modal_newsletter.scss';
-@import 'partials/footer.scss';
-    
 
 .double-link {
 
@@ -232,98 +240,38 @@ strong {
     }
 }
 
-
-.list-stories {
-    .story {
-        height: 260px;
-        position: relative;
-
-        .layer {
-            background: rgba(93, 160, 180, 0.9);
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.4s ease-out;
-
-            &:hover {
-                cursor: pointer;
-                opacity: 1;
-                transition: opacity 0.4s ease-out;
-            }
-
-            .title {
-                font-weight: 600;
-                font-size: 20px;
-            }
-
-            .description {
-                height: 80px;
-                overflow: hidden;
-                line-height: 20px;
-            }
-        }
-    }
-
-    .all-stories {
-
-        cursor: pointer;
-
-        &:hover {
-            p {
-                color: $blue;
-            }
-        }
-
-        p {
-            text-transform: uppercase;
-            font-size: 11px;
-            font-weight: 600;
-            color: #3f3e3d;
-            text-decoration: none;
-            margin-bottom: 5px;
-        }
-        
-    }
+.btn-icon{
+    height: 18px;
+    vertical-align: sub;
+    margin-left: 10px;
 }
 
-
-.list-stories-grid {
-    .story {
-        height: 350px;
-        background: white;
-        position: relative;
-
-        .title {
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        p {
-            line-height: 21px;
-            margin-bottom: 7px;
-        }
-
-        .bg-image {
-            height: 140px;
-        }
-
-        .pos-bottom {
-            position: absolute;
-            bottom: 20px;
-        }
-    }
-
-    .story.tall {
-        height: 715px;
-        .bg-image {
-            height: 350px;
-        }
-    }
-}
-
-
+@import 'partials/carousel.scss';
+@import 'partials/map.scss';
+@import 'partials/grid.scss';
+@import 'partials/featured_posts.scss';
+@import 'partials/banner.scss';
+@import 'partials/boxes.scss';
+@import 'partials/header.scss';
+@import 'partials/latest_reports.scss';
+@import 'partials/all_posts.scss';
+@import 'partials/latest_reports.scss';
+@import 'partials/programmes_list.scss';
+@import 'partials/contact_form.scss';
+@import 'partials/download_banner.scss';
+@import 'partials/single_story.scss';
+@import 'partials/modal_newsletter.scss';
+@import 'partials/footer.scss';
+@import 'partials/stories.scss';   
+@import 'partials/themes.scss';
+@import 'partials/single_programme.scss';
+@import 'partials/numbers.scss';
+@import 'partials/single_summary.scss';
+@import 'partials/scaleup_review.scss';
+@import 'partials/modules.scss';
+@import 'partials/vacancy.scss';
+@import 'partials/search.scss';
+@import 'partials/people.scss';
 
 .single-report {
 
@@ -343,252 +291,8 @@ strong {
     }
 }
 
-.themes {
-    color: white;
-
-    .title {
-        font-size: 24px;
-        font-weight: 500;
-        margin-bottom: 0;
-    }
-
-    .desc {
-        font-size: 17px;
-    }
-    
-    .box {
-        p {
-            font-size: 11px;
-            font-weight: 500;
-            text-align: center;
-            margin-top: 10px;
-            margin-bottom: 0;
-        }
-
-        img {
-            margin: auto;
-            display: block;
-            transform: scale(1);
-            transition: transform 0.35s;
-        }
-
-        &:hover {
-            background: $orange !important;
-            cursor: pointer;
-
-            img {
-                transform: scale(1.15);
-                transition: transform 0.35s ease;
-            }
-        }
-    }
-    
-}
 
 
-
-
-@import 'partials/single_programme.scss';
-
-.numbers {
-
-    .col-2 {
-        position: relative;
-    }
-
-    .box {
-                
-        p {
-            margin-bottom: 0;
-            color: white;
-            text-align:center;
-        }
-
-        .desc {
-            font-weight: 500;
-            font-size: 15px;
-        }
-
-        .num {
-            font-weight: 600;
-            font-size: 28px;
-            margin-top: 10px;
-        }
-
-        img {
-            height: 45px;
-        }
-
-        .line {
-            height: 100%;
-            width: 1px;
-            background: white;
-            position: absolute;
-            top: 0;
-            right: 0;
-            opacity: 0.5;
-        }
-        
-    }
-}
-
-
-@import 'partials/single_summary.scss';
-
-@import 'partials/scaleup_review.scss';
-
-@import 'partials/modules.scss';
-
-.list-areas {
-
-    .area {
-        background: $blue;
-        color: white;
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 15px;
-        cursor: pointer;
-
-        img {
-            float: right;
-            height: 20px;
-            margin-right: 20px;
-            margin-top: 2px;
-        }
-
-        &:hover {
-            background: $dark_blue;
-        }
-    }
-}
-
-.fixed-menu {
-    display: none;
-}
-
-.vacancy {
-    background: white;
-
-    button {
-        background: $dark_orange;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        text-transform: uppercase;
-        font-size: 13px;
-
-        img {
-            margin-left: 20px;
-        }
-
-        &:focus {
-            outline: none;
-        }
-
-        &:hover {
-            background: $orange;
-        }
-    }
-
-    .label {
-        color: black;
-        margin-bottom: 0;
-    }
-
-    .info {
-        margin-bottom: 0;
-        color: #757575;
-    }
-
-    p {
-        color: #757575;
-    }
-}
-
-.people-slider {
-    .person {
-
-        img {
-            display: block;
-            margin: 0 auto;
-            border-radius: 50%;
-        }
-
-        p {
-            text-align: center;
-            margin-bottom: 5px;
-            color: #757575;
-        }
-
-        a {
-            text-align: center;
-            cursor: pointer;
-            
-            &:focus {
-                outline: none;
-            }
-        }
-
-        .pos {
-            color: $dark;
-        }
-
-        .name {
-            font-weight: 500;
-            color: $blue;
-            text-transform: uppercase;
-            font-size: 14px;
-        }
-    }
-
-    .slick-prev {
-        position: absolute;
-        top: 50%;
-        left: -50px;
-        background-image: url('../../../assets/images/arrow_blue_back.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        width: 30px;
-        height: 30px;
-
-        &:before {
-            content: "";
-        }
-
-        &:hover, &:focus {
-            background-image: url('../../../assets/images/arrow_blue_back.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-    }
-
-    .slick-next {
-        position: absolute;
-        top: 50%;
-        right: -50px;
-        background-image: url('../../../assets/images/arrow_blue.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        width: 30px;
-        height: 30px;
-
-        &:before {
-            content: "";
-        }
-
-        &:hover, &:focus {
-            background-image: url('../../../assets/images/arrow_blue.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-    }
-
-}
-
-
-
-
-@import 'partials/search.scss';
 
 .committees .box {
     p {
@@ -657,3 +361,4 @@ strong {
         font-size: 18px;
     }
 }
+

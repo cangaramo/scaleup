@@ -4,7 +4,7 @@
 <div class="module-content-piece">
     <div class="content-piece">
 
-        <div class="px-4 py-3 top" style="background-color:<?php echo $piece['background_colour']?>">
+        <div class="px-45 py-3 top" style="background-color:<?php echo $piece['background_colour']?>">
             <div class="row h-100">
                 <div class="col-8">
                     <div class="d-flex h-100 align-items-center">
@@ -22,13 +22,25 @@
              </div>
         </div>
 
-        <div class="row p-4">
-             <div class="col-lg-8">
-                <?php echo $piece['content'] ?>
-            </div>
-            <div class="col-lg-4">
-                <img class="w-100" src="<?php echo $piece['picture'] ?>">
-            </div>
+        <div class="row px-45 pt-4">
+
+            <?php if ($piece['picture']): ?>
+
+                <div class="col-lg-8">
+                    <?php echo $piece['content'] ?>
+                </div>
+                <div class="col-lg-4">
+                    <img class="w-100" src="<?php echo $piece['picture'] ?>">
+                </div>
+
+            <?php else: ?>
+                
+                <div class="col-12">
+                    <?php echo $piece['content'] ?>
+                </div>
+
+            <?php endif; ?>
+            
         </div>
 
     </div>
