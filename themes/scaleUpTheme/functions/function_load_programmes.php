@@ -235,8 +235,14 @@ function load_programmes(){
 
                 if ($count == 3):
                     $class = "bg-orange";
+					$text = "Want to be considered for a programme?";
+					$link = "https://www.surveymonkey.co.uk/r/2JQ2XHJ";
+					$target = "_blank";
                 elseif ($count == 10):
                     $class = "bg-blue";
+					$text = "Your programme not listed?";
+					$link = "/contact/";
+					$target = "_self";
                     $count = 0; 
                 endif;
 
@@ -246,8 +252,8 @@ function load_programmes(){
                     <div class="box <?php echo $class ?> call-to-action p-3">
                         <div class="d-flex flex-column justify-content-between h-100">
                             <div><img src="<?php echo get_bloginfo('template_url')?>/assets/images/question_mark.png"></div>
-                            <p>Want to be considered for a programme?</p>
-                            <a href="https://www.surveymonkey.co.uk/r/2JQ2XHJ">Tell us now</a>
+                            <p><?php echo $text ?></p>
+                            <a href="<?php echo $link ?>" target="<?php echo $target ?>">Tell us now</a>
                         </div>
                     </div>
                 </div>

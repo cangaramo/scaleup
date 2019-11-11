@@ -142,11 +142,19 @@
                 <div class="col-lg-8">
                     <div class="py-5 p-3">
                         <?php echo $all_fields['copy'] ?>
-                    </div>
+                        <?php if ($all_fields['website_url']) { ?>
+						<p>
+						<a class="btn-blue" href="<?php echo $all_fields['website_url'] ?>" target="_blank"><?php echo $title ?> website</a>
+						</p>
+						<?php } ?>
+					</div>
                 </div>
                 <div class="col-lg-4 bg-gray_blue p-0">
-                    <img class="w-100" src="<?php echo $all_fields['thumbnail_image']?>">
-                    
+					<?php if ($all_fields['website_url']) { ?>
+						<a href="<?php echo $all_fields['website_url'] ?>" target="_blank"><img class="w-100" src="<?php echo $all_fields['thumbnail_image']?>"></a>
+						<?php } else { ?>
+							<img class="w-100" src="<?php echo $all_fields['thumbnail_image']?>">
+                    	<?php } ?>
                     <!-- Reviews -->
                     <div class="quote p-4">
 

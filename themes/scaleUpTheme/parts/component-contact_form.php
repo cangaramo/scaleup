@@ -4,6 +4,7 @@
     $banner_image = $values['banner_image'];
     $button_label = $values['button_label'];
     $address = $values['address'];
+	$colour = $values['colour'];
 ?>
 
 <!-- Banner -->
