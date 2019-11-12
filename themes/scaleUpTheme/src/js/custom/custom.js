@@ -32,6 +32,8 @@ $( document ).ready(function() {
     var host = window.location.host;
     home_url = "http://" + host;
 
+    console.log(home_url);
+
     //Slick
     $('.multiple-items').slick({
         infinite: true,
@@ -421,6 +423,11 @@ $( document ).ready(function() {
         LoadChapter(chapter, "fullmenu");
     });
 
+    $('body').on('click', '.goto-chapter', function (){
+        chapter = $(this).data("article");
+        LoadChapter(chapter, "fullmenu");
+    });
+
     $('body').on('click', '.short-menu .chapter', function (){
         first_chapter = $(this).data("chapter");
         LoadChapter(first_chapter, "shortmenu");
@@ -535,6 +542,17 @@ $( document ).ready(function() {
         scrollingChapters = scrollTop;        
     });
 
+
+    /* Slider item */
+
+    /* Open search */
+    $( ".slider-banner .show-item" ).click(function() {
+        index = $(this).index('.slider-banner .show-item');
+        $('.slider-banner .item').not(':eq(' + index + ')').hide();
+        $('.slider-banner .item').eq(index).show();
+        console.log(index);
+    });
+
 });
 
 
@@ -549,8 +567,14 @@ $(window).on('load', function(){
     }
 
     if ($('.scaleup-review').length > 0) {
-        chapter = "first";
-        LoadChapter(chapter, "onload");
+
+        var fragment = (window.location.hash).substring(1);
+        console.log(fragment);
+        if (fragment == "") {
+            console.log ("first");
+            chapter = "first";
+            LoadChapter(chapter, "onload");
+        }
     }
 
     if ($('.ambassadors-list').length > 0) {
@@ -612,6 +636,22 @@ $(window).scroll(function() {
 
 }); 
 
+
+/* Load chaper with hash */
+
+if (window.location.hash) {
+    url = window.location.href;
+    if ( url.includes("scaleup-review") ) {
+
+        var host = window.location.host;
+        home_url = "http://" + host;
+
+        var fragment = (window.location.hash).substring(1);
+        chapter = fragment;
+        LoadChapter(chapter, "fullmenu");
+    }
+}
+
 /* Load programmes */
 
 /*
@@ -670,9 +710,12 @@ function LoadProgrammes(event, regions, types_business, types_support, aims, cos
 //Shortmenu: if it's called from short menu
 function LoadChapter(chapter, event){
 
+    console.log("load chapter");
+
     ajax_url = home_url + "/wp-admin/admin-ajax.php";
 
-    
+    console.log (ajax_url);
+
     $.ajax({
         url: ajax_url,
         type: 'post',
@@ -702,7 +745,7 @@ function LoadChapter(chapter, event){
             } 
             //Only scroll if the div has a big size
             else {
-                if ( $("#response-chapter").height() > 1000) {
+                if ( $("#response-chapter").height() > 500) {
                     moveTop = true;
                 }
                 else {

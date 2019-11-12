@@ -103,9 +103,30 @@ function load_chapter(){
 		$layout_path = "parts/review/module-" . $layout_name . ".php";
 		
         require($layout_path);
-    endforeach; 
+	endforeach; 
+	
 
-	die();
+	$next = $all_fields['next'][0];
+	$prev = $all_fields['previous'][0];
+	?>
+
+	<div class="d-flex justify-content-between mt-4"> 
+
+		<?php if ($prev): ?>
+			<div><a class="btn-blue goto-chapter" data-article="<?php echo $prev ?>"><img class="mr-2" style="height: 15px" src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow-back.png">Previous</a></div>
+		<?php else: ?>
+			<div></div>
+		<?php endif ?>
+
+		<?php if ($next): ?>
+			<div><a class="btn-blue goto-chapter" data-article="<?php echo $next ?>">Next<img class="ml-2" style="height: 15px" src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow.png"></a></div>
+		<?php else: ?>
+			<div></div>
+		<?php endif ?>
+
+	</div>
+
+	<?php die();
 }
 add_action( 'wp_ajax_nopriv_load_chapter', 'load_chapter' );
 add_action( 'wp_ajax_load_chapter', 'load_chapter' );
@@ -134,7 +155,9 @@ function load_ambassadors(){
 
 	$args = array(
         'post_type' => 'ambassadors',
-        'posts_per_page' => -1
+		'posts_per_page' => -1,
+		'orderby' => 'title',
+		'order' => 'ASC'
 	);
 	
 	//LEP

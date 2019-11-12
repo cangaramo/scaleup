@@ -430,6 +430,34 @@ strong {
     background: #3F3E3D;
     color: white; }
 
+.slider-banner {
+  color: white; }
+  @media (min-width: 768px) {
+    .slider-banner {
+      height: 370px; } }
+  .slider-banner .title {
+    font-size: 35px;
+    line-height: 35px;
+    font-weight: 500; }
+  .slider-banner .description {
+    font-size: 17.5px; }
+  .slider-banner a {
+    padding: 8px 20px;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 13px;
+    text-decoration: none;
+    margin-right: 10px; }
+  .slider-banner .btn-blue-overblue {
+    background-color: #548095;
+    color: white;
+    line-height: 40px; }
+    .slider-banner .btn-blue-overblue:hover {
+      background: white;
+      color: #5DA0B4 !important;
+      cursor: pointer; }
+
 #boxes .box {
   height: 350px;
   color: white;
@@ -1844,7 +1872,7 @@ footer {
     color: white; }
 
 .person {
-  height: 420px; }
+  height: 420px !important; }
   .person img {
     display: block;
     margin: 0 auto;
@@ -2654,7 +2682,7 @@ footer {
     transition: all .75s; }
   .infographic-holder .recommendations-holder .item {
     display: inline-block;
-    width: 27%;
+    width: 30%;
     float: left;
     margin: 10px 1.5%;
     padding: 25px 15px;
@@ -2709,7 +2737,7 @@ footer {
         height: 750px; } }
   .infographic-holder .matter-holder .item {
     display: inline-block;
-    width: 27%;
+    width: 30%;
     float: left;
     margin: 10px 1.5%;
     padding: 25px 15px;

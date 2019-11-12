@@ -187,7 +187,7 @@ $(document).ready(function(){
   				slidesToShow: 1,
   				slidesToScroll: 1,
   				dots: true,
-  				autoplay: true,
+  				autoplay: false,
                 autoplaySpeed: 2000,
                  responsive: [
     {

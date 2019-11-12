@@ -223,7 +223,7 @@
 
                 <div class="item">
                     <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Lazaridis-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="img/to-watch.svg"></p>
+                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
                 </div>
 
 
@@ -394,12 +394,12 @@
             <span id="icons-infrastructure" class="sub-section-holder">
                 <div class="item">
                     <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Babraham-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="img/endorosed.jpg"></p>
+                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
                 </div>
 
                 <div class="item">
                     <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Eagle-Labs-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="img/endorosed.jpg"></p>
+                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
                 </div>
 
                 <div class="item">

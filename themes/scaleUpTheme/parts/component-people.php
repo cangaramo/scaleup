@@ -17,6 +17,15 @@
             ),
         );
     }
+    else {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'member',
+                'field'    => 'slug',
+                'terms'    => 'team',
+            ),
+        );
+    }
     
     $people = get_posts($args);
 ?>
