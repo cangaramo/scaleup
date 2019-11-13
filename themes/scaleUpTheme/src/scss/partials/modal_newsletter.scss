@@ -13,7 +13,11 @@
             color: white;
 
             .modal-body {
-                padding: 70px 60px;
+                padding: 40px 20px;
+
+                @media (min-width:992px){
+                    padding: 70px 60px;
+                }
             }
 
             .close-form {
@@ -24,7 +28,7 @@
                 img {
                     height: 35px;
                 }
-
+ 
                 &:focus {
                     outline: none;
                 }

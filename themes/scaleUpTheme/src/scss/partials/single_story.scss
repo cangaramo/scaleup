@@ -26,9 +26,13 @@
     .more-stories {
 
         .box {
-            height: 350px;
             background: white;
             position: relative;
+            height: 450px;
+
+            @media(min-width:992px){
+                height: 350px;
+            }
 
             .title {
                 font-weight: bold;
@@ -46,7 +50,11 @@
             }
 
             .bg-image {
-                height: 140px;
+                height: 240px;
+
+                @media(min-width:992px){
+                    height: 140px;
+                }
             }
 
             .pos-bottom {

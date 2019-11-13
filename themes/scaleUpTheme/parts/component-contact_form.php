@@ -56,7 +56,7 @@
             <div class="modal-body">
 
                 <div class="row">
-                    <div class="col-7">
+                    <div class="col-lg-7">
                         <img style="height: 55px" src="<?php echo get_bloginfo('template_url') ?>/assets/images/newsletter.png" >
                         <?php gravity_form( 2, $display_title = true, $display_description = true, $display_inactive = false, $field_values = null, $ajax = true, $tabindex, $echo = true );?>
                     </div>

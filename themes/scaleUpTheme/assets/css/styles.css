@@ -1114,9 +1114,12 @@ header .fab {
   font-size: 19px; }
 
 .single-story .more-stories .box {
-  height: 350px;
   background: white;
-  position: relative; }
+  position: relative;
+  height: 450px; }
+  @media (min-width: 992px) {
+    .single-story .more-stories .box {
+      height: 350px; } }
   .single-story .more-stories .box .title {
     font-weight: bold;
     font-size: 20px; }
@@ -1127,7 +1130,10 @@ header .fab {
     max-height: 85px;
     overflow: hidden; }
   .single-story .more-stories .box .bg-image {
-    height: 140px; }
+    height: 240px; }
+    @media (min-width: 992px) {
+      .single-story .more-stories .box .bg-image {
+        height: 140px; } }
   .single-story .more-stories .box .pos-bottom {
     position: absolute;
     bottom: 20px; }
@@ -1141,7 +1147,10 @@ header .fab {
     background: #5DA0B4;
     color: white; }
     #modalNewsletter .modal-dialog .modal-content .modal-body {
-      padding: 70px 60px; }
+      padding: 40px 20px; }
+      @media (min-width: 992px) {
+        #modalNewsletter .modal-dialog .modal-content .modal-body {
+          padding: 70px 60px; } }
     #modalNewsletter .modal-dialog .modal-content .close-form {
       background: none;
       border: none;
@@ -2724,7 +2733,7 @@ footer {
     text-align: center;
     padding-bottom: 60px; }
   .infographic-holder .matter-holder {
-    height: 1650px;
+    height: 1900px;
     margin: 0 auto;
     clear: both;
     width: 90%;
@@ -2734,7 +2743,7 @@ footer {
     transition: all .75s; }
     @media (min-width: 800px) {
       .infographic-holder .matter-holder {
-        height: 750px; } }
+        height: 740px; } }
   .infographic-holder .matter-holder .item {
     display: inline-block;
     width: 30%;
@@ -2873,3 +2882,51 @@ footer {
     .infographic-holder .growth-map, .infographic-holder .uk-map-holder {
       margin: 0 auto;
       transform: scale(0.7); } }
+
+/* Table */
+table {
+  border-collapse: collapse; }
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: white; }
+
+th {
+  background: #eee;
+  color: #343a40;
+  font-weight: bold; }
+
+td, th {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 16px; }
+
+@media only screen and (max-width: 760px) {
+  table {
+    width: 100%; }
+  tr:nth-of-type(odd) {
+    background: #eee; }
+  table, thead, tbody, th, td, tr {
+    display: block; }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px; }
+  tr {
+    border: 1px solid #ccc; }
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 35%; }
+  td:before {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    content: attr(data-column);
+    color: #000;
+    font-weight: bold; } }

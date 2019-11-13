@@ -1,10 +1,11 @@
 <?php 
     $pieces = $component['pieces'];
+    $collection_title = $component['collection_title'];
 ?>
 
 <div class="py-4 module-content-collection">
 
-    <h4 class="text-center">Introductions</h4>
+    <h4 class="text-center"><?php echo $collection_title ?></h4>
 
     <div class="row mb-5">
         <?php foreach ($pieces as $piece): 

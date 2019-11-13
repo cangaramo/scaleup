@@ -24,15 +24,11 @@ var current_page = 1;
 $( document ).ready(function() {
 
     //Get home url
-    /*
-    full_url = window.location.href;
-    path_url = window.location.pathname;
-    home_url = full_url.replace(path_url,""); */
 
-    var host = window.location.host;
-    home_url = "http://" + host;
+    protocol = window.location.protocol
+    host = window.location.host;
+    home_url = protocol + "//" + host;
 
-    console.log(home_url);
 
     //Slick
     $('.multiple-items').slick({
@@ -83,6 +79,11 @@ $( document ).ready(function() {
     });
 
     $('body').on('mouseenter', '.card', function (){
+
+        protocol = window.location.protocol
+        host = window.location.host;
+        home_url = protocol + "//" + host;
+        
         $(this).css("background-color", "#fdd38d");
         index = $(this).attr("id");
         var image = home_url + "/wp-content/themes/scaleUpTheme/assets/images/marker_hover.png";
@@ -91,6 +92,11 @@ $( document ).ready(function() {
     });
 
     $('body').on('mouseleave', '.card', function (){
+
+        protocol = window.location.protocol
+        host = window.location.host;
+        home_url = protocol + "//" + host;
+
         $(this).css("background-color", "white");
         var image = home_url + "/wp-content/themes/scaleUpTheme/assets/images/marker.png";
         markers[index].setIcon(image);        
@@ -168,6 +174,8 @@ $( document ).ready(function() {
         if (type_support != "") {
             array_support.push(type_support);
         }
+
+        current_page = 1;
         
         LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
 
@@ -193,6 +201,8 @@ $( document ).ready(function() {
             $(this).find(".checkbox .fas").css("display", "none");
         }
 
+        current_page = 1;
+
         LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
     });
 
@@ -207,6 +217,8 @@ $( document ).ready(function() {
             endorsed = 0;
             $(this).find(".checkbox .fas").css("display", "none");
         }
+
+        current_page = 1;
 
         LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
     });
@@ -254,6 +266,7 @@ $( document ).ready(function() {
             return $(this).val();
         }).get();
 
+        current_page = 1;
 
         LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
 
@@ -550,7 +563,6 @@ $( document ).ready(function() {
         index = $(this).index('.slider-banner .show-item');
         $('.slider-banner .item').not(':eq(' + index + ')').hide();
         $('.slider-banner .item').eq(index).show();
-        console.log(index);
     });
 
 });
@@ -569,7 +581,6 @@ $(window).on('load', function(){
     if ($('.scaleup-review').length > 0) {
 
         var fragment = (window.location.hash).substring(1);
-        console.log(fragment);
         if (fragment == "") {
             console.log ("first");
             chapter = "first";
@@ -643,8 +654,12 @@ if (window.location.hash) {
     url = window.location.href;
     if ( url.includes("scaleup-review") ) {
 
+        protocol = window.location.protocol
+        host = window.location.host;
+        home_url = protocol + "//" + host;
+
         var host = window.location.host;
-        home_url = "http://" + host;
+        home_url = "https://" + host;
 
         var fragment = (window.location.hash).substring(1);
         chapter = fragment;
@@ -664,6 +679,10 @@ if (window.location.hash) {
 
 */
 function LoadProgrammes(event, regions, types_business, types_support, aims, costs, types, providers, one_to_watch, endorsed){
+
+    protocol = window.location.protocol
+    host = window.location.host;
+    home_url = protocol + "//" + host;
 
     ajax_url = home_url + "/wp-admin/admin-ajax.php";
 
@@ -710,11 +729,12 @@ function LoadProgrammes(event, regions, types_business, types_support, aims, cos
 //Shortmenu: if it's called from short menu
 function LoadChapter(chapter, event){
 
-    console.log("load chapter");
-
+    protocol = window.location.protocol
+    host = window.location.host;
+    home_url = protocol + "//" + host;
+    
     ajax_url = home_url + "/wp-admin/admin-ajax.php";
 
-    console.log (ajax_url);
 
     $.ajax({
         url: ajax_url,
@@ -767,6 +787,10 @@ function LoadChapter(chapter, event){
 
 function LoadStories(posts_per_page){
 
+    protocol = window.location.protocol
+    host = window.location.host;
+    home_url = protocol + "//" + host;
+
     ajax_url = home_url + "/wp-admin/admin-ajax.php";
 
     $.ajax({
@@ -789,6 +813,10 @@ function LoadStories(posts_per_page){
 }
 
 function LoadArea(area_id){
+
+    protocol = window.location.protocol
+    host = window.location.host;
+    home_url = protocol + "//" + host;
 
     ajax_url = home_url + "/wp-admin/admin-ajax.php";
 
@@ -814,6 +842,10 @@ function LoadArea(area_id){
 
 function LoadSearchResults(keyword){
 
+    protocol = window.location.protocol
+    host = window.location.host;
+    home_url = protocol + "//" + host;
+
     ajax_url = home_url + "/wp-admin/admin-ajax.php";
 
     $.ajax({
@@ -835,6 +867,10 @@ function LoadSearchResults(keyword){
 }
 
 function LoadAmbassadors(lep, sector) {
+
+    protocol = window.location.protocol
+    host = window.location.host;
+    home_url = protocol + "//" + host;
 
     ajax_url = home_url + "/wp-admin/admin-ajax.php";
 
@@ -1046,6 +1082,10 @@ function setMapOnAll() {
 }
 
 function add_markers(){
+
+    protocol = window.location.protocol
+    host = window.location.host;
+    home_url = protocol + "//" + host;
 
     array_lat = $('#loop-location').data("lat");
     array_lng = $('#loop-location').data("lng");
