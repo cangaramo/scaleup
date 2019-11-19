@@ -20,6 +20,7 @@ var posts_per_page = 8;
 var scrollingChapters = 0;
 
 var current_page = 1;
+var posts_per_page = 10;
 
 $( document ).ready(function() {
 
@@ -211,10 +212,12 @@ $( document ).ready(function() {
 
         if (endorsed == 0) {
             endorsed = 1;
+            console.log("show");
             $(this).find(".checkbox .fas").css("display", "block");
         }
         else {
             endorsed = 0;
+            console.log("hide");
             $(this).find(".checkbox .fas").css("display", "none");
         }
 
@@ -234,6 +237,42 @@ $( document ).ready(function() {
         $(".filters-window").fadeOut("slow");
     });
 
+    $('body').on('click', '.clear-btn', function(){
+        $('input:checkbox').removeAttr('checked');
+
+        //Emtpy arrays
+        array_region = [];
+        array_business = [];
+        array_support = [];
+        array_aims = [];
+        array_cost = [];
+        array_types = [];
+        array_providers = [];
+
+        current_page = 1;
+        posts_per_page = 10;
+
+        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+
+        //Close window and scroll to top
+        section = ".all-programmes";
+        $('html, body').animate({
+            scrollTop: $(section).offset().top},
+            500,
+            function(){
+                $(".close-filters").hide();
+                $(".filters-window").fadeOut(600);
+            }    
+        );  
+        
+        //Reset search form
+        $("#dropdown-region").val("");
+        $("#dropdown-type-business").val("");
+        $("#dropdown-type-support").val("");
+
+        return false;
+
+    });
 
     $('body').on('click', '.filter-btn', function(){
 
@@ -267,6 +306,7 @@ $( document ).ready(function() {
         }).get();
 
         current_page = 1;
+        posts_per_page = -1;
 
         LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
 
@@ -692,6 +732,7 @@ function LoadProgrammes(event, regions, types_business, types_support, aims, cos
         data : {
             action: "load_programmes",
             current_page: current_page,
+            posts_per_page, posts_per_page,
             region: regions,
             type_business: types_business,
             type_support: types_support,

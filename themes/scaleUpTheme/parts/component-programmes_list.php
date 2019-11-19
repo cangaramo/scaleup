@@ -89,12 +89,12 @@
     <div class="py-5 position-relative all-programmes">
 
         <!-- Basic filters -->
-        <div class="container">
+        <div class="container pb-4">
             <div class="row filters pb-4">
                 <div class="col-lg-4">
-                    <h4>All programmes</h4>
+                    <h4 class="d-block d-lg-none mt-5"></h4>
                 </div>
-                <div class="col-lg-8">
+                    <div class="col-lg-8">
 
                     <div class="d-flex flex-column flex-sm-row justify-content-lg-end">
                         <div class="item one-to-watch">
@@ -113,13 +113,12 @@
                             <img class="close-filters float-right" src="<?php echo get_bloginfo('template_url') ?>/assets/images/close-form.png">
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
 
         <!-- Response -->
-        <div class="container pt-4">
+        <div class="container">
             <div  id="response-programmes"></div>
         </div>
 

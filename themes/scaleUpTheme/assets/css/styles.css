@@ -768,7 +768,7 @@ header .fab {
 
 @media (min-width: 992px) {
   .programmes-list {
-    min-height: 1920px; } }
+    min-height: 1940px; } }
 
 .programmes-list .box {
   height: 350px;
@@ -964,11 +964,28 @@ header .fab {
     .programmes-list .filters-window input[type="checkbox"]:checked + label:after {
       background: #5DA0B4;
       border-color: #5DA0B4; }
+  .programmes-list .filters-window .clear-btn {
+    background: #C88522;
+    color: white;
+    display: block;
+    border: none;
+    padding: 8px 22px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400; }
+    .programmes-list .filters-window .clear-btn:focus {
+      outline: none; }
+    .programmes-list .filters-window .clear-btn:hover {
+      background: #DC8821; }
+    .programmes-list .filters-window .clear-btn img {
+      height: 13px;
+      margin-left: 10px;
+      margin-top: -4px; }
   .programmes-list .filters-window .filter-btn {
     background: #548095;
     color: white;
     display: block;
-    float: right;
     border: none;
     padding: 8px 22px;
     margin-top: 20px;
@@ -1032,6 +1049,19 @@ header .fab {
   background: none;
   border: none;
   color: #548095; }
+
+.programmes-list .national-results {
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px; }
+
+.programmes-list .total-results {
+  margin-top: 40px; }
+  @media (min-width: 992px) {
+    .programmes-list .total-results {
+      margin-top: 58px; } }
 
 .contact-banner .btn-blue {
   padding: 10px 20px 8px 20px; }

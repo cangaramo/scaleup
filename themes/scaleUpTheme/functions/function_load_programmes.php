@@ -15,6 +15,9 @@ function load_programmes(){
     $endorsed = $_POST['endorsed'];
 
     $current_page = $_POST['current_page'];
+    $posts_per_page = $_POST['posts_per_page'];
+
+    $uk_results = false;
 
     /* If empty: Get all of them (NOT IN empty array) */
 
@@ -24,6 +27,9 @@ function load_programmes(){
     }
     else {
         $region_operator = "IN";
+        if ( !(in_array(32, $array_regions) ) && !( in_array(33, $array_regions)) ) { 
+            $uk_results = true;
+        }
     }
 
     //Types of business
@@ -75,7 +81,7 @@ function load_programmes(){
     }
 
 
-    /* Query */
+    /* Filters */
 
     $args = array (
         'post_type' => 'programmes',
@@ -84,6 +90,34 @@ function load_programmes(){
         'orderby' => 'menu_order',
 	    'order' => 'ASC'
     );
+
+    /* Checkboxes */
+
+    if( ($one_to_watch == 1) && ($endorsed == 1)) {
+        $args['meta_query'] = array(
+            'relation'		=> 'AND',
+            array(
+                'key'	 	=> 'one_to_watch',
+                'value'	  	=> "1",
+                'compare' 	=> '=',
+            ),
+            array(
+                'key'	  	=> 'endorsed',
+                'value'	  	=> '1',
+                'compare' 	=> '=',
+            ),
+        ); 
+    }
+    else if ($one_to_watch == 1) {
+        $args['meta_key'] = 'one_to_watch';
+        $args['meta_value'] = '1';
+    }
+    else if ($endorsed == 1){
+        $args['meta_key'] = 'endorsed';
+        $args['meta_value'] = '1';
+    } 
+
+    /* Categories */
 
     $args['tax_query'] = 
     array(
@@ -132,50 +166,153 @@ function load_programmes(){
         ),
     );
 
+    
+    /* Args uk */
+    $args_uk = $args;
 
-    /* Checkboxes */
+    $args_uk['tax_query'] = 
+    array(
+        'relation' => 'AND',
+        array(
+            'taxonomy' => 'category',
+            'field'    => 'term_id',
+            'terms'    => 32,
+        ),
+        array(
+            'taxonomy' => 'category',
+            'field'    => 'term_id',
+            'terms'    => $array_types_business,
+            'operator' => $business_operator,
+        ),
+        array(
+            'taxonomy' => 'category',
+            'field'    => 'term_id',
+            'terms'    => $array_types_support,
+            'operator' => $support_operator,
+        ),
+        array(
+            'taxonomy' => 'category',
+            'field'    => 'term_id',
+            'terms'    => $array_aims,
+            'operator' => $aims_operator,
+        ),
+        array(
+            'taxonomy' => 'category',
+            'field'    => 'term_id',
+            'terms'    => $array_cost,
+            'operator' => $costs_operator,
+        ),
+        array(
+            'taxonomy' => 'category',
+            'field'    => 'term_id',
+            'terms'    => $array_types,
+            'operator' => $type_operator,
+        ),
+        array(
+            'taxonomy' => 'category',
+            'field'    => 'term_id',
+            'terms'    => $array_providers,
+            'operator' => $providers_operator,
+        ),
+    );
 
-    if( ($one_to_watch == 1) && ($endorsed == 1)) {
-        $args['meta_query'] = array(
-            'relation'		=> 'AND',
-            array(
-                'key'	 	=> 'one_to_watch',
-                'value'	  	=> "1",
-                'compare' 	=> '=',
-            ),
-            array(
-                'key'	  	=> 'endorsed',
-                'value'	  	=> '1',
-                'compare' 	=> '=',
-            ),
-        ); 
-    }
-    else if ($one_to_watch == 1) {
-        $args['meta_key'] = 'one_to_watch';
-        $args['meta_value'] = '1';
-    }
-    else if ($endorsed == 1){
-        $args['meta_key'] = 'endorsed';
-        $args['meta_value'] = '1';
-    } 
-
-    /* Pagination */
+    /* Pagination for local */
     $pagination_enabled = true;
 
     if($pagination_enabled){
-        //$args['posts_per_page'] = intval($posts_per_page);
-        //$args['paged'] = $current_page;
-        $args['posts_per_page'] = 10;
+        $args['posts_per_page'] = $posts_per_page;
         $args['paged'] = $current_page;
     };
+
+    /* Display all for national */
+    $args_uk['posts_per_page'] = -1;
+
+    //UK programes
+    $programmes_uk = get_posts($args_uk);
+    $query_uk = new WP_Query($args_uk);
+    $count_uk = $query_uk->post_count;
     
-
-    //Get programmes
+    //Local programmes
     $programmes = get_posts($args);
+    $query = new WP_Query($args);
+    
+    //Total
+    $args_total = $args;
+    $args_total['posts_per_page'] = -1;
+    $query_total = new WP_Query($args_total);
+    $programmes_total = get_posts($args_total);
+    $count = $query_total->post_count;
 
-    //Main query
-	$query = new WP_Query( $args );
+    if ($uk_results) {
+        $total = $count_uk + $count;
+    }
+    else {
+        $total = $count;
+    }
 
+    //Order local programmes 
+    $endorsed_programmes = array();
+    $one_to_watch_programmes = array();
+    $other_programmes = array();
+    foreach ($programmes_total as $programme):
+        $id = $programme->ID;
+        $all_fields = get_fields($id);
+        if ($all_fields['endorsed'] == 1 ): 
+            array_push($endorsed_programmes, $id);
+        elseif ($all_fields['one_to_watch'] == 1):
+            array_push($one_to_watch_programmes, $id);
+        else:
+            array_push($other_programmes, $id);
+        endif;
+    endforeach;
+
+    $all_progammes = array_merge($endorsed_programmes, $one_to_watch_programmes); 
+    $all_progammes = array_merge($all_progammes, $other_programmes); 
+    $args['post__in'] = $all_progammes;
+    $args['orderby'] = 'post__in';
+
+
+    //Order UK programmes
+    $endorsed_programmes_uk = array();
+    $other_programmes_uk = array();
+    $one_to_watch_programmes_uk = array();
+
+    foreach ($programmes_uk as $programme):
+        $id = $programme->ID;
+        $all_fields = get_fields($id);
+        if ($all_fields['endorsed'] == 1 ): 
+            array_push($endorsed_programmes_uk, $id);
+        elseif ($all_fields['one_to_watch'] == 1):
+            array_push($one_to_watch_programmes_uk, $id);
+        else:
+            array_push($other_programmes_uk, $id);
+        endif;
+    endforeach;
+
+    $all_progammes_uk = array_merge($endorsed_programmes_uk, $one_to_watch_programmes_uk);
+    $all_progammes_uk = array_merge($all_progammes_uk, $other_programmes_uk);  
+    $args_uk['post__in'] = $all_progammes_uk;
+    $args_uk['orderby'] = 'post__in'; 
+
+    //Local programmes
+    $programmes = get_posts($args);
+    $query = new WP_Query($args);
+
+    //UK programmes
+    $programmes_uk = get_posts($args_uk);
+    $query_uk = new WP_Query($args_uk);
+
+    ?>
+
+    <div style="position: absolute; top:0; width:200px">
+        <div class="row total-results">
+            <div class="col-12">
+            <h4><?php echo $total ?> programmes</h4>
+            </div>
+        </div>
+    </div>
+
+    <?php
     if ($programmes): ?>
 
         <div class="row">
@@ -189,79 +326,38 @@ function load_programmes(){
                 $link = get_permalink($id);
                 $count = $count + 1;
 
-            ?>
+                $path = get_stylesheet_directory()  . '/parts/part-box.php';
+                require ($path);
 
-            <div class='col-sm-6 col-lg-3 my-3'>
-                <div class="box">
-                    <div class="overflow-hidden" style="border-bottom: 1px solid #f0f0f0">
-                        <div class="bg-image thumbnail-image" onClick="redirectTo('<?php echo $link ?>')"
-                        style="background-image:url('<?php echo $all_fields['thumbnail_image']?>')"></div>
-                    </div>
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-12">
-                                <p><?php echo $title ?></p>
-                                <!-- <p><?php echo $all_fields['description'] ?></p> -->
+                if ($count == 3 || $count == 10 ): 
+
+                    if ($count == 3):
+                        $class = "bg-orange";
+                        $text = "Want to be considered for a programme?";
+                        $link = "https://www.surveymonkey.co.uk/r/2JQ2XHJ";
+                        $target = "_blank";
+                    elseif ($count == 10):
+                        $class = "bg-blue";
+                        $text = "Your programme not listed?";
+                        $link = "/contact/";
+                        $target = "_self";
+                        $count = 0; 
+                    endif;
+                ?>
+                    <div class="col-sm-6 col-lg-3 my-3">
+                        <div class="box <?php echo $class ?> call-to-action p-3">
+                            <div class="d-flex flex-column justify-content-between h-100">
+                                <div><img src="<?php echo get_bloginfo('template_url')?>/assets/images/question_mark.png"></div>
+                                <p><?php echo $text ?></p>
+                                <a href="<?php echo $link ?>" target="<?php echo $target ?>">Tell us now</a>
                             </div>
                         </div>
                     </div>
-                    <div class="pos-bottom w-100">
-                        <div class="px-3 py-1">
-                            <div class="row">
-                                <div class="col-9">
-                                    <a href="<?php echo $link ?>" class="link">Read more</a>
-                                </div>
-                                <div class="col-3">
 
-                                    <!-- Endorsed programmes -->
-                                    <?php 
-                                    if ($all_fields['endorsed'] == 1 ): ?>
-                                        <img style="height:40px; margin-top:-5px" src="<?php echo get_bloginfo('template_url')?>/assets/images/endorsed.svg">
-                                    <?php elseif ($all_fields['one_to_watch'] == 1 ): ?>
-                                        <img style="height:40px; margin-top:-5px" src="<?php echo get_bloginfo('template_url')?>/assets/images/teal_one_to_watch.png">
-                                    <?php else: ?>
-                                        <div style="height:40px"></div>
-                                    <?php endif; ?>
+                <?php endif ?>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <?php  if ($count == 3 || $count == 10 ): 
-
-                if ($count == 3):
-                    $class = "bg-orange";
-					$text = "Want to be considered for a programme?";
-					$link = "https://www.surveymonkey.co.uk/r/2JQ2XHJ";
-					$target = "_blank";
-                elseif ($count == 10):
-                    $class = "bg-blue";
-					$text = "Your programme not listed?";
-					$link = "/contact/";
-					$target = "_self";
-                    $count = 0; 
-                endif;
-
-            ?>
-
-                <div class="col-sm-6 col-lg-3 my-3">
-                    <div class="box <?php echo $class ?> call-to-action p-3">
-                        <div class="d-flex flex-column justify-content-between h-100">
-                            <div><img src="<?php echo get_bloginfo('template_url')?>/assets/images/question_mark.png"></div>
-                            <p><?php echo $text ?></p>
-                            <a href="<?php echo $link ?>" target="<?php echo $target ?>">Tell us now</a>
-                        </div>
-                    </div>
-                </div>
-
-            <?php endif ?>
-
-        <?php endforeach ?>
-
+            <?php endforeach ?>
+            
         </div>
 
         <?php 
@@ -353,9 +449,49 @@ function load_programmes(){
 		} ?>
 
     <?php else: ?>
+            
+        <?php if ($uk_results): ?>
 
-        <div class="d-flex justify-content-center text-center align-items-center h-100" style="min-height:550px">
-            <p>No programmes found</p>
+            <div class="d-flex justify-content-center text-center align-items-center h-100" style="min-height:350px">
+                <p>No local programmes found in this area</p>
+            </div>
+           
+        <?php else: ?>
+
+            <div class="d-flex justify-content-center text-center align-items-center h-100" style="min-height:550px">
+                <p>No programmes found</p>
+            </div>
+
+        <?php endif ?></div>
+
+    <?php endif ?>
+
+
+    <?php if ($uk_results && $programmes_uk): ?>
+
+        <!--- UK Results -->
+        <div class="row">
+            <div class="col-12">
+                <div class="bg-dark-blue mb-3 mt-5 py-3">
+                    <p class="mb-0 national-results">National programmes matching your search</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <?php foreach ($programmes_uk as $programme_uk):
+                $id = $programme_uk->ID;
+                $title = get_the_title($id);
+                $all_fields = get_fields($id);
+                $link = get_permalink($id);
+                $path = get_stylesheet_directory()  . '/parts/part-box.php';
+                require ($path);
+            ?>
+            
+
+            <?php endforeach;?>
+            
         </div>
 
     <?php endif ?>

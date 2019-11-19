@@ -191,8 +191,10 @@
 
        
         
-
-        <button class="filter-btn">Update results<img src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow.png"></button>
+        <div class="d-flex justify-content-between">
+            <button class="clear-btn">Clear filters<img src="<?php echo get_bloginfo('template_url')?>/assets/images/close.png"></button>
+            <button class="filter-btn">Update results<img src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow.png"></button>
+        </div>
 
     </div>
 
