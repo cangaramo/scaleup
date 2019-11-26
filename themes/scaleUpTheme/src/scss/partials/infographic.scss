@@ -83,6 +83,17 @@
         -webkit-transition: all .75s; /* Safari prior 6.1 */
         transition: all .75s;
     }
+
+    span.copy {
+        font-size: 1.2rem;
+        color: #707070;
+        margin: 20px 0 20px 0;
+        -webkit-transition: all .75s; /* Safari prior 6.1 */
+        transition: all .75s;
+        top: -30px;
+        margin: 0px 25px;
+        position: relative;
+    }
   
     p.copy.larger {
         font-size: 1.2rem;
@@ -97,7 +108,7 @@
         background-image: url('../../../infographic/img/icon1.png');
         background-size: 100%;
         background-repeat: no-repeat;
-        margin: 35px 0 0 -60px;
+        margin: 65px 0 0 -60px;
         position: absolute;
     }
   
@@ -109,7 +120,7 @@
         background-image: url('../../../infographic/img/icon2.png');
         background-size: 100%;
         background-repeat: no-repeat;
-        margin: 35px 0 0 -60px;
+        margin: 55px 0 0 -100px;
         position: absolute;
     }
   
@@ -121,7 +132,7 @@
         background-image: url('../../../infographic/img/icon3.png');
         background-size: 100%;
         background-repeat: no-repeat;
-        margin: 45px 0 0 -150px;
+        margin: 65px 0 0 -150px;
         position: absolute;
     }
   
@@ -227,11 +238,23 @@
   
     .slick-next:before {
         content: '';
-        background-image: url('../../../infographic/img/nav-next.png');
-        background-size: 100%;
         display: inline-block;
         width: 23px;
         height: 40px;
+        background-size: 100%;
+        background-image: url('../../../infographic/img/nav-next.png');
+    }
+
+    .slick-items-holder .slick-prev:before {
+        background-image: url('../../../infographic/img/nav-prev-orange.png');
+    } 
+
+    .slick-items-holder .slick-next:before {
+        background-image: url('../../../infographic/img/nav-next-orange.png');
+    }
+
+    .slick-items-holder .item:focus {
+        outline: none;
     }
   
     .slick-prev, .slick-next {
@@ -495,6 +518,7 @@
   
     .reveal-logos-holder .item .symbol img {
         width: 70px;
+        margin: 0 auto;
     }
     
     .sub-section-holder {

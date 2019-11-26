@@ -399,3 +399,256 @@ td, th {
 	}
 
 }
+
+#businesses-results {
+
+    h3 {
+        color: $blue;
+        font-size: 35px;
+        font-weight: 600;
+    }
+
+    .aggregated-data {
+
+        p {
+            text-align: center;
+            margin-bottom: 0;
+        }
+        
+        .value {
+            font-size: 38px;
+            font-weight: 300;
+            min-height: 57px;
+            color: $dark;
+        }
+    }
+
+
+    table {
+
+        display: none;
+        width: 100%;
+
+        th {
+            color: $blue;
+            text-align: center;
+            background: $gray_blue;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 5px;
+            border: none;
+        }
+
+        td {
+            text-align: center;
+            background: white;
+            font-size: 15.5px;
+            border: none;
+            padding: 15px 10px;
+        }
+
+        .number {
+            font-size: 15px;
+        }
+
+        tr {
+            border-bottom: 8px solid $gray_blue;
+        }
+
+        .name {
+            text-align: left;
+            font-size: 15.5px;
+            font-weight: 500;
+            padding: 15px 15px;
+        }
+    }
+}
+
+
+.businesses-finder {
+    min-height: 500px;
+
+    h3 {
+        color: $blue;
+        font-size: 35px;
+        font-weight: 600;
+    }
+
+
+    #scaleups_form {
+        .btn-sectors {
+            border: 1px solid white;
+            border-radius: 0;
+            padding: 5px;
+            padding-left: 8px;
+            background-color: white;
+            height: 36px;
+            background-image:  url(../../images/more.png);
+            background-repeat: no-repeat;
+            background-position-y: center;
+            background-position-x: 98%;
+            background-size: 21px;
+            cursor: pointer;
+            color: $dark;
+            overflow-x: hidden;
+            line-height: 30px;
+        }
+
+        select {
+            background: white;
+            border: 1px solid white;
+            border-radius: 0;
+            appearance: none;
+            -webkit-appearance: none;
+            padding: 5px;
+            padding-left: 8px;
+            background-image:  url(../../images/select-arrow.png);
+            background-repeat: no-repeat;
+            background-position-y: center;
+            background-position-x: 98%;
+            background-size: 18px;
+            color: $dark;
+
+            &:focus {
+                outline: $blue auto 5px;
+            }
+        }
+
+        .submit-search{
+            background: $blue;
+            color: white;
+            padding: 6px 30px;
+            border: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 500;
+
+            &:hover {
+                background: $dark_blue;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    
+}
+
+
+.modal-dialog {
+
+    @media (min-width: 576px){
+        max-width: 770px;
+        
+    }
+
+    .modal-content {
+        border: none;
+        border-radius: 0;
+    }
+
+    .modal-body {
+        
+        padding: 20px 30px;
+
+        h3 {
+            color: $blue;
+        }
+
+        .close-form {
+            padding: 10px 10px;
+            line-height: 11px;
+            font-size: 34px;
+
+            img {
+                height: 35px;
+            }
+        }
+
+        .innerModal {
+            height: 405px;
+            overflow: scroll;
+            margin-left: -8px;
+
+            .sectorList .sectorItem.child .collapsable:before  {
+                content: none;
+            }
+            
+            .sectorList .sectorList {
+                margin-left: 20px;
+            }
+             
+            .sectorItem {
+                margin-left: 10px;
+            }
+             
+            .collapsable {
+                margin-left: 14px;
+                cursor: pointer;
+            }
+            .collapsable:before {
+                content: " ▶ ";
+                margin-right: 8px;
+                color: $dark;
+                cursor: pointer;
+            }
+            .down:before {
+                content: " ▼ ";
+                font-size: 14.5px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .modal-footer {
+        padding: 12px 20px;
+        .confirm-sectors{
+            background: $dark_orange;
+            color: white;
+            padding: 6px 30px;
+            border: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 500;
+
+            &:hover {
+                background: $orange;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    
+    input[type=checkbox]{
+        height: 21px;
+        cursor: pointer;
+    }
+
+    input[type=checkbox]:before {
+        content: '✓';
+        background: white;
+        color: white;
+        border: 1px solid $blue;
+        padding: 0px 4px;
+        font-weight: 300;
+        font-size: 12.5px;
+        border-radius: 3px;
+    }
+
+    input:checked:before {
+        content: '✓';
+        background: $blue;
+        border: 1px solid $blue;
+        color: white;
+        padding: 0px 4px;
+        font-weight: 300;
+        font-size: 12.5px;
+        border-radius: 3px;
+    }
+  
+}
+

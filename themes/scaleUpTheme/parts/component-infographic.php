@@ -7,10 +7,10 @@
         <span class="vertical-line"></span>
         <p class="section-key-number text-orange"><span id="section-1-number-1">0</span></p>
         <p class="copy delay-1">Scaleups in 2017 across all sectors and areas of the economy</p>
-        <span class="vertical-line delay-1"></span>
-        <p class="section-key-number text-orange" ><span id="section-1-number-2">0</span>%</p>
         <span class="vertical-line delay-2"></span>
         <p class="copy delay-2">30,650 turnover scaleups, 13,165 employment scaleups (7,305 both)</p>
+        <span class="vertical-line delay-1"></span>
+        <p class="section-key-number text-orange" ><span class="copy">up</span><span id="section-1-number-2">0</span>%<span class="copy">on 2014%</span></p>
         <span class="vertical-line delay-2"></span>
         <p class="copy delay-2">Scaleups generated</p>
         <p class="section-key-number text-orange" >£<span id="section-1-number-3">0.0</span>tn</p>
@@ -63,19 +63,19 @@
             </div>
 
             <div class="slick-carousel-item">
-                <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/Survey_at_a_Glance_Infographic_1.png" />
+                <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/Survey_at_a_Glance_Infographic_2.png" />
             </div>
 
             <div class="slick-carousel-item">
-                <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/Survey_at_a_Glance_Infographic_1.png" />
+                <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/Survey_at_a_Glance_Infographic_3.png" />
             </div>
 
             <div class="slick-carousel-item">
-                <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/Survey_at_a_Glance_Infographic_1.png" />
+                <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/Survey_at_a_Glance_Infographic_4.png" />
             </div>
 
             <div class="slick-carousel-item">
-                <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/Survey_at_a_Glance_Infographic_1.png" />
+                <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/Survey_at_a_Glance_Infographic_5.png" />
             </div>
 
         </div>
@@ -149,299 +149,346 @@
         <div class="reveal-logos-holder">
 
             <span id="icons-talent" class="sub-section-holder">
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-founders.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+
+                <div class="container-items">
+
+                    <div id="slick-items-1" class="slick-items-holder">
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-founders.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-barclays.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-thecareers.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-google.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-freeformers.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-rise.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-teach.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+                    
+                    </div>
+
                 </div>
 
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-barclays.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-thecareers.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-google.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-freeformers.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-rise.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-teach.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
             </span>
 
             <span id="icons-leadership" class="sub-section-holder">
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Vistage-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
 
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/elite.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
+                <div class="container-items">
 
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/goldmansmallbizz.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
+                    <div id="slick-items-2" class="slick-items-holder">
 
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/british-library.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Vistage-web.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
 
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/MIT-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/elite.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/goldmansmallbizz.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/british-library.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/MIT-web.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                            </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Cranfield-University-logo.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/supperClub_1.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Lazaridis-web.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/strathclyde.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/cambridge-network.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/PtP-e1543425945603.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/entforumnew.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Tech-nation-upscale.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-rise.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/inspire-elite.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
                     </div>
 
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Cranfield-University-logo.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
                 </div>
 
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/supperClub_1.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Lazaridis-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
-
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/strathclyde.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/cambridge-network.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/PtP-e1543425945603.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/entforumnew.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Tech-nation-upscale.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
-
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-rise.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
-
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/inspire-elite.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
            </span>
 
 
            <span id="icons-markets" class="sub-section-holder">
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/download.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
 
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/sharing-in-growth.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
+                <div class="container-items">
 
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/silicon.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
+                    <div id="slick-items-3" class="slick-items-holder">
 
-                <div class="item">
-                    <div style="background-image: url('img/logos/Mayors-international-business-programme.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/download.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/sharing-in-growth.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/silicon.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Mayors-international-business-programme.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                
+                    </div>
+
                 </div>
+                
            </span>
 
 
            <span id="icons-finance" class="sub-section-holder">
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Accel-web.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+
+                <div class="container-items">
+
+                    <div id="slick-items-4" class="slick-items-holder">
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Accel-web.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Balderton-web-copy.jpeg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Crowdcube-web.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/bgf.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Draper-Esprit-web.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Eight-Roads-web.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Notion-Capital-web-copy.jpeg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/IP-Group-web.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/LDC.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/index-ventures-768x469.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Eagle-Labs-web.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Partech-web-copy.jpeg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Santander-web.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/british-business-bank.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/octopus-ventures.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/SEP_Logo_web_Nov16.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/download.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/ResizedImageWzYwMCwzNzhd-Livingbridge-Logo-Print-02.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Banc.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
+                    </div>
+                    
                 </div>
 
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Balderton-web-copy.jpeg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Crowdcube-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/bgf.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Draper-Esprit-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Eight-Roads-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Notion-Capital-web-copy.jpeg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/IP-Group-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/LDC.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/index-ventures-768x469.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/Eagle-Labs-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/Partech-web-copy.jpeg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/Santander-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/british-business-bank.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/octopus-ventures.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/SEP_Logo_web_Nov16.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/download.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/ResizedImageWzYwMCwzNzhd-Livingbridge-Logo-Print-02.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Banc.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
             </span>
 
 
             <span id="icons-infrastructure" class="sub-section-holder">
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Babraham-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+
+                <div class="container-items">
+
+                    <div id="slick-items-5" class="slick-items-holder">
+                    
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Babraham-web.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Eagle-Labs-web.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Alderley-Park-web-copy.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Natwest-accelerator.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/FCA-web.png');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/engine-shed.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/campuslondon.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Camclustermap-Barclays-logo-898x505.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
+                        </div>
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/L39.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
+
+                        <div class="item">
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/catapult.jpg');" class="logo"></div>
+                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Eagle-Labs-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/Alderley-Park-web-copy.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/Natwest-accelerator.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/FCA-web.png');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/engine-shed.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/campuslondon.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('img/logos/Camclustermap-Barclays-logo-898x505.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
-                </div>
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/L39.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
-
-
-                <div class="item">
-                    <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/catapult.jpg');" class="logo"></div>
-                    <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                </div>
            </span>
 
            <div style="clear: both;"> </div>
