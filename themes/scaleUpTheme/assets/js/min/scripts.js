@@ -495,6 +495,15 @@ $( document ).ready(function() {
         $('html, body').animate({
             scrollTop: ( ($('.content-piece').eq(index).offset().top) - 50 )
         },1100); 
+
+        console.log(index);
+
+        if (index < 1) {
+            $('.nav-collection .prev').hide();
+        }
+        else {
+            $('.nav-collection .prev').show();
+        }
     });
 
     $('body').on('click', '.close-content', function (){
@@ -502,7 +511,81 @@ $( document ).ready(function() {
         $('.content-piece').slideUp("slow");
     });
 
+    $('body').on('click', '.nav-collection .next', function (){
 
+        current_piece = $(".content-piece:visible")[0];
+        index = $('.content-piece').index(current_piece);
+        total = $('.content-piece').length;
+
+        //If nothing is visible: show first element
+        if (current_piece !== undefined){
+            index_next = index + 1;
+        }
+        else {
+            index_next = 0
+        }
+
+        //Go to next piece or to next article
+        if (index_next < total) {
+            $('.content-piece').hide();
+            $('.content-piece').eq(index_next).slideDown("slow");
+            $('html, body').animate({
+                scrollTop: ( ($('.content-piece').eq(index_next).offset().top) - 50 )
+            },1100); 
+        }
+        else {
+            chapter = $('.module-content-collection').data("next");
+            LoadChapter(chapter, "fullmenu");
+        }
+
+        index_prev = index_next - 2;
+        
+        if (index_prev < -1) {
+            $('.nav-collection .prev').hide();
+        }
+        else {
+            $('.nav-collection .prev').show();
+        }
+
+    });
+
+    $('body').on('click', '.nav-collection .prev', function (){
+
+        current_piece = $(".content-piece:visible")[0];
+        index = $('.content-piece').index(current_piece);
+        total = $('.content-piece').length;
+        index_prev = index - 1;
+
+        if (index_prev >= 0) {
+            $('.content-piece').hide();
+            $('.content-piece').eq(index_prev).slideDown("slow");
+            $('html, body').animate({
+                scrollTop: ( ($('.content-piece').eq(index_prev).offset().top) - 50 )
+            },1100); 
+        }
+        else {
+            chapter = $('.module-content-collection').data("prev");
+
+            //Go to another chapter if there's one
+            if (chapter){
+                LoadChapter(chapter, "fullmenu");
+            }
+            //Close if there's no previous chapter
+            else {
+                $('.content-piece').hide();
+            }
+        }
+
+        if (index_prev < 1) {
+            $('.nav-collection .prev').hide();
+        }
+        else {
+            $('.nav-collection .prev').show();
+        }
+
+    });
+
+    
     /* LOCAL AREA SUMMARIES */
 
     $('body').on('click', '.area', function (){

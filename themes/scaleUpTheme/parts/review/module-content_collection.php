@@ -3,7 +3,7 @@
     $collection_title = $component['collection_title'];
 ?>
 
-<div class="py-4 module-content-collection">
+<div class="py-4 module-content-collection" data-next="<?php echo $next ?>" data-prev="<?php echo $prev ?>">
 
     <h4 class="text-center"><?php echo $collection_title ?></h4>
 
@@ -65,9 +65,14 @@
                     <img class="w-100" src="<?php echo $piece['picture'] ?>">
                 </div>
             </div>
+            
         </div>
+
     <?php endforeach ?>
 
-   
+    <div class="nav-collection d-flex justify-content-between mt-4"> 
+        <div><a class="prev btn-blue" style="display:none"><img class="mr-2" style="height: 15px; margin-top: -2px;" src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow-back.png">Previous</a></div>
+        <div><a class="next btn-blue">Next<img class="ml-2" style="height: 15px; margin-top: -3px;" src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow.png"></a></div>
+    </div>
 
 </div>

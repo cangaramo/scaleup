@@ -96,32 +96,35 @@ function load_chapter(){
 	}
 
     $all_fields = get_fields($chapter);
-    $components_article = $all_fields['components'];
+	$components_article = $all_fields['components'];
+	
+	$next = $all_fields['next'][0];
+	$prev = $all_fields['previous'][0];
 
     foreach ($components_article as $component):
         $layout_name = $component['acf_fc_layout'];
-		$layout_path = "parts/review/module-" . $layout_name . ".php";
-		
+		$layout_path = "parts/review/module-" . $layout_name . ".php";		
         require($layout_path);
 	endforeach; 
 	
-
-	$next = $all_fields['next'][0];
-	$prev = $all_fields['previous'][0];
 	?>
 
 	<div class="d-flex justify-content-between mt-4"> 
 
-		<?php if ($prev): ?>
-			<div><a class="btn-blue goto-chapter" data-article="<?php echo $prev ?>"><img class="mr-2" style="height: 15px" src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow-back.png">Previous</a></div>
-		<?php else: ?>
-			<div></div>
-		<?php endif ?>
+		<?php if ($layout_name != "content_collection"): ?>
 
-		<?php if ($next): ?>
-			<div><a class="btn-blue goto-chapter" data-article="<?php echo $next ?>">Next<img class="ml-2" style="height: 15px" src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow.png"></a></div>
-		<?php else: ?>
-			<div></div>
+			<?php if ($prev): ?>
+				<div><a class="btn-blue goto-chapter" data-article="<?php echo $prev ?>"><img class="mr-2" style="height: 15px; margin-top: -2px;" src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow-back.png">Previous</a></div>
+			<?php else: ?>
+				<div></div>
+			<?php endif ?>
+
+			<?php if ($next): ?>
+				<div><a class="btn-blue goto-chapter" data-article="<?php echo $next ?>">Next<img class="ml-2" style="height: 15px; margin-top: -3px;" src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow.png"></a></div>
+			<?php else: ?>
+				<div></div>
+			<?php endif ?>
+
 		<?php endif ?>
 
 	</div>

@@ -156,12 +156,12 @@
     <div class="bg-orange">
         <div class="container px-4 py-5 call-to-action">
             <div class="row">
-                <div class="col-lg-3 mb-4">
+                <div class="col-lg-1 mb-4">
                     <div class="d-flex align-items-center h-100">
                         <img src="<?php echo get_bloginfo('template_url')?>/assets/images/CTA.png">
                     </div>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-10 pl-lg-4">
                     <span style="color:#000000;">FUTURE PLANS:</span> <?php echo $all_fields['call_to_action'];  ?>
                 </div>
             </div>
