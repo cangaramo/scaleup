@@ -90,3 +90,29 @@
     }
 
 }
+
+
+.open-committee {
+    background: $dark_blue;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    border: none;
+    padding: 6px 18px;
+    display: block;
+
+    &:hover {
+        background: $blue;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    img {
+        vertical-align: middle;
+        margin-left: 15px;
+        margin-top: -4px;
+    }
+}

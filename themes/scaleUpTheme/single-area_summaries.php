@@ -105,7 +105,7 @@ $all_fields = get_fields();
                         <p><?php echo $all_fields['scaleup_views']; ?></p>
                     </div>
                     <div class="bg-orange p-3">
-                        <p class="heading color-black">Top barries to growth</p>
+                        <p class="heading color-black">Top barriers to growth</p>
                         <p><?php echo $all_fields['top_barries_to_growth']; ?></p>
                     </div>
                     <div class="bg-blue p-3">

@@ -6,7 +6,7 @@ function load_search(){
 
 	/* General arguments */
 	$args = array(
-		'post_type'   => array('page'),
+		'post_type'   => array('page', 'programmes', 'news', 'reports', 'stories', 'area_summaries', 'articles'),
 		'orderby' => 'relevance', 
 		'order'	=> 'ASC',
 		'posts_per_page' => 5,

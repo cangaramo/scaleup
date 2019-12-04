@@ -22,10 +22,12 @@ var scrollingChapters = 0;
 var current_page = 1;
 var posts_per_page = 10;
 
+var signedUp = false;
+var show_signup = false;
+
 $( document ).ready(function() {
 
     //Get home url
-
     protocol = window.location.protocol
     host = window.location.host;
     home_url = protocol + "//" + host;
@@ -61,12 +63,8 @@ $( document ).ready(function() {
         ]
     });
 
-    // Count up
-    /*
-    $('.counter').counterUp({
-        delay: 10,
-        time: 1000,
-    });*/
+
+    /* Map programmes finder version 1 */
 
     $("#submit-form").click(function(){
         SearchMarkers();
@@ -117,7 +115,7 @@ $( document ).ready(function() {
         }
     });
 
-    //If slider exists
+    /* Slider */
     var pos = 1;
     if ($('.slider').length > 0) {
         const interval = setInterval(function() {
@@ -136,14 +134,16 @@ $( document ).ready(function() {
          
     }
 
-
-    //Search button
+    /* AMBASSADORS */
     $('body').on('click', '.ambassadors-list .submit-search', function (){
         lep = $("#dropdown-lep :selected").val();
         sector = $("#dropdown-sector :selected").val();
 
         LoadAmbassadors(lep, sector);
     });
+
+
+    /* PROGRAMMES */
 
     //Search button
     $('body').on('click', '.programmes-list .submit-search', function (){
@@ -190,7 +190,7 @@ $( document ).ready(function() {
     });
 
 
-    //Search button
+    //One to watch
     $('body').on('click', '.one-to-watch', function (){
        
         if (one_to_watch == 0) {
@@ -207,17 +207,16 @@ $( document ).ready(function() {
         LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
     });
 
+    //Endorsed
     $('body').on('click', '.endorsed', function (){
         $(this).find(".checkbox .fas").toggle();
 
         if (endorsed == 0) {
             endorsed = 1;
-            console.log("show");
             $(this).find(".checkbox .fas").css("display", "block");
         }
         else {
             endorsed = 0;
-            console.log("hide");
             $(this).find(".checkbox .fas").css("display", "none");
         }
 
@@ -226,17 +225,19 @@ $( document ).ready(function() {
         LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
     });
 
-    
+    //More filters
     $('body').on('click', '.more-filters', function (){
         $(".filters-window").fadeIn("slow");
         $(".close-filters").show();
     });
 
+    //Close filters
     $('body').on('click', '.close-filters', function (){
         $(".close-filters").hide();
         $(".filters-window").fadeOut("slow");
     });
 
+    //Clear filters
     $('body').on('click', '.clear-btn', function(){
         $('input:checkbox').removeAttr('checked');
 
@@ -274,6 +275,7 @@ $( document ).ready(function() {
 
     });
 
+    // Filter button
     $('body').on('click', '.filter-btn', function(){
 
         //Get values and filter
@@ -330,8 +332,7 @@ $( document ).ready(function() {
 
     });
 
-
-    /* Pagination */
+    // Pagination
 
     $('body').on('click', '.next-btn', function(){
         current_page = parseInt(current_page) + 1;
@@ -351,7 +352,8 @@ $( document ).ready(function() {
 	}); 
 
 
-    /* Stories */
+    /* STORIES */
+
     $('body').on('click', '.all-stories', function (){
         num_posts = parseInt(posts_per_page);
         posts_per_page = num_posts + 8;
@@ -359,7 +361,7 @@ $( document ).ready(function() {
     });
 
 
-    /* Chapters */
+    /* CHAPTERS */
 
     /* Chapter menu */
     $('body').on('click', '.static-menu .chapter .header', function (){
@@ -391,7 +393,6 @@ $( document ).ready(function() {
 
 
         //2
-
         parent = ".fixed-menu";
         
         //Hide or show current
@@ -469,8 +470,7 @@ $( document ).ready(function() {
     });  
 
 
-    
-    /* Load chapter from menu */
+    // Load chapter from menu 
     $('body').on('click', '.load-chapter', function (){
         chapter = $(this).data("article");
         LoadChapter(chapter, "fullmenu");
@@ -486,10 +486,8 @@ $( document ).ready(function() {
         LoadChapter(first_chapter, "shortmenu");
     });
 
-
-    /* Content collection */
+    // Content collection 
     $('body').on('click', '.open-content', function (){
-        //alert ("click");
         index = $('.open-content').index(this);
         $('.content-piece').hide();
         $('.content-piece').eq(index).slideDown("slow");
@@ -499,14 +497,14 @@ $( document ).ready(function() {
         },1100); 
     });
 
-
     $('body').on('click', '.close-content', function (){
         $('.content-box').fadeIn();
         $('.content-piece').slideUp("slow");
     });
 
 
-    /* Local area summaries */
+    /* LOCAL AREA SUMMARIES */
+
     $('body').on('click', '.area', function (){
         $('#response-area').show();
         $('.list-areas-section').hide();
@@ -521,6 +519,8 @@ $( document ).ready(function() {
         $('.list-areas-section').show();
     });
 
+
+    /* VACANCIES */
 
     $('.open-vacancy button').click(function(){
         index = $(this).index(".open-vacancy button");
@@ -537,7 +537,7 @@ $( document ).ready(function() {
     });
 
 
-    /* Open sidebar */
+    /* SIDEBAR  */
     var close = false;
     $( "#open-btn" ).click(function() {
 
@@ -568,7 +568,8 @@ $( document ).ready(function() {
         }
     }); 
 
-    /* Open search */
+    /* SEARCH */
+
     $( ".open-search" ).click(function() {
         $(".search-box").slideDown( "slow", function() {
             $(".search-content").fadeIn("fast");
@@ -582,12 +583,12 @@ $( document ).ready(function() {
         });
     });
 
-    /* Search */
     $( "#query-search" ).on('change keydown paste input', function(){
         s = $(this).val();
-        //LoadPosts(s);
         LoadSearchResults(s);
     });
+
+    /* CHAPTERS */
 
     $('.chapters-list').on('scroll', function(){
         index = $(this).index('.chapters-list');
@@ -597,17 +598,43 @@ $( document ).ready(function() {
 
 
     /* Slider item */
-
-    /* Open search */
     $( ".slider-banner .show-item" ).click(function() {
         index = $(this).index('.slider-banner .show-item');
         $('.slider-banner .item').not(':eq(' + index + ')').hide();
         $('.slider-banner .item').eq(index).show();
     });
 
+
+    /* Comittes */
+    $('.open-committee').click(function(){
+
+        span_committee = $(this).find('span');
+        text_committe = span_committee.text();
+
+        if (text_committe == "View"){
+            span_committee.text("Close");
+        }
+        else {
+            span_committee.text("View");
+        }
+        
+    });
+
+    /* Sign up modal */
+    $("#modalNewsletter").on("hide.bs.modal", function () {
+        if (!signedUp && show_signup){
+          setCookie("hideSignUp", 1, 60);
+        }
+    });
+  
+    $( "#modalNewsletter input[type='submit']" ).click(function() {
+        setCookie("alreadySignedUp", 1, 365);
+        signedUp = true;
+    });
+
 });
 
-
+/* Event load */
 $(window).on('load', function(){
 
     if ($('.programmes-list').length > 0) {
@@ -622,7 +649,6 @@ $(window).on('load', function(){
 
         var fragment = (window.location.hash).substring(1);
         if (fragment == "") {
-            console.log ("first");
             chapter = "first";
             LoadChapter(chapter, "onload");
         }
@@ -631,12 +657,32 @@ $(window).on('load', function(){
     if ($('.ambassadors-list').length > 0) {
         LoadAmbassadors();
     }
+
+    /* Modal contact form */
+    var current_path = window.location.pathname;
+    if ( (current_path == "/insights/") || (current_path == "/insights") ) {    
+        
+        var hide = getCookie("hideSignUp");
+        alreadySignedUp = getCookie("alreadySignedUp");
+
+        if (hide == 1 || alreadySignedUp ==1) {
+            //do nothing       
+        }
+        else {
+            show_signup = true;
+            setTimeout(function(){ 
+                $('#modalNewsletter').modal('show');
+            }, 12000); 
+        }
+    }
     
 });
 
+
+/* Event scroll */
+
 $hidden = false;
 var lastScrollTop = 0;
-
 
 $(window).scroll(function() {
 
@@ -688,8 +734,7 @@ $(window).scroll(function() {
 }); 
 
 
-/* Load chaper with hash */
-
+/* Event window hash */
 if (window.location.hash) {
     url = window.location.href;
     if ( url.includes("scaleup-review") ) {
@@ -707,6 +752,9 @@ if (window.location.hash) {
     }
 }
 
+
+/* AJAX CALLS */
+
 /* Load programmes */
 
 /*
@@ -716,8 +764,8 @@ if (window.location.hash) {
 4 - Aims of the programme
 5 - Cost
 6 - Type of programme
-
 */
+
 function LoadProgrammes(event, regions, types_business, types_support, aims, costs, types, providers, one_to_watch, endorsed){
 
     protocol = window.location.protocol
@@ -755,19 +803,12 @@ function LoadProgrammes(event, regions, types_business, types_support, aims, cos
                 $("#response-programmes").html(response);
                 $("html, body").scrollTop( ($("#response-programmes").offset().top) - 100);
             }
-
-            /*
-            $("html, body").animate({ 
-                scrollTop: $('#response-programmes').offset().top 
-            }, "slow"); */
         }
     });
 
     return false;
 }
 
-//Onload: if it's called when the review is loaded first time
-//Shortmenu: if it's called from short menu
 function LoadChapter(chapter, event){
 
     protocol = window.location.protocol
@@ -793,7 +834,6 @@ function LoadChapter(chapter, event){
             //Always scroll to bottom from short menu
             if (event == 'shortmenu') {
                 $("#response-chapter").html(response);
-                //$(window).scrollTop($("#response-chapter").offset().top);
 
                 $("html, body").animate({ 
                     scrollTop: $('#response-chapter').offset().top 
@@ -874,7 +914,6 @@ function LoadArea(area_id){
         success:function(response){
             $("html, body").scrollTop( ($("#response-area").offset().top) - 20);
             $("#response-area").hide().html(response).fadeIn(200);
-            //$("#response-area").html(response);
         }
     });
 
@@ -932,6 +971,30 @@ function LoadAmbassadors(lep, sector) {
     });
 
     return false;
+}
+
+
+/* Cookies */
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+  
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
 }
 
 //Init map without markers

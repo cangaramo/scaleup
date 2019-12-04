@@ -45,14 +45,16 @@ footer {
     .juiz_last_tweet_tweetlist {
         padding: 0;
     }
-    
+
+    .juiz_last_tweet_item {
+        padding-top: 0 !important;
+    }
 
     .juiz_lt_content {
         color: white;
         font-size: 17px;
         font-weight: 400;
     }
-     
 
     .juiz_action_links {
         display: none;

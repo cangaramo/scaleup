@@ -135,7 +135,7 @@
 
                 <div class="col-lg-4 px-lg-2">
                     <div class="bg-orange p-3 h-100">
-                        <p class="heading color-black">Top barries to growth</p>
+                        <p class="heading color-black">Top barriers to growth</p>
                         <div><?php echo $all_fields['top_barries_to_growth']; ?></div>
                     </div>
                 </div>
@@ -162,7 +162,7 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <?php echo $all_fields['call_to_action'];  ?>
+                    <span style="color:#000000;">FUTURE PLANS:</span> <?php echo $all_fields['call_to_action'];  ?>
                 </div>
             </div>
         </div>

@@ -16,11 +16,11 @@
                      /* your parameters */
                      $jltw_args = array(
                         'username'	=> 'scaleupinst',
-                        'nb_tweets'	=> 1,
+                        'nb_tweets'	=> 3,
                         'avatar'	=> false,
                         'cache'		=> 120,
-                        'transition'	=> false,
-                        'delay'		=> 8,
+                        'transition'	=> true,
+                        'delay'		=> 10,
                         'links'		=> true
                      );
 
@@ -46,6 +46,10 @@
    </div>
 
 </footer>
+
+
+<?php require 'parts/part-modal_signup.php' ?>
+
 
 <?php wp_footer(); ?>
 

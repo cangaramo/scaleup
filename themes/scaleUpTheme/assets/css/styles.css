@@ -1258,6 +1258,8 @@ footer {
   background: transparent !important; }
   .juiz_last_tweet_inside .juiz_last_tweet_tweetlist {
     padding: 0; }
+  .juiz_last_tweet_inside .juiz_last_tweet_item {
+    padding-top: 0 !important; }
   .juiz_last_tweet_inside .juiz_lt_content {
     color: white;
     font-size: 17px;
@@ -1970,6 +1972,24 @@ footer {
   @media (max-width: 650px) {
     .people-slider .slick-next {
       display: none !important; } }
+
+.open-committee {
+  background: #548095;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  padding: 6px 18px;
+  display: block; }
+  .open-committee:hover {
+    background: #5DA0B4; }
+  .open-committee:focus {
+    outline: none; }
+  .open-committee img {
+    vertical-align: middle;
+    margin-left: 15px;
+    margin-top: -4px; }
 
 .form-banner {
   color: white; }
