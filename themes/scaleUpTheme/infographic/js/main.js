@@ -18,7 +18,7 @@ $(document).ready(function(){
 
     $({numberValue: 0}).animate({numberValue: 1.3}, { duration:1500, easing: 'linear',
             step: function (now) {
-            $('#section-1-number-3').text(Math.ceil(now).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
+            $('#section-1-number-3').text( (Math.round(now * 10)/10).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
         }
     });
 

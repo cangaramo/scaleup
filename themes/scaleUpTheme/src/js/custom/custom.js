@@ -34,6 +34,7 @@ $( document ).ready(function() {
 
 
     //Slick
+    /*
     $('.multiple-items').slick({
         infinite: true,
         slidesToShow: 4,
@@ -62,7 +63,7 @@ $( document ).ready(function() {
             }
         ]
     });
-
+    */
 
     /* Map programmes finder version 1 */
 
@@ -1417,5 +1418,4 @@ function redirectTo(url, tab) {
         window.location.href = url;
     }
    
-
 }
