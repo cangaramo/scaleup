@@ -1,0 +1,169 @@
+@import 'variables.scss';
+
+#businesses-results {
+
+    h3 {
+        color: $blue;
+        font-size: 35px;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+
+    .aggregated-data {
+
+        p {
+            text-align: center;
+            margin-bottom: 0;
+        }
+        
+        .value {
+            font-size: 38px;
+            font-weight: 300;
+            min-height: 57px;
+            color: $dark;
+        }
+    }
+
+
+    table {
+
+        display: none;
+        width: 100%;
+
+        th {
+            color: $blue;
+            text-align: center;
+            background: $gray_blue;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 5px;
+            border: none;
+        }
+
+        td {
+            text-align: center;
+            background: white;
+            font-size: 15.5px;
+            border: none;
+            padding: 15px 10px;
+        }
+
+        .number {
+            font-size: 15px;
+        }
+
+        tr {
+            border-bottom: 8px solid $gray_blue;
+        }
+
+        .name {
+            text-align: left;
+            font-size: 15.5px;
+            font-weight: 500;
+            padding: 15px 15px;
+            width: 25%;
+
+            &:hover {
+                color: $blue;
+                cursor: pointer;
+            }
+        }
+    }
+
+
+    .download-data {
+        background: $dark_blue;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 400;
+        border: none;
+        padding: 7px 18px;
+        display: block;
+        cursor: pointer;
+
+        img {
+            height: 19px;
+            vertical-align: text-top;
+            margin-left: 8px;
+            margin-top: -1px;
+        }
+
+        &:hover {
+            background: $blue;
+        }
+    }
+
+    .pages {
+
+        .page {
+            background: none;
+            border: none;
+            color: $dark_blue;
+            margin: 5px;
+            padding: 1px 6px 2px;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:hover {
+                opacity: 0.8;
+                cursor: pointer;
+            }
+        }
+
+        .active {
+            border-bottom: 2px solid $orange;
+        }
+    }
+
+    .next-page {
+        background-image: url(../../../assets/images/arrow_blue.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 25px;
+        height: 25px;
+        background-color: transparent;
+        border: none;
+        margin-left: 32px;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+    }
+
+    .prev-page{
+        background-image: url(../../../assets/images/arrow_blue_back.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 25px;
+        height: 25px;
+        background-color: transparent;
+        border: none;
+        margin-right: 32px;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+    }
+
+    .dots {
+        background: none;
+        border: none;
+        color: $dark_blue;
+        margin: 5px;
+        padding: 1px 6px 2px;
+    }
+}

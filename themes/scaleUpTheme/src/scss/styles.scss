@@ -400,39 +400,135 @@ td, th {
 
 }
 
-#businesses-results {
+
+@import 'partials/business_results.scss';
+@import 'partials/business_finder.scss';
+
+.title-nav {
+
+    opacity: 0;
+    
+    .label {
+        text-transform: uppercase;
+        color: $blue;
+        font-weight: 500;
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
 
     h3 {
         color: $blue;
-        font-size: 35px;
         font-weight: 600;
+        font-size: 35px;
     }
 
-    .aggregated-data {
+    .btn-orange {
+        background: $orange;
+        color: #fff!important;
+        padding: 8px 20px;
+        text-transform: uppercase;
+        font-size: 13px;
+        text-decoration: none;
 
-        p {
-            text-align: center;
-            margin-bottom: 0;
-        }
-        
-        .value {
-            font-size: 38px;
-            font-weight: 300;
-            min-height: 57px;
-            color: $dark;
+        &:hover {
+            background: $dark_orange;
         }
     }
 
+    .btn-orange img{
+        height: 12px;
+        margin-left: 10px;
+        margin-top: -4px;
+    }
+
+    .btn-blue img {
+        height: 12px;
+        margin-right: 10px;
+        margin-top: -1px;
+    }
+}
+
+.highlights {
+
+    height:223px;
+    
+    h4 {
+        color: white;
+        font-weight: 500;
+        opacity: 0;
+    }
+
+    .highlight {
+        width: 200px;
+        opacity: 0;
+    }
+    p {
+        text-align: center;
+        color: white;
+        margin-bottom: 0;
+    }
+
+    .desc {
+        font-weight: 300;
+        margin-top: 5px;
+        margin-bottom: 7px;
+    }
+
+    .num {
+        font-size: 45px;
+        font-weight: 300;
+        height: 67px;
+    }
+
+    .fas {
+        font-size: 20px;
+    }
+}
+
+.info-company {
+
+    opacity: 0;
+
+    a {
+        color: $blue;
+
+        &:hover {
+            text-decoration: none;
+            color: $dark_blue;
+        }
+    }
+
+    h5 {
+        color: $blue;
+        font-weight: 500;
+    }
+
+    .label {
+        font-weight: 500;
+        margin-top: 20px;
+    }
+
+    .person_name {
+        font-weight: 500;
+        margin-top: 10px;
+    }
+
+    p {
+        margin-bottom: 0;
+        color: #707070;
+    }
 
     table {
 
-        display: none;
-        width: 100%;
+        background: #edf0f3;
+        width: 90%;
+        color: #707070;
+        opacity: 0;
 
         th {
             color: $blue;
             text-align: center;
-            background: $gray_blue;
+            background: #edf0f3;;
             text-transform: uppercase;
             font-size: 13px;
             font-weight: 500;
@@ -453,7 +549,7 @@ td, th {
         }
 
         tr {
-            border-bottom: 8px solid $gray_blue;
+            border-bottom: 8px solid #edf0f3;
         }
 
         .name {
@@ -461,194 +557,7 @@ td, th {
             font-size: 15.5px;
             font-weight: 500;
             padding: 15px 15px;
+            width: 25%;
         }
     }
 }
-
-
-.businesses-finder {
-    min-height: 500px;
-
-    h3 {
-        color: $blue;
-        font-size: 35px;
-        font-weight: 600;
-    }
-
-
-    #scaleups_form {
-        .btn-sectors {
-            border: 1px solid white;
-            border-radius: 0;
-            padding: 5px;
-            padding-left: 8px;
-            background-color: white;
-            height: 36px;
-            background-image:  url(../../images/more.png);
-            background-repeat: no-repeat;
-            background-position-y: center;
-            background-position-x: 98%;
-            background-size: 21px;
-            cursor: pointer;
-            color: $dark;
-            overflow-x: hidden;
-            line-height: 30px;
-        }
-
-        select {
-            background: white;
-            border: 1px solid white;
-            border-radius: 0;
-            appearance: none;
-            -webkit-appearance: none;
-            padding: 5px;
-            padding-left: 8px;
-            background-image:  url(../../images/select-arrow.png);
-            background-repeat: no-repeat;
-            background-position-y: center;
-            background-position-x: 98%;
-            background-size: 18px;
-            color: $dark;
-
-            &:focus {
-                outline: $blue auto 5px;
-            }
-        }
-
-        .submit-search{
-            background: $blue;
-            color: white;
-            padding: 6px 30px;
-            border: none;
-            text-transform: uppercase;
-            font-size: 14px;
-            font-weight: 500;
-
-            &:hover {
-                background: $dark_blue;
-            }
-
-            &:focus {
-                outline: none;
-            }
-        }
-    }
-    
-}
-
-
-.modal-dialog {
-
-    @media (min-width: 576px){
-        max-width: 770px;
-        
-    }
-
-    .modal-content {
-        border: none;
-        border-radius: 0;
-    }
-
-    .modal-body {
-        
-        padding: 20px 30px;
-
-        h3 {
-            color: $blue;
-        }
-
-        .close-form {
-            padding: 10px 10px;
-            line-height: 11px;
-            font-size: 34px;
-
-            img {
-                height: 35px;
-            }
-        }
-
-        .innerModal {
-            height: 405px;
-            overflow: scroll;
-            margin-left: -8px;
-
-            .sectorList .sectorItem.child .collapsable:before  {
-                content: none;
-            }
-            
-            .sectorList .sectorList {
-                margin-left: 20px;
-            }
-             
-            .sectorItem {
-                margin-left: 10px;
-            }
-             
-            .collapsable {
-                margin-left: 14px;
-                cursor: pointer;
-            }
-            .collapsable:before {
-                content: " ▶ ";
-                margin-right: 8px;
-                color: $dark;
-                cursor: pointer;
-            }
-            .down:before {
-                content: " ▼ ";
-                font-size: 14.5px;
-                cursor: pointer;
-            }
-        }
-    }
-
-    .modal-footer {
-        padding: 12px 20px;
-        .confirm-sectors{
-            background: $dark_orange;
-            color: white;
-            padding: 6px 30px;
-            border: none;
-            text-transform: uppercase;
-            font-size: 14px;
-            font-weight: 500;
-
-            &:hover {
-                background: $orange;
-            }
-
-            &:focus {
-                outline: none;
-            }
-        }
-    }
-    
-    input[type=checkbox]{
-        height: 21px;
-        cursor: pointer;
-    }
-
-    input[type=checkbox]:before {
-        content: '✓';
-        background: white;
-        color: white;
-        border: 1px solid $blue;
-        padding: 0px 4px;
-        font-weight: 300;
-        font-size: 12.5px;
-        border-radius: 3px;
-    }
-
-    input:checked:before {
-        content: '✓';
-        background: $blue;
-        border: 1px solid $blue;
-        color: white;
-        padding: 0px 4px;
-        font-weight: 300;
-        font-size: 12.5px;
-        border-radius: 3px;
-    }
-  
-}
-
