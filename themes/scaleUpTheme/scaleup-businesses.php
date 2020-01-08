@@ -363,7 +363,7 @@ var markerCluster;
 function searchCompanies(sector_codes, lep_code, min_turnover, max_turnover, min_employees, max_employees, min_growth, max_growth){
 
 	$.ajax({
-		url: "http://scaleup-institute.bladedev.co.uk/getLocations.php",
+		url: "https://www.scaleupinstitute.org.uk/getLocations.php",
 		data : {
 			offset: 0,
 			min_turnover: min_turnover,
@@ -449,8 +449,7 @@ function addMarkers(response_companies){
 	home_url = protocol + "//" + host;
 	var image = home_url + "/wp-content/themes/scaleUpTheme/assets/images/marker.png";
 
-	console.log(response_companies.length);
-	console.log(markers);
+	infowindow = new google.maps.InfoWindow();
 
 	for (var i = 0; i < response_companies.length; i++) {
 		var lat = response_companies[i]['lat'];
@@ -465,6 +464,29 @@ function addMarkers(response_companies){
 			id: i,
 			icon: image,
 		});
+
+		markers[i].addListener('click', function() {
+
+			index = this.id;
+			company = response_companies[index];
+			link = '/company/?id=' + company['company_no'];
+
+			contentString = '<div id="content" class="p-2">'+
+			'<h6 class="mb-3">' + company['name'] + '</h6>'+
+			'<div id="bodyContent">'+
+			'<p>' + company['address1'] + ',</p>' +
+			'<p>' + company['address2'] + ',</p>' +
+			'<p>' + company['address3'] + '</p>' +
+			'<p class="mb-2">' + company['address4'] + '</p>' +
+			'<p class="mb-4"><strong>Tel:</strong> ' + company['telephone'] + '</p>' +
+			'<a class="btn-blue-small" href="' + link + '">More info</a>' +
+			'</div>'+
+			'</div>';
+
+			infowindow.setContent(contentString);
+			infowindow.open(map, this);
+		}); 
+	
 	}
 
 	mcOptions = {
@@ -613,6 +635,9 @@ function initMap() {
 		
 	});
 }
+
+
+
 
 </script>
 

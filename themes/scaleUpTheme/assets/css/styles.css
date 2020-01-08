@@ -158,6 +158,16 @@ strong {
     text-decoration: none;
     background: #548095; }
 
+.btn-blue-small {
+  background: #5DA0B4;
+  color: #fff !important;
+  padding: 5px 14px;
+  font-size: 12.5px;
+  text-decoration: none; }
+  .btn-blue-small:hover {
+    text-decoration: none;
+    background: #548095; }
+
 .btn-white {
   background-color: white;
   color: #3F3E3D; }
@@ -3383,3 +3393,7 @@ td, th {
       font-weight: 500;
       padding: 15px 15px;
       width: 25%; }
+
+#map #bodyContent p {
+  margin: 0;
+  font-size: 14px; }

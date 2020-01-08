@@ -1,6 +1,8 @@
  <?php
 $id = isset($_GET['id']) ? $_GET['id'] : 0; 
 
+$id = "'" . $id . "'";
+
 // Create connection
 $con=mysqli_connect("localhost","companiesdbu","vaCtvw222KGNmnMB","scale-up-companies");
  
@@ -26,7 +28,7 @@ $sql = "SELECT c.name, c.company_no, c.sic_2007, c.sic_2003, c.type, c.incorpora
 " ON i.company_no = c.company_no WHERE c.company_no = " . $id .
 " ORDER BY c.name ASC";
 
- 
+
 //For joins we need an alias for the tables
 mysqli_set_charset($con, "utf8" );
 if ($result = mysqli_query($con, $sql))

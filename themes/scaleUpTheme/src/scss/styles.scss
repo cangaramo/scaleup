@@ -198,6 +198,19 @@ strong {
     }
 }
 
+.btn-blue-small {
+    background: $blue;
+    color: #fff!important;
+    padding: 5px 14px;
+    font-size: 12.5px;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+        background: $dark_blue;
+    }
+}
+
 .btn-white {
     background-color: white;
     color: $dark;
@@ -559,5 +572,13 @@ td, th {
             padding: 15px 15px;
             width: 25%;
         }
+    }
+}
+
+#map #bodyContent {
+
+    p {
+        margin: 0;
+        font-size: 14px;
     }
 }

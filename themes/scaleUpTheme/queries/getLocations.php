@@ -48,7 +48,9 @@ if (mysqli_connect_errno())
 // SQL statement
 
 //Sin left join
-$sql = "SELECT c.name, c.sic_2007, i.lat, i.lng, i.lep_code" . 
+$sql = "SELECT c.name, c.company_no, c.sic_2007, i.lat, i.lng, i.lep_code, i.telephone, " . 
+" i.trading_address_line_1 AS address1, i.trading_address_line_2 AS address2, " .
+" i.trading_address_line_3 AS address3, i.trading_address_line_4 AS address4  " .
 " FROM company c".
 " INNER JOIN finances f" .
 " ON f.company_no = c.company_no" .

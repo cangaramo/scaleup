@@ -132,7 +132,7 @@ $( document ).ready(function() {
 function getCompany(id){
 
     $.ajax({
-        url: "http://scaleup-institute.bladedev.co.uk/getCompany.php",
+        url: "https://www.scaleupinstitute.org.uk/getCompany.php",
         data : {
             id: id
         },
@@ -203,7 +203,7 @@ function getCompany(id){
 function getPeople(id){
 
     $.ajax({
-        url: "http://scaleup-institute.bladedev.co.uk/getPeople.php",
+        url: "https://www.scaleupinstitute.org.uk/getPeople.php",
         data : {
             id: id
         },
@@ -254,7 +254,7 @@ function getPeople(id){
 function getAccounts(id){
 
     $.ajax({
-        url: "http://scaleup-institute.bladedev.co.uk/getAccounts.php",
+        url: "https://www.scaleupinstitute.org.uk/getAccounts.php",
         data : {
             id: id
         },

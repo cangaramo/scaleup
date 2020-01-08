@@ -201,7 +201,7 @@ $( document ).ready(function() {
 function searchCompanies(){
 
     $.ajax({
-        url: "http://scaleup-institute.bladedev.co.uk/getCompanies.php",
+        url: "https://www.scaleupinstitute.org.uk/getCompanies.php",
         data : {
             offset: 0,
             min_turnover: min_turnover,
