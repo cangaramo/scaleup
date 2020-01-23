@@ -127,30 +127,32 @@
     </div>
 
     <!-- Responses to consultations -->
-    <div class="bg-gray">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h4>Responses to consultations</h4>
-                    <p><?php echo ($all_fields['responses']['copy']) ?></p>
+    <?php if ($all_fields['responses']['copy']): ?>
+        <div class="bg-gray">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h4>Responses to consultations</h4>
+                        <p><?php echo ($all_fields['responses']['copy']) ?></p>
 
-                    <div class="bg-white p-3">
+                        <div class="bg-white p-3">
 
-                        <div class="row">
-                            <div class="col-lg-9">
-                                <p class="title-blue-lowercase mb-3"><?php echo ($all_fields['responses']['title']) ?></p>
-                                <p><?php echo ($all_fields['responses']['description']) ?></p>
-                            </div>
-                            <div class="col-lg-3">
-                                <a href="<?php echo $all_fields['responses']['file'] ?>" target="_blank" class="btn-blue float-lg-right">Download<img class="btn-icon" src="<?php echo get_bloginfo('template_url')?>/assets/images/download-icon.png"></a>
-                            </div>
-                        </div>    
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <p class="title-blue-lowercase mb-3"><?php echo ($all_fields['responses']['title']) ?></p>
+                                    <p><?php echo ($all_fields['responses']['description']) ?></p>
+                                </div>
+                                <div class="col-lg-3">
+                                    <a href="<?php echo $all_fields['responses']['file'] ?>" target="_blank" class="btn-blue float-lg-right">Download<img class="btn-icon" src="<?php echo get_bloginfo('template_url')?>/assets/images/download-icon.png"></a>
+                                </div>
+                            </div>    
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    <?php endif ?>
     
 
     

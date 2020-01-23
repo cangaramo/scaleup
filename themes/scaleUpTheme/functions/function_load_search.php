@@ -10,7 +10,8 @@ function load_search(){
 		'orderby' => 'relevance', 
 		'order'	=> 'ASC',
 		'posts_per_page' => 5,
-		's' => $keyword
+		's' => $keyword,
+		'post_status' => 'publish'
 	);
 
 	//Main query 

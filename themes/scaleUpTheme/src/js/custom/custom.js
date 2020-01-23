@@ -65,6 +65,7 @@ $( document ).ready(function() {
     });
     */
 
+
     /* Map programmes finder version 1 */
 
     $("#submit-form").click(function(){
@@ -335,21 +336,54 @@ $( document ).ready(function() {
 
     // Pagination
 
+
+    //When loaded
+    console.log("document ready");
+    if ( $( ".programmes-list" ).length ) {
+
+        console.log("test");
+        
+        //Get page from url
+        var currentURL = (window.location.pathname);
+        var num = currentURL.split("/")[3];
+        current_page = parseInt(num);
+
+        if (num == null){
+            current_page = 1;
+        }
+
+        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+    }
+
     $('body').on('click', '.next-btn', function(){
         current_page = parseInt(current_page) + 1;
-        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+
+        url = "/find-programmes/page/" + current_page;
+        window.location.href = url;
+        current_page = parseInt(num);
+
+        //LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
 	});
 
 	$('body').on('click', '.prev-btn', function(){
-		current_page = parseInt(current_page) - 1;
-        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+        current_page = parseInt(current_page) - 1;
+        
+        url = "/find-programmes/page/" + current_page;
+        window.location.href = url;
+        current_page = parseInt(num);
+        //LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
 	});
 
     
 	$('body').on('click', '.changePage', function(){
 		new_page = $(this).val();
-		current_page = new_page;
-        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+        current_page = new_page;
+        
+        url = "/find-programmes/page/" + current_page;
+        window.location.href = url;
+        current_page = parseInt(num);
+
+        //LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
 	}); 
 
 
@@ -469,6 +503,18 @@ $( document ).ready(function() {
         }
 
     });  
+
+
+    $( document ).ajaxComplete(function() {
+        $(function () {
+
+            /*
+            $('.tooltip').hide();
+            $('[data-toggle="tooltip"]').tooltip();
+            $('.tooltip').show();
+            */
+        });
+    });
 
 
     // Load chapter from menu 
@@ -851,6 +897,8 @@ if (window.location.hash) {
 */
 
 function LoadProgrammes(event, regions, types_business, types_support, aims, costs, types, providers, one_to_watch, endorsed){
+
+    console.log("load programmes");
 
     protocol = window.location.protocol
     host = window.location.host;

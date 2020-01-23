@@ -95,7 +95,7 @@ function load_programmes(){
 
     if( ($one_to_watch == 1) && ($endorsed == 1)) {
         $args['meta_query'] = array(
-            'relation'		=> 'AND',
+            'relation'		=> 'OR',
             array(
                 'key'	 	=> 'one_to_watch',
                 'value'	  	=> "1",
@@ -334,12 +334,12 @@ function load_programmes(){
                     if ($count == 3):
                         $class = "bg-orange";
                         $text = "Want to be considered for a programme?";
-                        $link = "https://www.surveymonkey.co.uk/r/2JQ2XHJ";
+                        $link = "/contact/";
                         $target = "_blank";
                     elseif ($count == 10):
                         $class = "bg-blue";
                         $text = "Your programme not listed?";
-                        $link = "/contact/";
+                        $link = "https://www.surveymonkey.co.uk/r/2JQ2XHJ";
                         $target = "_self";
                         $count = 0; 
                     endif;
