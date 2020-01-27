@@ -27,6 +27,7 @@ $lng_array = array();
             </div>
         </div>
     </div>
+    
 
     <div>
     
@@ -38,6 +39,7 @@ $lng_array = array();
                 </div>
             
             </div>
+
     
             <div class="col-6">
                 <div id="map"></div>

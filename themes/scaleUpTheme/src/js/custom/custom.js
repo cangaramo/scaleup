@@ -25,6 +25,9 @@ var posts_per_page = 10;
 var signedUp = false;
 var show_signup = false;
 
+var endorsed_param;
+var one_to_watch_par;
+
 $( document ).ready(function() {
 
     //Get home url
@@ -64,7 +67,6 @@ $( document ).ready(function() {
         ]
     });
     */
-
 
     /* Map programmes finder version 1 */
 
@@ -178,53 +180,84 @@ $( document ).ready(function() {
             array_support.push(type_support);
         }
 
-        current_page = 1;
-        
-        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+        /* Parameters */
 
-        //Mark checkbox as checked 
-        checkbox_region = "#checkbox-" + region;
-        checkbox_business = "#checkbox-" + type_business;
-        checkbox_support = "#checkbox-" + type_support;
-        $(checkbox_region).prop('checked', true); 
-        $(checkbox_business).prop('checked', true); 
-        $(checkbox_support).prop('checked', true); 
+        if (array_region.length > 0) {
+            regions_param = "&regions=" + array_region.join("-");
+        }
+        else {
+            regions_param = "";
+        }
+
+        if (array_business.length > 0) {
+            business_param = "&business=" + array_business.join("-");
+        }
+        else {
+            business_param = "";
+        }
+
+        if (array_support.length > 0) {
+            support_param = "&support=" + array_support.join("-");
+        }
+        else {
+            support_param = "";
+        }
+
+        current_page = 1;
+
+        url = "/find-programmes/?pag=" + current_page + regions_param + business_param + support_param;
+        window.location.href = url;
+        
     });
 
 
     //One to watch
+    one_to_watch = 0;
     $('body').on('click', '.one-to-watch', function (){
+
+        one_to_watch = parseInt(one_to_watch);
        
         if (one_to_watch == 0) {
             one_to_watch = 1;
+            one_to_watch_param = "&one_to_watch=1";
             $(this).find(".checkbox .fas").css("display", "block");
         }
         else {
             one_to_watch = 0;
+            one_to_watch_param = "";
             $(this).find(".checkbox .fas").css("display", "none");
         }
 
         current_page = 1;
+        
+        url = "/find-programmes/?pag=" + current_page + one_to_watch_param + endorsed_param + regions_param + business_param
+        + support_param + aims_param + cost_param + types_param + providers_param;
+        window.location.href = url;
 
-        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
     });
 
     //Endorsed
     $('body').on('click', '.endorsed', function (){
-        $(this).find(".checkbox .fas").toggle();
+
+        endorsed = parseInt(endorsed);
 
         if (endorsed == 0) {
             endorsed = 1;
+            endorsed_param = "&endorsed=1";
             $(this).find(".checkbox .fas").css("display", "block");
         }
         else {
             endorsed = 0;
+            endorsed_param = "";
             $(this).find(".checkbox .fas").css("display", "none");
         }
 
         current_page = 1;
 
-        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+        url = "/find-programmes/?pag=" + current_page + one_to_watch_param + endorsed_param + regions_param + business_param
+        + support_param + aims_param + cost_param + types_param + providers_param;
+        window.location.href = url;
+
     });
 
     //More filters
@@ -252,28 +285,20 @@ $( document ).ready(function() {
         array_types = [];
         array_providers = [];
 
+        regions_param = "";
+        business_param = "";
+        support_param = "";
+        aims_param = "";
+        cost_param = "";
+        types_param = "";
+        providers_param = "";
+        
         current_page = 1;
         posts_per_page = 10;
 
-        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
-
-        //Close window and scroll to top
-        section = ".all-programmes";
-        $('html, body').animate({
-            scrollTop: $(section).offset().top},
-            500,
-            function(){
-                $(".close-filters").hide();
-                $(".filters-window").fadeOut(600);
-            }    
-        );  
-        
-        //Reset search form
-        $("#dropdown-region").val("");
-        $("#dropdown-type-business").val("");
-        $("#dropdown-type-support").val("");
-
-        return false;
+        url = "/find-programmes/?pag=" + current_page + one_to_watch_param + endorsed_param + regions_param + business_param
+        + support_param + aims_param + cost_param + types_param + providers_param;
+        window.location.href = url;
 
     });
 
@@ -309,28 +334,64 @@ $( document ).ready(function() {
             return $(this).val();
         }).get();
 
+
+        if (array_region.length > 0) {
+            regions_param = "&regions=" + array_region.join("-");
+        }
+        else {
+            regions_param = "";
+        }
+
+        if (array_business.length > 0) {
+            business_param = "&business=" + array_business.join("-");
+        }
+        else {
+            business_param = "";
+        }
+
+        if (array_support.length > 0) {
+            support_param = "&support=" + array_support.join("-");
+        }
+        else {
+            support_param = "";
+        }
+
+        if (array_aims.length > 0) {
+            aims_param = "&aims=" + array_aims.join("-");
+        }
+        else {
+            aims_param = "";
+        }
+
+        if (array_cost.length > 0) {
+            cost_param = "&cost=" + array_cost.join("-");
+        }
+        else {
+            cost_param = "";
+        }
+
+        if (array_types.length > 0) {
+            types_param = "&types=" + array_types.join("-");
+        }
+        else {
+            types_param = "";
+        }
+
+        if (array_providers.length > 0) {
+            providers_param = "&providers=" + array_providers.join("-");
+        }
+        else {
+            providers_param = "";
+        }
+
         current_page = 1;
         posts_per_page = -1;
 
-        LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
+        current_page = 1;
 
-        //Close window and scroll to top
-        section = ".all-programmes";
-        $('html, body').animate({
-            scrollTop: $(section).offset().top},
-            500,
-            function(){
-                $(".close-filters").hide();
-                $(".filters-window").fadeOut(600);
-            }    
-        );  
-        
-        //Reset search form
-        $("#dropdown-region").val("");
-        $("#dropdown-type-business").val("");
-        $("#dropdown-type-support").val("");
-
-        return false;
+        url = "/find-programmes/?pag=" + current_page + one_to_watch_param + endorsed_param + regions_param + business_param
+        + support_param + aims_param + cost_param + types_param + providers_param;
+        window.location.href = url;
 
     });
 
@@ -338,7 +399,7 @@ $( document ).ready(function() {
 
 
     //When loaded
-    console.log("document ready");
+    /*
     if ( $( ".programmes-list" ).length ) {
 
         console.log("test");
@@ -353,38 +414,43 @@ $( document ).ready(function() {
         }
 
         LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
-    }
+    }*/
 
+
+    
     $('body').on('click', '.next-btn', function(){
         current_page = parseInt(current_page) + 1;
 
-        url = "/find-programmes/page/" + current_page;
+        url = "/find-programmes/?pag=" + current_page + one_to_watch_param + endorsed_param + regions_param + business_param
+        + support_param + aims_param + cost_param + types_param + providers_param;
+        
         window.location.href = url;
         current_page = parseInt(num);
-
-        //LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
 	});
 
 	$('body').on('click', '.prev-btn', function(){
         current_page = parseInt(current_page) - 1;
         
-        url = "/find-programmes/page/" + current_page;
+        url = "/find-programmes/?pag=" + current_page + one_to_watch_param + endorsed_param + regions_param + business_param
+        + support_param + aims_param + cost_param + types_param + providers_param;
+
         window.location.href = url;
         current_page = parseInt(num);
-        //LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
 	});
 
     
 	$('body').on('click', '.changePage', function(){
 		new_page = $(this).val();
         current_page = new_page;
-        
-        url = "/find-programmes/page/" + current_page;
+    
+        url = "/find-programmes/?pag=" + current_page + one_to_watch_param + endorsed_param + regions_param + business_param
+        + support_param + aims_param + cost_param + types_param + providers_param;
+
         window.location.href = url;
         current_page = parseInt(num);
 
-        //LoadProgrammes("", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
 	}); 
+
 
 
     /* STORIES */
@@ -503,18 +569,6 @@ $( document ).ready(function() {
         }
 
     });  
-
-
-    $( document ).ajaxComplete(function() {
-        $(function () {
-
-            /*
-            $('.tooltip').hide();
-            $('[data-toggle="tooltip"]').tooltip();
-            $('.tooltip').show();
-            */
-        });
-    });
 
 
     // Load chapter from menu 
@@ -762,12 +816,152 @@ $( document ).ready(function() {
         signedUp = true;
     });
 
+    $('#go-back-programmes').click(function(){
+
+        if (document.referrer == "") {
+            url = "/find-programmes/";
+            window.location.href = url;
+        } else {
+            window.history.back();
+        }
+    });
+
 });
 
 /* Event load */
 $(window).on('load', function(){
 
-    if ($('.programmes-list').length > 0) {
+    if ($('.programmes-list').length > 0) {     
+        
+
+        query = window.location.search;
+        urlParams = new URLSearchParams(query);
+
+        //Page
+        num = urlParams.get('pag');
+        current_page = parseInt(num);
+        if (num == null){
+            current_page = 1;
+        }
+        
+        //One to watch
+        one_to_watch = urlParams.get('one_to_watch');
+        if (one_to_watch == null) {
+            one_to_watch = 0;
+            one_to_watch_param = "";
+            $('.one-to-watch').find(".checkbox .fas").css("display", "none");
+        }
+        else if (one_to_watch == 1) {
+            one_to_watch =  parseInt(one_to_watch);
+            one_to_watch_param = "&one_to_watch=1";
+            $('.one-to-watch').find(".checkbox .fas").css("display", "block");
+        }
+
+        //Endorsed
+        endorsed = urlParams.get('endorsed');
+        if (endorsed == null) {
+            endorsed = 0;
+            endorsed_param = "";
+            $('.endorsed').find(".checkbox .fas").css("display", "none");
+        }
+        else if (endorsed == 1){
+            endorsed =  parseInt(endorsed);
+            endorsed_param = "&endorsed=1";
+            $('.endorsed').find(".checkbox .fas").css("display", "block");
+        }
+
+        //Regions
+        regions = urlParams.get('regions');        
+        if (regions == null) {
+            array_region = [];
+            regions_param = "";
+        }
+        else {
+            array_region = regions.split("-");
+            regions_param = "&regions=" + regions;
+            $(":checkbox[name='checkbox-region']").removeAttr('checked');   
+            checkCheckboxesByValues(array_region);
+        }
+
+        //Business
+        business = urlParams.get("business");
+        if (business == null) {
+            array_business = [];
+            business_param = "";
+        }
+        else {
+            array_business = business.split("-");
+            business_param = "&business=" + business;
+            $(":checkbox[name='checkbox-business']").removeAttr('checked');   
+            checkCheckboxesByValues(array_business);
+        }
+
+        //Aims
+        aims = urlParams.get("aims");
+        if (aims == null) {
+            array_aims = [];
+            aims_param = "";
+        }
+        else {
+            array_aims = aims.split("-");
+            aims_param = "&aims=" + aims;
+            $(":checkbox[name='checkbox-aim']").removeAttr('checked');   
+            checkCheckboxesByValues(array_aims);
+        }
+
+        //Support
+        support = urlParams.get("support");
+        if (support == null) {
+            array_support = [];
+            support_param = "";
+        }
+        else {
+            array_support = support.split("-");
+            support_param = "&support=" + support;
+            $(":checkbox[name='checkbox-support']").removeAttr('checked');   
+            checkCheckboxesByValues(array_support);
+        }
+
+
+        //Cost
+        cost = urlParams.get("cost");
+        if (cost == null) {
+            array_cost = [];
+            cost_param = "";
+        }
+        else {
+            array_cost = cost.split("-");
+            cost_param = "&cost=" + support;
+            $(":checkbox[name='checkbox-cost']").removeAttr('checked');   
+            checkCheckboxesByValues(array_cost);
+        } 
+
+        //Type
+        types = urlParams.get("types");
+        if (types == null) {
+            array_types = [];
+            types_param = "";
+        }
+        else {
+            array_types = types.split("-");
+            types_param = "&cost=" + types;
+            $(":checkbox[name='checkbox-type']").removeAttr('checked');   
+            checkCheckboxesByValues(array_types);
+        }
+
+        //Providers
+        providers = urlParams.get("providers");
+        if (providers == null) {
+            array_providers = [];
+            providers_param = "";
+        }
+        else {
+            array_providers = providers.split("-");
+            providers_param = "&providers=" + providers;
+            $(":checkbox[name='checkbox-provider']").removeAttr('checked');   
+            checkCheckboxesByValues(array_providers);
+        }
+
         LoadProgrammes("onload", array_region, array_business, array_support, array_aims, array_cost, array_types, array_providers, one_to_watch, endorsed);
     }
 
@@ -807,6 +1001,12 @@ $(window).on('load', function(){
     }
     
 });
+
+function checkCheckboxesByValues(values) {
+    $.each(values, function(i, val) {
+       $(":checkbox[value=" + val + "]").prop("checked","true");
+    });
+}
 
 
 /* Event scroll */
@@ -897,8 +1097,6 @@ if (window.location.hash) {
 */
 
 function LoadProgrammes(event, regions, types_business, types_support, aims, costs, types, providers, one_to_watch, endorsed){
-
-    console.log("load programmes");
 
     protocol = window.location.protocol
     host = window.location.host;

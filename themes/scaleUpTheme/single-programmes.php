@@ -15,7 +15,7 @@
         <div class="container programmes-top py-4">
             <div  class="d-flex justify-content-between align-items-center">
                 <h2 class="my-2">Scaleup programmes</h2>
-                <div><a class="btn-blue" href="/programmes"><img src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow-back.png">Back to programmes</a></div>
+                <div><a class="btn-blue" id="go-back-programmes"><img src="<?php echo get_bloginfo('template_url')?>/assets/images/arrow-back.png">Back to programmes</a></div>
             </div>
         </div>
     </div>

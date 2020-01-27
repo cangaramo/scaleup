@@ -50,7 +50,7 @@ $(document).ready(function(){
     });
 
     $('#map-btn-2').click(function(){
-        $('img.chart-image').attr('src', template_url + 'infographic/img/scotland.png');
+        $('img.chart-image').attr('src', template_url + 'infographic/img/north-east.png');
     });
 
     $('#map-btn-3').click(function(){
@@ -62,19 +62,19 @@ $(document).ready(function(){
     });
 
     $('#map-btn-5').click(function(){
-        $('img.chart-image').attr('src', template_url + 'infographic/img/west-midlands.png');
+        $('img.chart-image').attr('src', template_url + 'infographic/img/east-midlands.png');
     });
 
     $('#map-btn-6').click(function(){
-        $('img.chart-image').attr('src', template_url + 'infographic/img/west-midlands.png');
+        $('img.chart-image').attr('src', template_url + 'infographic/img/east-midlands.png');
     });
 
     $('#map-btn-7').click(function(){
-        $('img.chart-image').attr('src', template_url + 'infographic/img/west-midlands.png');
+        $('img.chart-image').attr('src', template_url + 'infographic/img/east-midlands.png');
     });
 
     $('#map-btn-8').click(function(){
-        $('img.chart-image').attr('src', template_url + 'infographic/img/west-midlands.png');
+        $('img.chart-image').attr('src', template_url + 'infographic/img/east-midlands.png');
     });
 
     $('#map-btn-9').click(function(){ 

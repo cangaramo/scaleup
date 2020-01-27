@@ -97,12 +97,12 @@
                     <div class="col-lg-8">
 
                     <div class="d-flex flex-column flex-sm-row justify-content-lg-end">
-                        <div class="item one-to-watch">
-                            <a>One to watch</a>
+                    <div class="item endorsed">
+                            <a>Endorsed</a>
                             <div class="checkbox"><i class="fas fa-check"></i></div>
                         </div>
-                        <div class="item endorsed">
-                            <a>Endorsed</a>
+                        <div class="item one-to-watch">
+                            <a>One to watch</a>
                             <div class="checkbox"><i class="fas fa-check"></i></div>
                         </div>
                         <div class="item-black more-filters">

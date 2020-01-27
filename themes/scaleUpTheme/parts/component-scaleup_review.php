@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="col-lg-3">
-                    <img style="height:390px" src="<?php echo get_bloginfo('template_url')?>/assets/images/review.png">
+                    <img style="height:390px" src="/wp-content/uploads/2019/12/AnnualReview_2109_Cover.jpg">
                 </div>
 
                 <div class="col-lg-3">

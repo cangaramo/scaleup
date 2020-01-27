@@ -35,7 +35,7 @@
                             <div class="bg-white box m-2 p-3">
                                 <p><?php echo $title ?></p>
                                 <p><?php echo $all_fields['position']?></p>
-                                <a href="<?php echo $all_fields['link'] ?>">View Linkedin Profile</a>
+                                <a href="<?php echo $all_fields['linkedin'] ?>" target="_blank">View Linkedin Profile</a>
                             </div>
                         </div>
                     <?php endforeach ?>

@@ -156,7 +156,8 @@ strong {
   text-decoration: none; }
   .btn-blue:hover {
     text-decoration: none;
-    background: #548095; }
+    background: #548095;
+    cursor: pointer; }
 
 .btn-blue-small {
   background: #5DA0B4;
@@ -2102,8 +2103,11 @@ footer {
   .supporters .box .info {
     height: 140px; }
 
-.copy h1, .copy h2, .copy h3, .copy h4, .copy h5, .copy h6, .copy p, .copy a, .copy li {
+.copy .col-white h1, .copy .col-white h2, .copy .col-white h3, .copy .col-white h4, .copy .col-white h5, .copy .col-white h6, .copy .col-white p, .copy .col-white a, .copy .col-white li {
   color: white; }
+
+.copy .col-black h1, .copy .col-black h2, .copy .col-black h3, .copy .col-black h4, .copy .col-black h5, .copy .col-black h6, .copy .col-black p, .copy .col-black a, .copy .col-black li {
+  color: #3F3E3D; }
 
 .copy p, .copy li {
   font-size: 18px; }
@@ -2675,8 +2679,8 @@ footer {
     top: 510px;
     left: 290px; }
   .infographic-holder #map-growth-btn-11, .infographic-holder #dot-wrapper11 {
-    top: 246px;
-    left: 204px; }
+    top: 496px;
+    left: 271px; }
   .infographic-holder #map-growth-btn-12, .infographic-holder #dot-wrapper12 {
     top: 290px;
     left: 232px; }
@@ -3397,3 +3401,37 @@ td, th {
 #map #bodyContent p {
   margin: 0;
   font-size: 14px; }
+
+/* Tooltip container */
+.custom-tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; }
+  .custom-tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 8px;
+    border-radius: 6px;
+    width: max-content;
+    max-width: 195px;
+    bottom: 151%;
+    left: 0;
+    font-size: 13.5px;
+    position: absolute;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s; }
+  .custom-tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent; }
+  .custom-tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1; }
