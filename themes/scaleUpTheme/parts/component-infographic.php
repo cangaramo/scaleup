@@ -37,7 +37,7 @@
     <section id="three">
 
         <div id="chart-2-2-holder">
-            <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/latest-graph-2.png" width="100%" />
+            <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/uk-regional-map.jpg" width="100%" />
         </div>
 
         <span class="vertical-line delay-3 line-white"></span>
@@ -266,13 +266,6 @@
                             <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
                         </div>
 
-
-                        <div class="item">
-                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logo-rise.jpg');" class="logo"></div>
-                            <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
-                        </div>
-
-
                         <div class="item">
                             <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/inspire-elite.png');" class="logo"></div>
                             <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/to-watch.svg"></p>
@@ -376,7 +369,7 @@
                         </div>
 
                         <div class="item">
-                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/Eagle-Labs-web.png');" class="logo"></div>
+                            <div style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/logos/barclays-standard.jpg');" class="logo"></div>
                             <p class="symbol"><img src="<?php echo get_bloginfo('template_url')?>/infographic/img/endorosed.jpg"></p>
                         </div>
 
@@ -638,7 +631,7 @@
             <div class="item" style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/s-i-1.png');">1. ALIGN RESOURCES TO ADDRESS THE SCALEUP CHALLENGES</div>
             <div class="item" style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/s-i-2.png');">2. USE DATA TO SEGMENT AND TARGET SCALEUP SUPPORT</div>
             <div class="item" style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/s-i-3.png');">3. BREAK DOWN BARRIERS TO EXPORT</div>
-            <div class="item" style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/s-i-4.png');">4. Facilitating collaboration</div>
+            <div class="item" style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/s-i-4.png');">4. Facilitiate collaboration</div>
             <div class="item" style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/s-i-5.png');">5. WORK WITH GOVERNMENT AND INDUSTRY TO CLOSE THE FINANCE GAP</div>
             <div class="item" style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/s-i-6.png');">6. CREATE JOINED UP, TAILORED AND ACCESSIBLE SOLUTIONS</div>
             <div class="item" style="background-image: url('<?php echo get_bloginfo('template_url')?>/infographic/img/s-i-7.png');">7. CHAMPION SCALEUP ROLE MODELS AND SUCCESS STORIES</div>
@@ -668,7 +661,7 @@
                 <span class="orange">1.</span><br/>
                 Enhance data access  & verification
                 <br/>
-                <a href="" class="read-more">READ MORE</a>
+                <a href="/scaleup-review/#3098" class="read-more">READ MORE</a>
             </div>
 
             <div class="item">
@@ -676,7 +669,7 @@
                 <span class="orange">2.</span><br/>
                 Connect talent - Scaleup Visa
                 <br/>
-               <a href="" class="read-more">READ MORE</a>
+               <a href="/scaleup-review/#3098" class="read-more">READ MORE</a>
             </div>
 
             <div class="item">
@@ -684,7 +677,7 @@
                <span class="orange">3.</span><br/>
                Align funding to local scaleup initiatives
                <br/>
-               <a href="" class="read-more">READ MORE</a>
+               <a href="/scaleup-review/#3098" class="read-more">READ MORE</a>
             </div>
 
             <div class="item">
@@ -692,7 +685,7 @@
                 <span class="orange">4.</span><br/>
                 Deploy local Scaleup Champions
                 <br/>
-                <a href="" class="read-more">READ MORE</a>
+                <a href="/scaleup-review/#3098" class="read-more">READ MORE</a>
             </div>
 
             <div class="item">
@@ -700,7 +693,7 @@
                <span class="orange">5.</span><br/>
                Segment scaleups locally & nationally
                <br/>
-               <a href="" class="read-more">READ MORE</a>
+               <a href="/scaleup-review/#3098" class="read-more">READ MORE</a>
             </div>
 
             <div class="item">
@@ -708,7 +701,7 @@
                 <span class="orange">6.</span><br/>
                 Implement Scaleup Export Strategy
                 <br/>
-                <a href="" class="read-more">READ MORE</a>
+                <a href="/scaleup-review/#3098" class="read-more">READ MORE</a>
             </div>
 
             <div class="item">
@@ -716,15 +709,15 @@
                 <span class="orange">7.</span><br/>
                 Simplify access to public procurement
                 <br/>
-                <a href="" class="read-more">READ MORE</a>
+                <a href="/scaleup-review/#3098" class="read-more">READ MORE</a>
             </div>
 
             <div class="item">
                 <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/r8.png" class="r-icon"><br/>
                 <span class="orange">8.</span><br/>
-                mprove corporate/ scaleup collaboration
+                Improve corporate/ scaleup collaboration
                 <br/>
-                <a href="" class="read-more">READ MORE</a>
+                <a href="/scaleup-review/#3098" class="read-more">READ MORE</a>
             </div>
 
             <div class="item">
@@ -732,7 +725,7 @@
                 <span class="orange">9.</span><br/>
                 Enhance links with educators & peers 
                 <br/>
-                <a href="" class="read-more">READ MORE</a>
+                <a href="/scaleup-review/#3098" class="read-more">READ MORE</a>
             </div>
 
             <div class="item">
@@ -740,7 +733,7 @@
                 <span class="orange">10.</span><br/>
                 Close the Finance Gap
                 <br/>
-                <a href="" class="read-more">READ MORE</a>
+                <a href="/scaleup-review/#3098" class="read-more">READ MORE</a>
             </div>
 
             <div style="clear: both;"></div>
@@ -764,44 +757,44 @@
 
             <div class="item">
                 <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/w2.png" />
-                <span>SCALEUPS ARE PRODUCTIVE</span>
-                Scaleups are more productive than their peers, generating an average of £328,000 turnover per employee
+                <span>SCALEUPS ARE INTERNATIONAL</span>
+                Two thirds of scaleups are involved in international trade, in a range of markets across the world. 
             </div>
 
             <div class="item">
                 <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/w3.png" />
-                <span>SCALEUPS ARE PRODUCTIVE</span>
-                Scaleups are more productive than their peers, generating an average of £328,000 turnover per employee
+                <span>SCALEUPS ARE HIGH QUALITY</span>
+               Scaleups help create high-quality jobs with more satisfied employees – employing 3.4m workers and creating c. 3,000 new jobs per week.
             </div>
 
             <div class="item">
                 <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/w4.png" />
-                <span>SCALEUPS ARE PRODUCTIVE</span>
-                Scaleups are more productive than their peers, generating an average of £328,000 turnover per employee
+                <span>SCALEUPS ARE DIVERSE</span>
+                38% of all scaleups have at least one female director
             </div>
 
             <div class="item">
                 <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/w5.png" />
-                <span>SCALEUPS ARE PRODUCTIVE</span>
-                Scaleups are more productive than their peers, generating an average of £328,000 turnover per employee
+                <span>SCALEUPS ARE INNOVATIVE</span>
+                3 in 4 scaleups have introduced or improved a product/service/process in the last three years.
             </div>
 
             <div class="item">
                 <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/w6.png" />
-                <span>SCALEUPS ARE PRODUCTIVE</span>
-                Scaleups are more productive than their peers, generating an average of £328,000 turnover per employee
+                <span>SCALEUPS ARE ACROSS ALL SECTORS</span>
+                Scaleups span the economy: the majority of them operate in sectors outside of technology
             </div>
 
             <div class="item">
                 <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/w7.png" />
-                <span>SCALEUPS ARE PRODUCTIVE</span>
-                Scaleups are more productive than their peers, generating an average of £328,000 turnover per employee
+                <span>THEY ARE GOOD CORPORATE CITIZENS</span>
+                56% of scaleups offer opportunities to young people through work experience, internships or apprenticeships.
             </div>
 
             <div class="item">
                 <img src="<?php echo get_bloginfo('template_url')?>/infographic/img/w8.png" />
-                <span>SCALEUPS ARE PRODUCTIVE</span>
-                Scaleups are more productive than their peers, generating an average of £328,000 turnover per employee
+                <span>THEY PLAN TO GROW</span>
+                9 out of 10 scaleups expect to scale again in the coming year. 1 in 3 expect to achieve 50%+ turnover growth. 1 in 5 expect to achieve 50%+ employee growth.
             </div>
 
         </div> 
