@@ -684,7 +684,10 @@ class GF_Field_Repeater extends GF_Field {
 
 						$value = isset( $entry[ $key ] ) ? $entry[ $key ] : '';
 
-						$items[ $i ][ $input_id ] = $value;
+						// Don't add new item if max indexes is 0 and value is empty.
+						if ( $field->isRequired || $max_indexes[ $field->id ] > 0 || ( $max_indexes[ $field->id ] === 0 && $value !== '' ) ) {
+							$items[ $i ][ $input_id ] = $value;
+						}
 
 						if ( isset( $entry[ $key ] ) ) {
 							unset( $entry[ $key ] );
@@ -696,7 +699,9 @@ class GF_Field_Repeater extends GF_Field {
 
 					$value = isset( $entry[ $key ] ) ? $entry[ $key ] : '';
 
-					$items[ $i ][ $field->id ] = $value;
+					if ( $field->isRequired || $max_indexes[ $field->id ] > 0 || ( $max_indexes[ $field->id ] === 0 && $value !== '' ) ) {
+						$items[ $i ][ $field->id ] = $value;
+					}
 
 					if ( isset( $entry[ $key ] ) ) {
 						unset( $entry[ $key ] );
@@ -717,7 +722,7 @@ class GF_Field_Repeater extends GF_Field {
 					$is_empty = $this->empty_deep( $v );
 
 					if ( ( $i == 0 || ! $is_empty ) || ( empty( $index ) && isset( $items[ $i ] ) && ! $this->empty_deep( $items[ $i ] ) ) ) {
-						$items[ $i ][ $field->id ] = $v;
+						$items[ $i ][ $repeater->id ] = $v;
 					}
 
 					if ( $is_empty ) {
@@ -935,8 +940,15 @@ class GF_Field_Repeater extends GF_Field {
 							$lines = array();
 							foreach ( $list_rows as $i => $list_row ) {
 								$row_label = $label . ' ' . ( $i + 1 );
-								$row_value = array( (string) $field->id => $list_row );
-								$lines[] = $row_label . ': ' . $field->get_value_export( $row_value, $field->id, $use_text, $is_csv );
+
+								// Prepare row value.
+								$row_value = implode( '|', $list_row );
+								if ( strpos( $row_value, '=' ) === 0 ) {
+									// Prevent Excel formulas
+									$row_value = "'" . $row_value;
+								}
+
+								$lines[] = $row_label . ': ' . $row_value;
 							}
 							$line = implode( "\n", $lines );
 						} else {
