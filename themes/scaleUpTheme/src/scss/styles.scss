@@ -635,3 +635,18 @@ td, th {
         opacity: 1;
     }
 }
+
+
+.visible-scaleups {
+
+    select {
+        &:focus {
+            outline: none;
+        }
+    }
+
+    #visible_scaleups_response {
+        min-height: 65vh;
+        margin-top: 37px;
+    }
+}

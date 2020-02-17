@@ -72,7 +72,7 @@
                             $title_type = "Programme";
                             break;
                         default:
-                            $title_type = "";
+                            $title_type = "Reports";
                             break;
                     }
 

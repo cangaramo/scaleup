@@ -339,3 +339,62 @@ add_action( 'init', 'my_theme_add_editor_styles' );
 
 
 
+/* VISIBLE SCALEUPS */
+function visible_scaleups(){
+	
+	$lep = $_POST['lep'];
+
+	$args = array(
+        'post_type' => 'visible_scaleups',
+		'posts_per_page' => -1,
+	);
+
+	if ($lep != -1) {
+		$args['tax_query'] = array(
+			array(
+				'taxonomy' => 'companies_area',
+				'field' => 'term_id',
+				'terms'    => array($lep),
+				'operator' => 'IN'
+			)
+			);
+
+		$term = get_term( $lep, 'companies_area' );
+		$name = $term->name;
+	}
+	else {
+		$name = "All companies";
+	}
+
+	$scaleups = get_posts($args);
+	$query = new WP_Query( $args );
+	$total = $query->found_posts;
+	?>
+
+	<div class="mt-4">
+
+		<p><span class="border-blue"><?php echo $name ?> – <?php echo $total ?> Companies</span></p>
+
+		<div class="row mt-3">
+
+			<?php foreach ($scaleups as $scaleup): 
+				$id = $scaleup->ID;
+				$title = get_the_title($id);
+			?>
+				<div class="col-6">
+					<p class="mb-2"><?php echo $title ?></p>
+				</div>
+
+			<?php endforeach; ?>
+
+		</div>
+
+	</div>
+
+	<?php
+
+	die();
+}
+
+add_action( 'wp_ajax_nopriv_visible_scaleups', 'visible_scaleups' );
+add_action( 'wp_ajax_visible_scaleups', 'visible_scaleups' );

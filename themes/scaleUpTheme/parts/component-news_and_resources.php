@@ -15,6 +15,7 @@
                 $all_fields = get_fields($id);
                 $link = get_the_permalink($id);
                 $type = get_post_type($id);
+                $date = get_the_date("d F Y", $id);
                 
                 switch ($type){
                     case 'news':
@@ -24,7 +25,7 @@
                         $title_type = "Programme";
                         break;
                     default:
-                        $title_type = "";
+                        $title_type = "Reports";
                         break;
                 }
 
@@ -45,7 +46,8 @@
                             <div class="bg-image thumbnail" style="background-image: url('<?php echo $all_fields['thumbnail_image']?>')"></div>
                         </div>
                         <div class="px-3 py-2">
-                            <p class="title"><?php echo $title ?></p>
+                            <p class="title mb-2"><?php echo $title ?></p>
+                            <p><?php echo $date ?></p>
                             <p class="description"><?php echo $all_fields['description'] ?></p>
                         </div>
                         <div class="pos-bottom w-100">

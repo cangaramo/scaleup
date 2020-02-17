@@ -826,6 +826,15 @@ $( document ).ready(function() {
         }
     });
 
+
+    if ($('#visible_scaleups_response').length > 0) {
+        LoadVisibleScaleups();
+    }
+
+    $( "#dropdown-lep" ).change(function() {
+        LoadVisibleScaleups();
+    });
+
 });
 
 /* Event load */
@@ -999,6 +1008,10 @@ $(window).on('load', function(){
             }, 12000); 
         }
     }
+
+
+   
+
     
 });
 
@@ -1297,6 +1310,35 @@ function LoadAmbassadors(lep, sector) {
         },
         success:function(response){
             $("#response-ambassadors").html(response);
+        }
+    });
+
+    return false;
+}
+
+
+function LoadVisibleScaleups(){
+
+    protocol = window.location.protocol
+    host = window.location.host;
+    home_url = protocol + "//" + host;
+
+    ajax_url = home_url + "/wp-admin/admin-ajax.php";
+
+    lep = $("#dropdown-lep :selected").val();
+
+    $.ajax({
+        url: ajax_url,
+        type: 'post',
+        data : {
+            action: "visible_scaleups",
+            lep: lep,
+        },
+        beforeSend:function(xhr){
+            console.log("beffore sennd");
+        },
+        success:function(response){
+            $("#visible_scaleups_response").html(response);
         }
     });
 

@@ -357,7 +357,7 @@ strong {
 
 #featured_posts .box {
   background: white;
-  height: 370px;
+  height: 390px;
   text-align: center; }
   #featured_posts .box .title {
     font-size: 18px;
@@ -3435,3 +3435,10 @@ td, th {
   .custom-tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1; }
+
+.visible-scaleups select:focus {
+  outline: none; }
+
+.visible-scaleups #visible_scaleups_response {
+  min-height: 65vh;
+  margin-top: 37px; }

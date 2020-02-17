@@ -142,6 +142,23 @@
                 <div class="col-lg-8">
                     <div class="py-5 p-3">
                         <?php echo $all_fields['copy'] ?>
+
+                        <!-- Quote --->
+                        <?php 
+                            $quote = $all_fields['quote'];
+                            $author = $all_fields['quote_author'];
+                        ?>
+
+                        <?php if ($quote): ?>
+                            <div class="module-quote py-3 bg-white">
+                                <div class="bg-blue p-4 quote-cont">
+                                    <p><span class="quote"><?php echo $quote ?></span></p>
+                                    <p class="author"><?php echo $author ?></p>
+                                    <p class="company"><?php echo $company ?></p>
+                                </div>
+                            </div>
+                        <?php endif ?>
+
                         <?php if ($all_fields['website_url']) { ?>
 						<p>
 						<a class="btn-blue" href="<?php echo $all_fields['website_url'] ?>" target="_blank"><?php echo $title ?> website</a>

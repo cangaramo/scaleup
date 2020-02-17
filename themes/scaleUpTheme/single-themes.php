@@ -1,7 +1,6 @@
 <?php
     $title = get_the_title();
     $all_fields = get_fields();
-    print_r($fields);
     $committees = $all_fields['committee'];
     $reports = $all_fields['latest_reports'];
 ?>
@@ -36,7 +35,7 @@
                         <div class="bg-white box mx-lg-2 my-2 p-3">
                             <p><?php echo $title ?></p>
                             <p><?php echo $committee_fields['position']?></p>
-                            <a href="<?php echo $committee_fields['link'] ?>">View Linkedin Profile</a>
+                            <a href="<?php echo $committee_fields['linkedin'] ?>">View Linkedin Profile</a>
                         </div>
                     </div>
                 <?php endforeach ?>

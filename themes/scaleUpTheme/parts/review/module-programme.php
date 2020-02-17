@@ -131,6 +131,23 @@
                 <div class="col-lg-8">
                     <div class="py-5 p-3">
                         <?php echo $all_fields['copy'] ?>
+
+                        <!-- Quote --->
+                        <?php 
+                            $quote = $all_fields['quote'];
+                            $author = $all_fields['quote_author'];
+                        ?>
+
+                        <?php if ($quote): ?>
+                            <div class="module-quote py-3 bg-white">
+                                <div class="bg-blue p-4 quote-cont">
+                                    <p><span class="quote"><?php echo $quote ?></span></p>
+                                    <p class="author"><?php echo $author ?></p>
+                                    <p class="company"><?php echo $company ?></p>
+                                </div>
+                            </div>
+                        <?php endif ?>
+
                     </div>
                 </div>
                 <div class="col-lg-4 bg-gray_blue p-0">
